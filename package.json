@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "The V2 of WhatsAPI Go",
   "license": "Unlicense",
-  "main": "dist/index.js",
+  "main": "dist/WhatsAPI/index.js",
   "scripts": {
     "build": "babel src -d dist",
     "prepare": "npm run build",
