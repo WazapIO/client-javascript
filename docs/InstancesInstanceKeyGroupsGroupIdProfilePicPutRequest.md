@@ -1,4 +1,4 @@
-# WhatsApiGo.InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest
+# WhatsApi.InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest
 
 ## Properties
 

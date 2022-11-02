@@ -18,7 +18,7 @@ import StructsReplyButton from './StructsReplyButton';
 /**
  * The StructsButtonMessageWithMediaPayload model module.
  * @module model/StructsButtonMessageWithMediaPayload
- * @version 2.0
+ * @version 1.0.0
  */
 class StructsButtonMessageWithMediaPayload {
     /**

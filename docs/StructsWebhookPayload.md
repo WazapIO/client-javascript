@@ -1,4 +1,4 @@
-# WhatsApiGo.StructsWebhookPayload
+# WhatsApi.StructsWebhookPayload
 
 ## Properties
 

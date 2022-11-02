@@ -1,4 +1,4 @@
-# WhatsApiGo.StructsLocationMessagePayload
+# WhatsApi.StructsLocationMessagePayload
 
 ## Properties
 

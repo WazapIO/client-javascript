@@ -1,4 +1,4 @@
-# WhatsApiGo.StructsButtonMessageWithMediaPayload
+# WhatsApi.StructsButtonMessageWithMediaPayload
 
 ## Properties
 

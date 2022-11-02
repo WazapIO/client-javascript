@@ -1,4 +1,4 @@
-# WhatsApiGo.StructsContactMessagePayloadVcard
+# WhatsApi.StructsContactMessagePayloadVcard
 
 ## Properties
 

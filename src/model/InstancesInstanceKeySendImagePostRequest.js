@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The InstancesInstanceKeySendImagePostRequest model module.
  * @module model/InstancesInstanceKeySendImagePostRequest
- * @version 2.0
+ * @version 1.0.0
  */
 class InstancesInstanceKeySendImagePostRequest {
     /**

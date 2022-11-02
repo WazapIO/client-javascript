@@ -1,4 +1,4 @@
-# WhatsApiGo.StructsGroupUpdateDescriptionPayload
+# WhatsApi.StructsGroupUpdateDescriptionPayload
 
 ## Properties
 

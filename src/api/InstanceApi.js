@@ -19,7 +19,7 @@ import StructsWebhookPayload from '../model/StructsWebhookPayload';
 /**
 * Instance service.
 * @module api/InstanceApi
-* @version 2.0
+* @version 1.0.0
 */
 export default class InstanceApi {
 

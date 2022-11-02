@@ -1,4 +1,4 @@
-# WhatsApiGo.StructsContactMessagePayload
+# WhatsApi.StructsContactMessagePayload
 
 ## Properties
 

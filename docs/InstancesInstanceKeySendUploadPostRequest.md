@@ -1,4 +1,4 @@
-# WhatsApiGo.InstancesInstanceKeySendUploadPostRequest
+# WhatsApi.InstancesInstanceKeySendUploadPostRequest
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# WhatsApiGo.MiscellaneousApi
+# WhatsApi.MiscellaneousApi
 
 All URIs are relative to */api*
 
@@ -20,15 +20,15 @@ Returns the profile pic of the given user.
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.MiscellaneousApi();
+let apiInstance = new WhatsApi.MiscellaneousApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let jid = "jid_example"; // String | JID
 apiInstance.instancesInstanceKeyMiscProfilePicGet(instanceKey, jid, (error, data, response) => {
@@ -73,17 +73,17 @@ Gets the user info for the given user ids. This does not checks if user is regis
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.MiscellaneousApi();
+let apiInstance = new WhatsApi.MiscellaneousApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApiGo.StructsUserInfoPayload(); // StructsUserInfoPayload | Data
+let data = new WhatsApi.StructsUserInfoPayload(); // StructsUserInfoPayload | Data
 apiInstance.instancesInstanceKeyMiscUserInfoPost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);

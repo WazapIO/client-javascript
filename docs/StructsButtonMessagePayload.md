@@ -1,4 +1,4 @@
-# WhatsApiGo.StructsButtonMessagePayload
+# WhatsApi.StructsButtonMessagePayload
 
 ## Properties
 

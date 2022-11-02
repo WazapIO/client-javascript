@@ -1,4 +1,4 @@
-# WhatsApiGo.StructsTemplateButton
+# WhatsApi.StructsTemplateButton
 
 ## Properties
 

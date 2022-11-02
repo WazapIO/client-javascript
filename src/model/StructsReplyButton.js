@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The StructsReplyButton model module.
  * @module model/StructsReplyButton
- * @version 2.0
+ * @version 1.0.0
  */
 class StructsReplyButton {
     /**

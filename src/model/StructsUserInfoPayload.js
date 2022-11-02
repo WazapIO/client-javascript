@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The StructsUserInfoPayload model module.
  * @module model/StructsUserInfoPayload
- * @version 2.0
+ * @version 1.0.0
  */
 class StructsUserInfoPayload {
     /**

@@ -1,4 +1,4 @@
-# WhatsApiGo.StructsFileUpload
+# WhatsApi.StructsFileUpload
 
 ## Properties
 

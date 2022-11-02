@@ -17,7 +17,7 @@ import StructsLocationMessagePayloadLocation from './StructsLocationMessagePaylo
 /**
  * The StructsLocationMessagePayload model module.
  * @module model/StructsLocationMessagePayload
- * @version 2.0
+ * @version 1.0.0
  */
 class StructsLocationMessagePayload {
     /**

@@ -1,4 +1,4 @@
-# WhatsApiGo.InstanceApi
+# WhatsApi.InstanceApi
 
 All URIs are relative to */api*
 
@@ -26,15 +26,15 @@ This endpoint is used to create a new WhatsApp Web instance.
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.InstanceApi();
+let apiInstance = new WhatsApi.InstanceApi();
 let opts = {
   'instanceKey': "instanceKey_example" // String | Insert instance key if you want to provide custom key
 };
@@ -79,15 +79,15 @@ Fetches the list of contacts in the instance.
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.InstanceApi();
+let apiInstance = new WhatsApi.InstanceApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 apiInstance.instancesInstanceKeyContactsGet(instanceKey, (error, data, response) => {
   if (error) {
@@ -130,15 +130,15 @@ Deletes the instance with the provided key.
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.InstanceApi();
+let apiInstance = new WhatsApi.InstanceApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 apiInstance.instancesInstanceKeyDeleteDelete(instanceKey, (error, data, response) => {
   if (error) {
@@ -181,15 +181,15 @@ Returns the instance data of single instance with connection status.
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.InstanceApi();
+let apiInstance = new WhatsApi.InstanceApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 apiInstance.instancesInstanceKeyGet(instanceKey, (error, data, response) => {
   if (error) {
@@ -232,15 +232,15 @@ Logouts of the instance with the provided key.
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.InstanceApi();
+let apiInstance = new WhatsApi.InstanceApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 apiInstance.instancesInstanceKeyLogoutDelete(instanceKey, (error, data, response) => {
   if (error) {
@@ -283,15 +283,15 @@ Returns the qrcode in the base64 format.
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.InstanceApi();
+let apiInstance = new WhatsApi.InstanceApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 apiInstance.instancesInstanceKeyQrcodeGet(instanceKey, (error, data, response) => {
   if (error) {
@@ -334,17 +334,17 @@ Changes the webhook url of an instance.
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.InstanceApi();
+let apiInstance = new WhatsApi.InstanceApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApiGo.StructsWebhookPayload(); // StructsWebhookPayload | Message data
+let data = new WhatsApi.StructsWebhookPayload(); // StructsWebhookPayload | Message data
 apiInstance.instancesInstanceKeyWebhookPut(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -387,15 +387,15 @@ Fetches the list of all Instances with login status.
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.InstanceApi();
+let apiInstance = new WhatsApi.InstanceApi();
 apiInstance.instancesListGet((error, data, response) => {
   if (error) {
     console.error(error);

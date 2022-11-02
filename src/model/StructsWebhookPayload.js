@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The StructsWebhookPayload model module.
  * @module model/StructsWebhookPayload
- * @version 2.0
+ * @version 1.0.0
  */
 class StructsWebhookPayload {
     /**

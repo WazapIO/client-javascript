@@ -17,7 +17,7 @@ import StructsTemplateButton from './StructsTemplateButton';
 /**
  * The StructsTemplateButtonPayload model module.
  * @module model/StructsTemplateButtonPayload
- * @version 2.0
+ * @version 1.0.0
  */
 class StructsTemplateButtonPayload {
     /**

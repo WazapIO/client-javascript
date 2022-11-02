@@ -1,4 +1,4 @@
-# WhatsApiGo.StructsTextMessage
+# WhatsApi.StructsTextMessage
 
 ## Properties
 

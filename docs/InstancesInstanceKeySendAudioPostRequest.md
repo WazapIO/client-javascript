@@ -1,4 +1,4 @@
-# WhatsApiGo.InstancesInstanceKeySendAudioPostRequest
+# WhatsApi.InstancesInstanceKeySendAudioPostRequest
 
 ## Properties
 

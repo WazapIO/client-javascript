@@ -23,7 +23,7 @@ import StructsGroupUpdateParticipantsPayload from '../model/StructsGroupUpdatePa
 /**
 * GroupManagement service.
 * @module api/GroupManagementApi
-* @version 2.0
+* @version 1.0.0
 */
 export default class GroupManagementApi {
 

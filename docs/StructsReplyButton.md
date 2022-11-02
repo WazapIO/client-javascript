@@ -1,4 +1,4 @@
-# WhatsApiGo.StructsReplyButton
+# WhatsApi.StructsReplyButton
 
 ## Properties
 

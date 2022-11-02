@@ -1,4 +1,4 @@
-# WhatsApiGo.GroupManagementApi
+# WhatsApi.GroupManagementApi
 
 All URIs are relative to */api*
 
@@ -34,15 +34,15 @@ Returns list of all groups in which you are admin.
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.GroupManagementApi();
+let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 apiInstance.instancesInstanceKeyGroupsAdminGet(instanceKey, (error, data, response) => {
   if (error) {
@@ -85,17 +85,17 @@ Creates a group with the participant data. The creator is automatically added to
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.GroupManagementApi();
+let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApiGo.StructsGroupCreatePayload(); // StructsGroupCreatePayload | Group create payload
+let data = new WhatsApi.StructsGroupCreatePayload(); // StructsGroupCreatePayload | Group create payload
 apiInstance.instancesInstanceKeyGroupsCreatePost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -138,15 +138,15 @@ Returns list of all groups with participants data. Set include_participants to f
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.GroupManagementApi();
+let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let opts = {
   'includeParticipants': "'true'" // String | Include participants data
@@ -193,15 +193,15 @@ Set if non-admins are allowed to send messages in groups
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.GroupManagementApi();
+let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let announce = false; // Boolean | Announce status
 let groupId = "groupId_example"; // String | Group id of the group
@@ -248,15 +248,15 @@ Leaves the specified group.
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.GroupManagementApi();
+let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let groupId = "groupId_example"; // String | Group id of the group
 apiInstance.instancesInstanceKeyGroupsGroupIdDelete(instanceKey, groupId, (error, data, response) => {
@@ -301,18 +301,18 @@ Changes the group description
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.GroupManagementApi();
+let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let groupId = "groupId_example"; // String | Group id of the group
-let data = new WhatsApiGo.StructsGroupUpdateDescriptionPayload(); // StructsGroupUpdateDescriptionPayload | Group description data
+let data = new WhatsApi.StructsGroupUpdateDescriptionPayload(); // StructsGroupUpdateDescriptionPayload | Group description data
 apiInstance.instancesInstanceKeyGroupsGroupIdDescriptionPut(instanceKey, groupId, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -356,15 +356,15 @@ Fetches the group data.
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.GroupManagementApi();
+let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let groupId = "groupId_example"; // String | Group id of the group
 apiInstance.instancesInstanceKeyGroupsGroupIdGet(instanceKey, groupId, (error, data, response) => {
@@ -409,15 +409,15 @@ Gets the invite code of the group.
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.GroupManagementApi();
+let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let groupId = "groupId_example"; // String | Group id of the group
 apiInstance.instancesInstanceKeyGroupsGroupIdInviteCodeGet(instanceKey, groupId, (error, data, response) => {
@@ -462,15 +462,15 @@ Set if non-admins are allowed to change the group dp and other stuff
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.GroupManagementApi();
+let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let locked = false; // Boolean | Locked status
 let groupId = "groupId_example"; // String | Group id of the group
@@ -517,18 +517,18 @@ Changes the group name. The max limit is 22 chars
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.GroupManagementApi();
+let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let groupId = "groupId_example"; // String | Group id of the group
-let data = new WhatsApiGo.StructsGroupUpdateNamePayload(); // StructsGroupUpdateNamePayload | Group name data
+let data = new WhatsApi.StructsGroupUpdateNamePayload(); // StructsGroupUpdateNamePayload | Group name data
 apiInstance.instancesInstanceKeyGroupsGroupIdNamePut(instanceKey, groupId, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -572,18 +572,18 @@ Handles adding participants to a group. You must be admin in the group or the qu
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.GroupManagementApi();
+let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let groupId = "groupId_example"; // String | Group id of the group
-let data = new WhatsApiGo.StructsGroupUpdateParticipantsPayload(); // StructsGroupUpdateParticipantsPayload | Group update payload
+let data = new WhatsApi.StructsGroupUpdateParticipantsPayload(); // StructsGroupUpdateParticipantsPayload | Group update payload
 apiInstance.instancesInstanceKeyGroupsGroupIdParticipantsAddPost(instanceKey, groupId, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -627,18 +627,18 @@ Demotes admins in groups. You must be admin in the group or the query will fail.
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.GroupManagementApi();
+let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let groupId = "groupId_example"; // String | Group id of the group
-let data = new WhatsApiGo.StructsGroupUpdateParticipantsPayload(); // StructsGroupUpdateParticipantsPayload | Group update payload
+let data = new WhatsApi.StructsGroupUpdateParticipantsPayload(); // StructsGroupUpdateParticipantsPayload | Group update payload
 apiInstance.instancesInstanceKeyGroupsGroupIdParticipantsDemotePut(instanceKey, groupId, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -682,18 +682,18 @@ Promotes participants to admin. You must be admin in the group or the query will
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.GroupManagementApi();
+let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let groupId = "groupId_example"; // String | Group id of the group
-let data = new WhatsApiGo.StructsGroupUpdateParticipantsPayload(); // StructsGroupUpdateParticipantsPayload | Group update payload
+let data = new WhatsApi.StructsGroupUpdateParticipantsPayload(); // StructsGroupUpdateParticipantsPayload | Group update payload
 apiInstance.instancesInstanceKeyGroupsGroupIdParticipantsPromotePut(instanceKey, groupId, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -737,18 +737,18 @@ Handles removing participants from a group. You must be admin in the group or th
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.GroupManagementApi();
+let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let groupId = "groupId_example"; // String | Group id of the group
-let data = new WhatsApiGo.StructsGroupUpdateParticipantsPayload(); // StructsGroupUpdateParticipantsPayload | Group update payload
+let data = new WhatsApi.StructsGroupUpdateParticipantsPayload(); // StructsGroupUpdateParticipantsPayload | Group update payload
 apiInstance.instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete(instanceKey, groupId, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -792,18 +792,18 @@ Changes the group profile picture. Currently it only seems to accept JPEG images
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.GroupManagementApi();
+let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let groupId = "groupId_example"; // String | Group id of the group
-let instancesInstanceKeyGroupsGroupIdProfilePicPutRequest = new WhatsApiGo.InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest(); // InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest | 
+let instancesInstanceKeyGroupsGroupIdProfilePicPutRequest = new WhatsApi.InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest(); // InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest | 
 apiInstance.instancesInstanceKeyGroupsGroupIdProfilePicPut(instanceKey, groupId, instancesInstanceKeyGroupsGroupIdProfilePicPutRequest, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -847,15 +847,15 @@ Gets a group info from an invite link. An invite link is a link that can be used
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.GroupManagementApi();
+let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let inviteLink = "inviteLink_example"; // String | The invite link to check
 apiInstance.instancesInstanceKeyGroupsInviteInfoGet(instanceKey, inviteLink, (error, data, response) => {

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The StructsTextMessage model module.
  * @module model/StructsTextMessage
- * @version 2.0
+ * @version 1.0.0
  */
 class StructsTextMessage {
     /**

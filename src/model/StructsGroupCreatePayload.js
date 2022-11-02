@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The StructsGroupCreatePayload model module.
  * @module model/StructsGroupCreatePayload
- * @version 2.0
+ * @version 1.0.0
  */
 class StructsGroupCreatePayload {
     /**

@@ -55,9 +55,9 @@ import MiscellaneousApi from './api/MiscellaneousApi';
 * <p>
 * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
 * <pre>
-* var WhatsApiGo = require('index'); // See note below*.
-* var xxxSvc = new WhatsApiGo.XxxApi(); // Allocate the API class we're going to use.
-* var yyyModel = new WhatsApiGo.Yyy(); // Construct a model instance.
+* var WhatsApi = require('index'); // See note below*.
+* var xxxSvc = new WhatsApi.XxxApi(); // Allocate the API class we're going to use.
+* var yyyModel = new WhatsApi.Yyy(); // Construct a model instance.
 * yyyModel.someProperty = 'someValue';
 * ...
 * var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
@@ -69,8 +69,8 @@ import MiscellaneousApi from './api/MiscellaneousApi';
 * <p>
 * A non-AMD browser application (discouraged) might do something like this:
 * <pre>
-* var xxxSvc = new WhatsApiGo.XxxApi(); // Allocate the API class we're going to use.
-* var yyy = new WhatsApiGo.Yyy(); // Construct a model instance.
+* var xxxSvc = new WhatsApi.XxxApi(); // Allocate the API class we're going to use.
+* var yyy = new WhatsApi.Yyy(); // Construct a model instance.
 * yyyModel.someProperty = 'someValue';
 * ...
 * var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
@@ -78,7 +78,7 @@ import MiscellaneousApi from './api/MiscellaneousApi';
 * </pre>
 * </p>
 * @module index
-* @version 2.0
+* @version 1.0.0
 */
 export {
     /**

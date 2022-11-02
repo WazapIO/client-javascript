@@ -1,4 +1,4 @@
-# WhatsApiGo.StructsListSection
+# WhatsApi.StructsListSection
 
 ## Properties
 

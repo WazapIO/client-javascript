@@ -1,4 +1,4 @@
-# WhatsApiGo.MessageSendingApi
+# WhatsApi.MessageSendingApi
 
 All URIs are relative to */api*
 
@@ -34,15 +34,15 @@ Gets list of all products registered by you.
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.MessageSendingApi();
+let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 apiInstance.instancesInstanceKeyBusinessCatalogGet(instanceKey, (error, data, response) => {
   if (error) {
@@ -85,18 +85,18 @@ Sends a audio message by uploading to the WhatsApp servers every time. This is n
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.MessageSendingApi();
+let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let to = "to_example"; // String | The recipient's number
-let instancesInstanceKeySendAudioPostRequest = new WhatsApiGo.InstancesInstanceKeySendAudioPostRequest(); // InstancesInstanceKeySendAudioPostRequest | 
+let instancesInstanceKeySendAudioPostRequest = new WhatsApi.InstancesInstanceKeySendAudioPostRequest(); // InstancesInstanceKeySendAudioPostRequest | 
 let opts = {
   'caption': "caption_example" // String | Attached caption
 };
@@ -144,17 +144,17 @@ Sends an interactive button message to the given user. This message also has med
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.MessageSendingApi();
+let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApiGo.StructsButtonMessageWithMediaPayload(); // StructsButtonMessageWithMediaPayload | Message data
+let data = new WhatsApi.StructsButtonMessageWithMediaPayload(); // StructsButtonMessageWithMediaPayload | Message data
 apiInstance.instancesInstanceKeySendButtonMediaPost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -197,17 +197,17 @@ Sends an interactive button message to the given user. Make sure that all the bu
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.MessageSendingApi();
+let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApiGo.StructsButtonMessagePayload(); // StructsButtonMessagePayload | Message data
+let data = new WhatsApi.StructsButtonMessagePayload(); // StructsButtonMessagePayload | Message data
 apiInstance.instancesInstanceKeySendButtonsPost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -250,17 +250,17 @@ Sends a contact (vcard) message to the given user.
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.MessageSendingApi();
+let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApiGo.StructsContactMessagePayload(); // StructsContactMessagePayload | Message data
+let data = new WhatsApi.StructsContactMessagePayload(); // StructsContactMessagePayload | Message data
 apiInstance.instancesInstanceKeySendContactPost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -303,18 +303,18 @@ Sends a document message by uploading to the WhatsApp servers every time. This i
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.MessageSendingApi();
+let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let to = "to_example"; // String | The recipient's number
-let instancesInstanceKeySendDocumentPostRequest = new WhatsApiGo.InstancesInstanceKeySendDocumentPostRequest(); // InstancesInstanceKeySendDocumentPostRequest | 
+let instancesInstanceKeySendDocumentPostRequest = new WhatsApi.InstancesInstanceKeySendDocumentPostRequest(); // InstancesInstanceKeySendDocumentPostRequest | 
 let opts = {
   'caption': "caption_example" // String | Attached caption
 };
@@ -362,18 +362,18 @@ Sends a image message by uploading to the WhatsApp servers every time. This is n
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.MessageSendingApi();
+let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let to = "to_example"; // String | The recipient's number
-let instancesInstanceKeySendImagePostRequest = new WhatsApiGo.InstancesInstanceKeySendImagePostRequest(); // InstancesInstanceKeySendImagePostRequest | 
+let instancesInstanceKeySendImagePostRequest = new WhatsApi.InstancesInstanceKeySendImagePostRequest(); // InstancesInstanceKeySendImagePostRequest | 
 let opts = {
   'caption': "caption_example" // String | Attached caption
 };
@@ -421,17 +421,17 @@ Sends an interactive List message to the given user.
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.MessageSendingApi();
+let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApiGo.StructsListMessagePayload(); // StructsListMessagePayload | Message data
+let data = new WhatsApi.StructsListMessagePayload(); // StructsListMessagePayload | Message data
 apiInstance.instancesInstanceKeySendListPost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -474,17 +474,17 @@ Sends a location message to the given user. This is static location and does not
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.MessageSendingApi();
+let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApiGo.StructsLocationMessagePayload(); // StructsLocationMessagePayload | Message data
+let data = new WhatsApi.StructsLocationMessagePayload(); // StructsLocationMessagePayload | Message data
 apiInstance.instancesInstanceKeySendLocationPost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -527,17 +527,17 @@ Sends a media message to the given user.
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.MessageSendingApi();
+let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApiGo.StructsSendMediaPayload(); // StructsSendMediaPayload | Message data
+let data = new WhatsApi.StructsSendMediaPayload(); // StructsSendMediaPayload | Message data
 apiInstance.instancesInstanceKeySendMediaPost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -580,17 +580,17 @@ Sends an interactive poll message with a media header to the given user. The pol
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.MessageSendingApi();
+let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApiGo.StructsPollMessagePayload(); // StructsPollMessagePayload | Message data
+let data = new WhatsApi.StructsPollMessagePayload(); // StructsPollMessagePayload | Message data
 apiInstance.instancesInstanceKeySendPollPost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -633,17 +633,17 @@ Sends an interactive template message with a media header to the given user. Not
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.MessageSendingApi();
+let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApiGo.StructsTemplateButtonWithMediaPayload(); // StructsTemplateButtonWithMediaPayload | Message data
+let data = new WhatsApi.StructsTemplateButtonWithMediaPayload(); // StructsTemplateButtonWithMediaPayload | Message data
 apiInstance.instancesInstanceKeySendTemplateMediaPost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -686,17 +686,17 @@ Sends an interactive template message to the given user. Note: The valid button 
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.MessageSendingApi();
+let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApiGo.StructsTemplateButtonPayload(); // StructsTemplateButtonPayload | Message data
+let data = new WhatsApi.StructsTemplateButtonPayload(); // StructsTemplateButtonPayload | Message data
 apiInstance.instancesInstanceKeySendTemplatePost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -739,17 +739,17 @@ Sends a text message to the given user.
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.MessageSendingApi();
+let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApiGo.StructsTextMessage(); // StructsTextMessage | Message data
+let data = new WhatsApi.StructsTextMessage(); // StructsTextMessage | Message data
 apiInstance.instancesInstanceKeySendTextPost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -792,18 +792,18 @@ Uploads media to WhatsApp servers and returns the media keys. Store the returned
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.MessageSendingApi();
+let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let type = "type_example"; // String | Media type
-let instancesInstanceKeySendUploadPostRequest = new WhatsApiGo.InstancesInstanceKeySendUploadPostRequest(); // InstancesInstanceKeySendUploadPostRequest | 
+let instancesInstanceKeySendUploadPostRequest = new WhatsApi.InstancesInstanceKeySendUploadPostRequest(); // InstancesInstanceKeySendUploadPostRequest | 
 apiInstance.instancesInstanceKeySendUploadPost(instanceKey, type, instancesInstanceKeySendUploadPostRequest, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -847,18 +847,18 @@ Sends a video message by uploading to the WhatsApp servers every time. This is n
 ### Example
 
 ```javascript
-import WhatsApiGo from 'whats_api_go';
-let defaultClient = WhatsApiGo.ApiClient.instance;
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
 let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new WhatsApiGo.MessageSendingApi();
+let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let to = "to_example"; // String | The recipient's number
-let instancesInstanceKeySendVideoPostRequest = new WhatsApiGo.InstancesInstanceKeySendVideoPostRequest(); // InstancesInstanceKeySendVideoPostRequest | 
+let instancesInstanceKeySendVideoPostRequest = new WhatsApi.InstancesInstanceKeySendVideoPostRequest(); // InstancesInstanceKeySendVideoPostRequest | 
 let opts = {
   'caption': "caption_example" // String | Attached caption
 };

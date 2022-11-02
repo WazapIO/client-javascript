@@ -1,4 +1,4 @@
-# WhatsApiGo.StructsPollMessagePayload
+# WhatsApi.StructsPollMessagePayload
 
 ## Properties
 

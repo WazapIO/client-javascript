@@ -17,7 +17,7 @@ import StructsListItem from './StructsListItem';
 /**
  * The StructsListSection model module.
  * @module model/StructsListSection
- * @version 2.0
+ * @version 1.0.0
  */
 class StructsListSection {
     /**

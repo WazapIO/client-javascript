@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The StructsPollMessagePayload model module.
  * @module model/StructsPollMessagePayload
- * @version 2.0
+ * @version 1.0.0
  */
 class StructsPollMessagePayload {
     /**

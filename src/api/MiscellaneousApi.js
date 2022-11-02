@@ -19,7 +19,7 @@ import StructsUserInfoPayload from '../model/StructsUserInfoPayload';
 /**
 * Miscellaneous service.
 * @module api/MiscellaneousApi
-* @version 2.0
+* @version 1.0.0
 */
 export default class MiscellaneousApi {
 

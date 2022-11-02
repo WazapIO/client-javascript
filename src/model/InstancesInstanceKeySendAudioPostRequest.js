@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The InstancesInstanceKeySendAudioPostRequest model module.
  * @module model/InstancesInstanceKeySendAudioPostRequest
- * @version 2.0
+ * @version 1.0.0
  */
 class InstancesInstanceKeySendAudioPostRequest {
     /**

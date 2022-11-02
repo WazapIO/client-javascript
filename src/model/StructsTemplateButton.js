@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The StructsTemplateButton model module.
  * @module model/StructsTemplateButton
- * @version 2.0
+ * @version 1.0.0
  */
 class StructsTemplateButton {
     /**

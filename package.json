@@ -1,6 +1,6 @@
 {
-  "name": "whats_api_go",
-  "version": "2.0",
+  "name": "WhatsAPI",
+  "version": "1.0.0",
   "description": "The V2 of WhatsAPI Go",
   "license": "Unlicense",
   "main": "dist/index.js",

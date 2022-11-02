@@ -17,7 +17,7 @@ import StructsContactMessagePayloadVcard from './StructsContactMessagePayloadVca
 /**
  * The StructsContactMessagePayload model module.
  * @module model/StructsContactMessagePayload
- * @version 2.0
+ * @version 1.0.0
  */
 class StructsContactMessagePayload {
     /**
