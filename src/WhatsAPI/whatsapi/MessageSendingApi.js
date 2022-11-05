@@ -13,22 +13,22 @@
 
 
 import ApiClient from "../ApiClient";
+import APIResponse from '../models/APIResponse';
+import ButtonMessagePayload from '../models/ButtonMessagePayload';
+import ButtonMessageWithMediaPayload from '../models/ButtonMessageWithMediaPayload';
+import ContactMessagePayload from '../models/ContactMessagePayload';
 import InstancesInstanceKeySendAudioPostRequest from '../models/InstancesInstanceKeySendAudioPostRequest';
 import InstancesInstanceKeySendDocumentPostRequest from '../models/InstancesInstanceKeySendDocumentPostRequest';
 import InstancesInstanceKeySendImagePostRequest from '../models/InstancesInstanceKeySendImagePostRequest';
 import InstancesInstanceKeySendUploadPostRequest from '../models/InstancesInstanceKeySendUploadPostRequest';
 import InstancesInstanceKeySendVideoPostRequest from '../models/InstancesInstanceKeySendVideoPostRequest';
-import MainAPIResponse from '../models/MainAPIResponse';
-import StructsButtonMessagePayload from '../models/StructsButtonMessagePayload';
-import StructsButtonMessageWithMediaPayload from '../models/StructsButtonMessageWithMediaPayload';
-import StructsContactMessagePayload from '../models/StructsContactMessagePayload';
-import StructsListMessagePayload from '../models/StructsListMessagePayload';
-import StructsLocationMessagePayload from '../models/StructsLocationMessagePayload';
-import StructsPollMessagePayload from '../models/StructsPollMessagePayload';
-import StructsSendMediaPayload from '../models/StructsSendMediaPayload';
-import StructsTemplateButtonPayload from '../models/StructsTemplateButtonPayload';
-import StructsTemplateButtonWithMediaPayload from '../models/StructsTemplateButtonWithMediaPayload';
-import StructsTextMessage from '../models/StructsTextMessage';
+import ListMessagePayload from '../models/ListMessagePayload';
+import LocationMessagePayload from '../models/LocationMessagePayload';
+import PollMessagePayload from '../models/PollMessagePayload';
+import SendMediaPayload from '../models/SendMediaPayload';
+import TemplateButtonPayload from '../models/TemplateButtonPayload';
+import TemplateButtonWithMediaPayload from '../models/TemplateButtonWithMediaPayload';
+import TextMessage from '../models/TextMessage';
 
 /**
 * MessageSending service.
@@ -50,53 +50,10 @@ export default class MessageSendingApi {
 
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeyBusinessCatalogGet operation.
-     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeyBusinessCatalogGetCallback
-     * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Fetches the catlog.
-     * Gets list of all products registered by you.
-     * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeyBusinessCatalogGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
-     */
-    instancesInstanceKeyBusinessCatalogGet(instanceKey, callback) {
-      let postBody = null;
-      // verify the required parameter 'instanceKey' is set
-      if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyBusinessCatalogGet");
-      }
-
-      let pathParams = {
-        'instance_key': instanceKey
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['ApiKeyAuth'];
-      let contentTypes = [];
-      let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
-      return this.apiClient.callApi(
-        '/instances/{instance_key}/business/catalog', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the instancesInstanceKeySendAudioPost operation.
      * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendAudioPostCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -109,7 +66,7 @@ export default class MessageSendingApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.caption Attached caption
      * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendAudioPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeySendAudioPost(instanceKey, to, instancesInstanceKeySendAudioPostRequest, opts, callback) {
       opts = opts || {};
@@ -142,7 +99,7 @@ export default class MessageSendingApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/send/audio', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -154,7 +111,7 @@ export default class MessageSendingApi {
      * Callback function to receive the result of the instancesInstanceKeySendButtonMediaPost operation.
      * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendButtonMediaPostCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -162,9 +119,9 @@ export default class MessageSendingApi {
      * Send a button message with a media header.
      * Sends an interactive button message to the given user. This message also has media header with it. Make sure that all the button ids are unique
      * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/models/StructsButtonMessageWithMediaPayload} data Message data
+     * @param {module:WhatsAPI/models/ButtonMessageWithMediaPayload} data Message data
      * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendButtonMediaPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeySendButtonMediaPost(instanceKey, data, callback) {
       let postBody = data;
@@ -190,7 +147,7 @@ export default class MessageSendingApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/send/button-media', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -202,7 +159,7 @@ export default class MessageSendingApi {
      * Callback function to receive the result of the instancesInstanceKeySendButtonsPost operation.
      * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendButtonsPostCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -210,9 +167,9 @@ export default class MessageSendingApi {
      * Send a button message.
      * Sends an interactive button message to the given user. Make sure that all the button ids are unique
      * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/models/StructsButtonMessagePayload} data Message data
+     * @param {module:WhatsAPI/models/ButtonMessagePayload} data Message data
      * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendButtonsPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeySendButtonsPost(instanceKey, data, callback) {
       let postBody = data;
@@ -238,7 +195,7 @@ export default class MessageSendingApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/send/buttons', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -250,7 +207,7 @@ export default class MessageSendingApi {
      * Callback function to receive the result of the instancesInstanceKeySendContactPost operation.
      * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendContactPostCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -258,9 +215,9 @@ export default class MessageSendingApi {
      * Send a contact message.
      * Sends a contact (vcard) message to the given user.
      * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/models/StructsContactMessagePayload} data Message data
+     * @param {module:WhatsAPI/models/ContactMessagePayload} data Message data
      * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendContactPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeySendContactPost(instanceKey, data, callback) {
       let postBody = data;
@@ -286,7 +243,7 @@ export default class MessageSendingApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/send/contact', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -298,7 +255,7 @@ export default class MessageSendingApi {
      * Callback function to receive the result of the instancesInstanceKeySendDocumentPost operation.
      * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendDocumentPostCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -311,7 +268,7 @@ export default class MessageSendingApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.caption Attached caption
      * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendDocumentPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeySendDocumentPost(instanceKey, to, instancesInstanceKeySendDocumentPostRequest, opts, callback) {
       opts = opts || {};
@@ -344,7 +301,7 @@ export default class MessageSendingApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/send/document', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -356,7 +313,7 @@ export default class MessageSendingApi {
      * Callback function to receive the result of the instancesInstanceKeySendImagePost operation.
      * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendImagePostCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -369,7 +326,7 @@ export default class MessageSendingApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.caption Attached caption
      * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendImagePostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeySendImagePost(instanceKey, to, instancesInstanceKeySendImagePostRequest, opts, callback) {
       opts = opts || {};
@@ -402,7 +359,7 @@ export default class MessageSendingApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/send/image', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -414,7 +371,7 @@ export default class MessageSendingApi {
      * Callback function to receive the result of the instancesInstanceKeySendListPost operation.
      * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendListPostCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -422,9 +379,9 @@ export default class MessageSendingApi {
      * Send a List message.
      * Sends an interactive List message to the given user.
      * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/models/StructsListMessagePayload} data Message data
+     * @param {module:WhatsAPI/models/ListMessagePayload} data Message data
      * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendListPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeySendListPost(instanceKey, data, callback) {
       let postBody = data;
@@ -450,7 +407,7 @@ export default class MessageSendingApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/send/list', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -462,7 +419,7 @@ export default class MessageSendingApi {
      * Callback function to receive the result of the instancesInstanceKeySendLocationPost operation.
      * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendLocationPostCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -470,9 +427,9 @@ export default class MessageSendingApi {
      * Send a location message.
      * Sends a location message to the given user. This is static location and does not update Note: The Address and Url fields are optional
      * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/models/StructsLocationMessagePayload} data Message data
+     * @param {module:WhatsAPI/models/LocationMessagePayload} data Message data
      * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendLocationPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeySendLocationPost(instanceKey, data, callback) {
       let postBody = data;
@@ -498,7 +455,7 @@ export default class MessageSendingApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/send/location', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -510,7 +467,7 @@ export default class MessageSendingApi {
      * Callback function to receive the result of the instancesInstanceKeySendMediaPost operation.
      * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendMediaPostCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -518,9 +475,9 @@ export default class MessageSendingApi {
      * Send a media message.
      * Sends a media message to the given user.
      * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/models/StructsSendMediaPayload} data Message data
+     * @param {module:WhatsAPI/models/SendMediaPayload} data Message data
      * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendMediaPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeySendMediaPost(instanceKey, data, callback) {
       let postBody = data;
@@ -546,7 +503,7 @@ export default class MessageSendingApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/send/media', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -558,17 +515,17 @@ export default class MessageSendingApi {
      * Callback function to receive the result of the instancesInstanceKeySendPollPost operation.
      * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendPollPostCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Send a Poll message with media.
-     * Sends an interactive poll message with a media header to the given user. The poll message is a new feature that is currently in beta.
+     * Send a Poll message.
+     * Sends an interactive poll message to the given user. The poll message is a new feature that is currently in beta.
      * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/models/StructsPollMessagePayload} data Message data
+     * @param {module:WhatsAPI/models/PollMessagePayload} data Message data
      * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendPollPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeySendPollPost(instanceKey, data, callback) {
       let postBody = data;
@@ -594,7 +551,7 @@ export default class MessageSendingApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/send/poll', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -606,7 +563,7 @@ export default class MessageSendingApi {
      * Callback function to receive the result of the instancesInstanceKeySendTemplateMediaPost operation.
      * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendTemplateMediaPostCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -614,9 +571,9 @@ export default class MessageSendingApi {
      * Send a template message with media.
      * Sends an interactive template message with a media header to the given user. Note: The valid button types are \"replyButton\", \"urlButton\", \"callButton\"
      * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/models/StructsTemplateButtonWithMediaPayload} data Message data
+     * @param {module:WhatsAPI/models/TemplateButtonWithMediaPayload} data Message data
      * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendTemplateMediaPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeySendTemplateMediaPost(instanceKey, data, callback) {
       let postBody = data;
@@ -642,7 +599,7 @@ export default class MessageSendingApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/send/template-media', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -654,7 +611,7 @@ export default class MessageSendingApi {
      * Callback function to receive the result of the instancesInstanceKeySendTemplatePost operation.
      * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendTemplatePostCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -662,9 +619,9 @@ export default class MessageSendingApi {
      * Send a template message.
      * Sends an interactive template message to the given user. Note: The valid button types are \"replyButton\", \"urlButton\", \"callButton\"
      * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/models/StructsTemplateButtonPayload} data Message data
+     * @param {module:WhatsAPI/models/TemplateButtonPayload} data Message data
      * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendTemplatePostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeySendTemplatePost(instanceKey, data, callback) {
       let postBody = data;
@@ -690,7 +647,7 @@ export default class MessageSendingApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/send/template', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -702,7 +659,7 @@ export default class MessageSendingApi {
      * Callback function to receive the result of the instancesInstanceKeySendTextPost operation.
      * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendTextPostCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -710,9 +667,9 @@ export default class MessageSendingApi {
      * Send a text message.
      * Sends a text message to the given user.
      * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/models/StructsTextMessage} data Message data
+     * @param {module:WhatsAPI/models/TextMessage} data Message data
      * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendTextPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeySendTextPost(instanceKey, data, callback) {
       let postBody = data;
@@ -738,7 +695,7 @@ export default class MessageSendingApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/send/text', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -750,7 +707,7 @@ export default class MessageSendingApi {
      * Callback function to receive the result of the instancesInstanceKeySendUploadPost operation.
      * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendUploadPostCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -761,7 +718,7 @@ export default class MessageSendingApi {
      * @param {module:WhatsAPI/models/String} type Media type
      * @param {module:WhatsAPI/models/InstancesInstanceKeySendUploadPostRequest} instancesInstanceKeySendUploadPostRequest 
      * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendUploadPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeySendUploadPost(instanceKey, type, instancesInstanceKeySendUploadPostRequest, callback) {
       let postBody = instancesInstanceKeySendUploadPostRequest;
@@ -792,7 +749,7 @@ export default class MessageSendingApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/send/upload', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -804,7 +761,7 @@ export default class MessageSendingApi {
      * Callback function to receive the result of the instancesInstanceKeySendVideoPost operation.
      * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendVideoPostCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -817,7 +774,7 @@ export default class MessageSendingApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.caption Attached caption
      * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendVideoPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeySendVideoPost(instanceKey, to, instancesInstanceKeySendVideoPostRequest, opts, callback) {
       opts = opts || {};
@@ -850,7 +807,7 @@ export default class MessageSendingApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/send/video', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,

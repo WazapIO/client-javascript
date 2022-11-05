@@ -13,8 +13,8 @@
 
 
 import ApiClient from "../ApiClient";
-import MainAPIResponse from '../models/MainAPIResponse';
-import StructsWebhookPayload from '../models/StructsWebhookPayload';
+import APIResponse from '../models/APIResponse';
+import WebhookPayload from '../models/WebhookPayload';
 
 /**
 * Instance service.
@@ -39,7 +39,7 @@ export default class InstanceApi {
      * Callback function to receive the result of the instancesCreateGet operation.
      * @callback module:WhatsAPI/whatsapi/InstanceApi~instancesCreateGetCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -49,7 +49,7 @@ export default class InstanceApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.instanceKey Insert instance key if you want to provide custom key
      * @param {module:WhatsAPI/whatsapi/InstanceApi~instancesCreateGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesCreateGet(opts, callback) {
       opts = opts || {};
@@ -68,7 +68,7 @@ export default class InstanceApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/create', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -80,7 +80,7 @@ export default class InstanceApi {
      * Callback function to receive the result of the instancesInstanceKeyContactsGet operation.
      * @callback module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyContactsGetCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -89,7 +89,7 @@ export default class InstanceApi {
      * Fetches the list of contacts in the instance.
      * @param {String} instanceKey Instance key
      * @param {module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyContactsGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyContactsGet(instanceKey, callback) {
       let postBody = null;
@@ -111,7 +111,7 @@ export default class InstanceApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/contacts', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -123,7 +123,7 @@ export default class InstanceApi {
      * Callback function to receive the result of the instancesInstanceKeyDeleteDelete operation.
      * @callback module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyDeleteDeleteCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -132,7 +132,7 @@ export default class InstanceApi {
      * Deletes the instance with the provided key.
      * @param {String} instanceKey Instance key
      * @param {module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyDeleteDeleteCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyDeleteDelete(instanceKey, callback) {
       let postBody = null;
@@ -154,7 +154,7 @@ export default class InstanceApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/delete', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -166,7 +166,7 @@ export default class InstanceApi {
      * Callback function to receive the result of the instancesInstanceKeyGet operation.
      * @callback module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyGetCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -175,7 +175,7 @@ export default class InstanceApi {
      * Returns the instance data of single instance with connection status.
      * @param {String} instanceKey Instance key
      * @param {module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyGet(instanceKey, callback) {
       let postBody = null;
@@ -197,7 +197,7 @@ export default class InstanceApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -209,7 +209,7 @@ export default class InstanceApi {
      * Callback function to receive the result of the instancesInstanceKeyLogoutDelete operation.
      * @callback module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyLogoutDeleteCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -218,7 +218,7 @@ export default class InstanceApi {
      * Logouts of the instance with the provided key.
      * @param {String} instanceKey Instance key
      * @param {module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyLogoutDeleteCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyLogoutDelete(instanceKey, callback) {
       let postBody = null;
@@ -240,7 +240,7 @@ export default class InstanceApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/logout', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -252,7 +252,7 @@ export default class InstanceApi {
      * Callback function to receive the result of the instancesInstanceKeyQrcodeGet operation.
      * @callback module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyQrcodeGetCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -261,7 +261,7 @@ export default class InstanceApi {
      * Returns the qrcode in the base64 format.
      * @param {String} instanceKey Instance key
      * @param {module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyQrcodeGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyQrcodeGet(instanceKey, callback) {
       let postBody = null;
@@ -283,7 +283,7 @@ export default class InstanceApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/qrcode', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -295,7 +295,7 @@ export default class InstanceApi {
      * Callback function to receive the result of the instancesInstanceKeyWebhookPut operation.
      * @callback module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyWebhookPutCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -303,9 +303,9 @@ export default class InstanceApi {
      * Change Webhook url.
      * Changes the webhook url of an instance.
      * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/models/StructsWebhookPayload} data Message data
+     * @param {module:WhatsAPI/models/WebhookPayload} data Message data
      * @param {module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyWebhookPutCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyWebhookPut(instanceKey, data, callback) {
       let postBody = data;
@@ -331,7 +331,7 @@ export default class InstanceApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/webhook', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -343,7 +343,7 @@ export default class InstanceApi {
      * Callback function to receive the result of the instancesListGet operation.
      * @callback module:WhatsAPI/whatsapi/InstanceApi~instancesListGetCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -351,7 +351,7 @@ export default class InstanceApi {
      * Get all instances.
      * Fetches the list of all Instances with login status.
      * @param {module:WhatsAPI/whatsapi/InstanceApi~instancesListGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesListGet(callback) {
       let postBody = null;
@@ -368,7 +368,7 @@ export default class InstanceApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/list', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,

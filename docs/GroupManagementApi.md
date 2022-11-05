@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 ## instancesInstanceKeyGroupsAdminGet
 
-> MainAPIResponse instancesInstanceKeyGroupsAdminGet(instanceKey)
+> APIResponse instancesInstanceKeyGroupsAdminGet(instanceKey)
 
 Get admin groupss.
 
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeyGroupsCreatePost
 
-> MainAPIResponse instancesInstanceKeyGroupsCreatePost(instanceKey, data)
+> APIResponse instancesInstanceKeyGroupsCreatePost(instanceKey, data)
 
 Create group.
 
@@ -95,7 +95,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApi.StructsGroupCreatePayload(); // StructsGroupCreatePayload | Group create payload
+let data = new WhatsApi.GroupCreatePayload(); // GroupCreatePayload | Group create payload
 apiInstance.instancesInstanceKeyGroupsCreatePost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -111,11 +111,11 @@ apiInstance.instancesInstanceKeyGroupsCreatePost(instanceKey, data, (error, data
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instanceKey** | **String**| Instance key | 
- **data** | [**StructsGroupCreatePayload**](StructsGroupCreatePayload.md)| Group create payload | 
+ **data** | [**GroupCreatePayload**](GroupCreatePayload.md)| Group create payload | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeyGroupsGet
 
-> MainAPIResponse instancesInstanceKeyGroupsGet(instanceKey, opts)
+> APIResponse instancesInstanceKeyGroupsGet(instanceKey, opts)
 
 Get all groups.
 
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeyGroupsGroupIdAnnouncePut
 
-> MainAPIResponse instancesInstanceKeyGroupsGroupIdAnnouncePut(instanceKey, announce, groupId)
+> APIResponse instancesInstanceKeyGroupsGroupIdAnnouncePut(instanceKey, announce, groupId)
 
 Set group announce.
 
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeyGroupsGroupIdDelete
 
-> MainAPIResponse instancesInstanceKeyGroupsGroupIdDelete(instanceKey, groupId)
+> APIResponse instancesInstanceKeyGroupsGroupIdDelete(instanceKey, groupId)
 
 Leaves the group.
 
@@ -278,7 +278,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeyGroupsGroupIdDescriptionPut
 
-> MainAPIResponse instancesInstanceKeyGroupsGroupIdDescriptionPut(instanceKey, groupId, data)
+> APIResponse instancesInstanceKeyGroupsGroupIdDescriptionPut(instanceKey, groupId, data)
 
 Set group description.
 
@@ -312,7 +312,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let groupId = "groupId_example"; // String | Group id of the group
-let data = new WhatsApi.StructsGroupUpdateDescriptionPayload(); // StructsGroupUpdateDescriptionPayload | Group description data
+let data = new WhatsApi.GroupUpdateDescriptionPayload(); // GroupUpdateDescriptionPayload | Group description data
 apiInstance.instancesInstanceKeyGroupsGroupIdDescriptionPut(instanceKey, groupId, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -329,11 +329,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instanceKey** | **String**| Instance key | 
  **groupId** | **String**| Group id of the group | 
- **data** | [**StructsGroupUpdateDescriptionPayload**](StructsGroupUpdateDescriptionPayload.md)| Group description data | 
+ **data** | [**GroupUpdateDescriptionPayload**](GroupUpdateDescriptionPayload.md)| Group description data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -347,7 +347,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeyGroupsGroupIdGet
 
-> MainAPIResponse instancesInstanceKeyGroupsGroupIdGet(instanceKey, groupId)
+> APIResponse instancesInstanceKeyGroupsGroupIdGet(instanceKey, groupId)
 
 Get group.
 
@@ -386,7 +386,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -400,7 +400,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeyGroupsGroupIdInviteCodeGet
 
-> MainAPIResponse instancesInstanceKeyGroupsGroupIdInviteCodeGet(instanceKey, groupId)
+> APIResponse instancesInstanceKeyGroupsGroupIdInviteCodeGet(instanceKey, groupId)
 
 Get group invite code.
 
@@ -439,7 +439,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -453,7 +453,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeyGroupsGroupIdLockPut
 
-> MainAPIResponse instancesInstanceKeyGroupsGroupIdLockPut(instanceKey, locked, groupId)
+> APIResponse instancesInstanceKeyGroupsGroupIdLockPut(instanceKey, locked, groupId)
 
 Set group locked.
 
@@ -494,7 +494,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -508,7 +508,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeyGroupsGroupIdNamePut
 
-> MainAPIResponse instancesInstanceKeyGroupsGroupIdNamePut(instanceKey, groupId, data)
+> APIResponse instancesInstanceKeyGroupsGroupIdNamePut(instanceKey, groupId, data)
 
 Set group name.
 
@@ -528,7 +528,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let groupId = "groupId_example"; // String | Group id of the group
-let data = new WhatsApi.StructsGroupUpdateNamePayload(); // StructsGroupUpdateNamePayload | Group name data
+let data = new WhatsApi.GroupUpdateNamePayload(); // GroupUpdateNamePayload | Group name data
 apiInstance.instancesInstanceKeyGroupsGroupIdNamePut(instanceKey, groupId, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -545,11 +545,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instanceKey** | **String**| Instance key | 
  **groupId** | **String**| Group id of the group | 
- **data** | [**StructsGroupUpdateNamePayload**](StructsGroupUpdateNamePayload.md)| Group name data | 
+ **data** | [**GroupUpdateNamePayload**](GroupUpdateNamePayload.md)| Group name data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -563,7 +563,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeyGroupsGroupIdParticipantsAddPost
 
-> MainAPIResponse instancesInstanceKeyGroupsGroupIdParticipantsAddPost(instanceKey, groupId, data)
+> APIResponse instancesInstanceKeyGroupsGroupIdParticipantsAddPost(instanceKey, groupId, data)
 
 Add participant.
 
@@ -583,7 +583,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let groupId = "groupId_example"; // String | Group id of the group
-let data = new WhatsApi.StructsGroupUpdateParticipantsPayload(); // StructsGroupUpdateParticipantsPayload | Group update payload
+let data = new WhatsApi.GroupUpdateParticipantsPayload(); // GroupUpdateParticipantsPayload | Group update payload
 apiInstance.instancesInstanceKeyGroupsGroupIdParticipantsAddPost(instanceKey, groupId, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -600,11 +600,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instanceKey** | **String**| Instance key | 
  **groupId** | **String**| Group id of the group | 
- **data** | [**StructsGroupUpdateParticipantsPayload**](StructsGroupUpdateParticipantsPayload.md)| Group update payload | 
+ **data** | [**GroupUpdateParticipantsPayload**](GroupUpdateParticipantsPayload.md)| Group update payload | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -618,7 +618,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeyGroupsGroupIdParticipantsDemotePut
 
-> MainAPIResponse instancesInstanceKeyGroupsGroupIdParticipantsDemotePut(instanceKey, groupId, data)
+> APIResponse instancesInstanceKeyGroupsGroupIdParticipantsDemotePut(instanceKey, groupId, data)
 
 Demote participant.
 
@@ -638,7 +638,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let groupId = "groupId_example"; // String | Group id of the group
-let data = new WhatsApi.StructsGroupUpdateParticipantsPayload(); // StructsGroupUpdateParticipantsPayload | Group update payload
+let data = new WhatsApi.GroupUpdateParticipantsPayload(); // GroupUpdateParticipantsPayload | Group update payload
 apiInstance.instancesInstanceKeyGroupsGroupIdParticipantsDemotePut(instanceKey, groupId, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -655,11 +655,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instanceKey** | **String**| Instance key | 
  **groupId** | **String**| Group id of the group | 
- **data** | [**StructsGroupUpdateParticipantsPayload**](StructsGroupUpdateParticipantsPayload.md)| Group update payload | 
+ **data** | [**GroupUpdateParticipantsPayload**](GroupUpdateParticipantsPayload.md)| Group update payload | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -673,7 +673,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeyGroupsGroupIdParticipantsPromotePut
 
-> MainAPIResponse instancesInstanceKeyGroupsGroupIdParticipantsPromotePut(instanceKey, groupId, data)
+> APIResponse instancesInstanceKeyGroupsGroupIdParticipantsPromotePut(instanceKey, groupId, data)
 
 Promote participant.
 
@@ -693,7 +693,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let groupId = "groupId_example"; // String | Group id of the group
-let data = new WhatsApi.StructsGroupUpdateParticipantsPayload(); // StructsGroupUpdateParticipantsPayload | Group update payload
+let data = new WhatsApi.GroupUpdateParticipantsPayload(); // GroupUpdateParticipantsPayload | Group update payload
 apiInstance.instancesInstanceKeyGroupsGroupIdParticipantsPromotePut(instanceKey, groupId, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -710,11 +710,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instanceKey** | **String**| Instance key | 
  **groupId** | **String**| Group id of the group | 
- **data** | [**StructsGroupUpdateParticipantsPayload**](StructsGroupUpdateParticipantsPayload.md)| Group update payload | 
+ **data** | [**GroupUpdateParticipantsPayload**](GroupUpdateParticipantsPayload.md)| Group update payload | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -728,7 +728,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete
 
-> MainAPIResponse instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete(instanceKey, groupId, data)
+> APIResponse instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete(instanceKey, groupId, data)
 
 Remove participant.
 
@@ -748,7 +748,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 let apiInstance = new WhatsApi.GroupManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let groupId = "groupId_example"; // String | Group id of the group
-let data = new WhatsApi.StructsGroupUpdateParticipantsPayload(); // StructsGroupUpdateParticipantsPayload | Group update payload
+let data = new WhatsApi.GroupUpdateParticipantsPayload(); // GroupUpdateParticipantsPayload | Group update payload
 apiInstance.instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete(instanceKey, groupId, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -765,11 +765,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instanceKey** | **String**| Instance key | 
  **groupId** | **String**| Group id of the group | 
- **data** | [**StructsGroupUpdateParticipantsPayload**](StructsGroupUpdateParticipantsPayload.md)| Group update payload | 
+ **data** | [**GroupUpdateParticipantsPayload**](GroupUpdateParticipantsPayload.md)| Group update payload | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -783,7 +783,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeyGroupsGroupIdProfilePicPut
 
-> MainAPIResponse instancesInstanceKeyGroupsGroupIdProfilePicPut(instanceKey, groupId, instancesInstanceKeyGroupsGroupIdProfilePicPutRequest)
+> APIResponse instancesInstanceKeyGroupsGroupIdProfilePicPut(instanceKey, groupId, instancesInstanceKeyGroupsGroupIdProfilePicPutRequest)
 
 Set group picture.
 
@@ -824,7 +824,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -838,7 +838,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeyGroupsInviteInfoGet
 
-> MainAPIResponse instancesInstanceKeyGroupsInviteInfoGet(instanceKey, inviteLink)
+> APIResponse instancesInstanceKeyGroupsInviteInfoGet(instanceKey, inviteLink)
 
 Get group from invite link.
 
@@ -877,7 +877,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 

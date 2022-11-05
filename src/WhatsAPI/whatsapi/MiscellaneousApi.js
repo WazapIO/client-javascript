@@ -13,8 +13,8 @@
 
 
 import ApiClient from "../ApiClient";
-import MainAPIResponse from '../models/MainAPIResponse';
-import StructsUserInfoPayload from '../models/StructsUserInfoPayload';
+import APIResponse from '../models/APIResponse';
+import UserInfoPayload from '../models/UserInfoPayload';
 
 /**
 * Miscellaneous service.
@@ -39,7 +39,7 @@ export default class MiscellaneousApi {
      * Callback function to receive the result of the instancesInstanceKeyMiscProfilePicGet operation.
      * @callback module:WhatsAPI/whatsapi/MiscellaneousApi~instancesInstanceKeyMiscProfilePicGetCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -49,7 +49,7 @@ export default class MiscellaneousApi {
      * @param {String} instanceKey Instance key
      * @param {String} jid JID
      * @param {module:WhatsAPI/whatsapi/MiscellaneousApi~instancesInstanceKeyMiscProfilePicGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyMiscProfilePicGet(instanceKey, jid, callback) {
       let postBody = null;
@@ -76,7 +76,7 @@ export default class MiscellaneousApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/misc/profile-pic', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -88,7 +88,7 @@ export default class MiscellaneousApi {
      * Callback function to receive the result of the instancesInstanceKeyMiscUserInfoPost operation.
      * @callback module:WhatsAPI/whatsapi/MiscellaneousApi~instancesInstanceKeyMiscUserInfoPostCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -96,9 +96,9 @@ export default class MiscellaneousApi {
      * Fetches the users info.
      * Gets the user info for the given user ids. This does not checks if user is registered or not
      * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/models/StructsUserInfoPayload} data Data
+     * @param {module:WhatsAPI/models/UserInfoPayload} data Data
      * @param {module:WhatsAPI/whatsapi/MiscellaneousApi~instancesInstanceKeyMiscUserInfoPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyMiscUserInfoPost(instanceKey, data, callback) {
       let postBody = data;
@@ -124,7 +124,7 @@ export default class MiscellaneousApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/misc/user-info', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,

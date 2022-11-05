@@ -13,12 +13,12 @@
 
 
 import ApiClient from "../ApiClient";
+import APIResponse from '../models/APIResponse';
+import GroupCreatePayload from '../models/GroupCreatePayload';
+import GroupUpdateDescriptionPayload from '../models/GroupUpdateDescriptionPayload';
+import GroupUpdateNamePayload from '../models/GroupUpdateNamePayload';
+import GroupUpdateParticipantsPayload from '../models/GroupUpdateParticipantsPayload';
 import InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest from '../models/InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest';
-import MainAPIResponse from '../models/MainAPIResponse';
-import StructsGroupCreatePayload from '../models/StructsGroupCreatePayload';
-import StructsGroupUpdateDescriptionPayload from '../models/StructsGroupUpdateDescriptionPayload';
-import StructsGroupUpdateNamePayload from '../models/StructsGroupUpdateNamePayload';
-import StructsGroupUpdateParticipantsPayload from '../models/StructsGroupUpdateParticipantsPayload';
 
 /**
 * GroupManagement service.
@@ -43,7 +43,7 @@ export default class GroupManagementApi {
      * Callback function to receive the result of the instancesInstanceKeyGroupsAdminGet operation.
      * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsAdminGetCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -52,7 +52,7 @@ export default class GroupManagementApi {
      * Returns list of all groups in which you are admin.
      * @param {String} instanceKey Instance key
      * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsAdminGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyGroupsAdminGet(instanceKey, callback) {
       let postBody = null;
@@ -74,7 +74,7 @@ export default class GroupManagementApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/groups/admin', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -86,7 +86,7 @@ export default class GroupManagementApi {
      * Callback function to receive the result of the instancesInstanceKeyGroupsCreatePost operation.
      * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsCreatePostCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -94,9 +94,9 @@ export default class GroupManagementApi {
      * Create group.
      * Creates a group with the participant data. The creator is automatically added to the group.
      * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/models/StructsGroupCreatePayload} data Group create payload
+     * @param {module:WhatsAPI/models/GroupCreatePayload} data Group create payload
      * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsCreatePostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyGroupsCreatePost(instanceKey, data, callback) {
       let postBody = data;
@@ -122,7 +122,7 @@ export default class GroupManagementApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/groups/create', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -134,7 +134,7 @@ export default class GroupManagementApi {
      * Callback function to receive the result of the instancesInstanceKeyGroupsGet operation.
      * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGetCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -145,7 +145,7 @@ export default class GroupManagementApi {
      * @param {Object} opts Optional parameters
      * @param {module:WhatsAPI/models/String} opts.includeParticipants Include participants data (default to 'true')
      * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyGroupsGet(instanceKey, opts, callback) {
       opts = opts || {};
@@ -169,7 +169,7 @@ export default class GroupManagementApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/groups/', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -181,7 +181,7 @@ export default class GroupManagementApi {
      * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdAnnouncePut operation.
      * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdAnnouncePutCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -192,7 +192,7 @@ export default class GroupManagementApi {
      * @param {module:WhatsAPI/models/Boolean} announce Announce status
      * @param {String} groupId Group id of the group
      * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdAnnouncePutCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyGroupsGroupIdAnnouncePut(instanceKey, announce, groupId, callback) {
       let postBody = null;
@@ -224,7 +224,7 @@ export default class GroupManagementApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/groups/{group_id}/announce', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -236,7 +236,7 @@ export default class GroupManagementApi {
      * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdDelete operation.
      * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdDeleteCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -246,7 +246,7 @@ export default class GroupManagementApi {
      * @param {String} instanceKey Instance key
      * @param {String} groupId Group id of the group
      * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdDeleteCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyGroupsGroupIdDelete(instanceKey, groupId, callback) {
       let postBody = null;
@@ -273,7 +273,7 @@ export default class GroupManagementApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/groups/{group_id}/', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -285,7 +285,7 @@ export default class GroupManagementApi {
      * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdDescriptionPut operation.
      * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdDescriptionPutCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -294,9 +294,9 @@ export default class GroupManagementApi {
      * Changes the group description
      * @param {String} instanceKey Instance key
      * @param {String} groupId Group id of the group
-     * @param {module:WhatsAPI/models/StructsGroupUpdateDescriptionPayload} data Group description data
+     * @param {module:WhatsAPI/models/GroupUpdateDescriptionPayload} data Group description data
      * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdDescriptionPutCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyGroupsGroupIdDescriptionPut(instanceKey, groupId, data, callback) {
       let postBody = data;
@@ -327,7 +327,7 @@ export default class GroupManagementApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/groups/{group_id}/description', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -339,7 +339,7 @@ export default class GroupManagementApi {
      * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdGet operation.
      * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdGetCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -349,7 +349,7 @@ export default class GroupManagementApi {
      * @param {String} instanceKey Instance key
      * @param {String} groupId Group id of the group
      * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyGroupsGroupIdGet(instanceKey, groupId, callback) {
       let postBody = null;
@@ -376,7 +376,7 @@ export default class GroupManagementApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/groups/{group_id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -388,7 +388,7 @@ export default class GroupManagementApi {
      * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdInviteCodeGet operation.
      * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdInviteCodeGetCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -398,7 +398,7 @@ export default class GroupManagementApi {
      * @param {String} instanceKey Instance key
      * @param {String} groupId Group id of the group
      * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdInviteCodeGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyGroupsGroupIdInviteCodeGet(instanceKey, groupId, callback) {
       let postBody = null;
@@ -425,7 +425,7 @@ export default class GroupManagementApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/groups/{group_id}/invite-code', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -437,7 +437,7 @@ export default class GroupManagementApi {
      * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdLockPut operation.
      * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdLockPutCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -448,7 +448,7 @@ export default class GroupManagementApi {
      * @param {module:WhatsAPI/models/Boolean} locked Locked status
      * @param {String} groupId Group id of the group
      * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdLockPutCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyGroupsGroupIdLockPut(instanceKey, locked, groupId, callback) {
       let postBody = null;
@@ -480,7 +480,7 @@ export default class GroupManagementApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/groups/{group_id}/lock', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -492,7 +492,7 @@ export default class GroupManagementApi {
      * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdNamePut operation.
      * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdNamePutCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -501,9 +501,9 @@ export default class GroupManagementApi {
      * Changes the group name. The max limit is 22 chars
      * @param {String} instanceKey Instance key
      * @param {String} groupId Group id of the group
-     * @param {module:WhatsAPI/models/StructsGroupUpdateNamePayload} data Group name data
+     * @param {module:WhatsAPI/models/GroupUpdateNamePayload} data Group name data
      * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdNamePutCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyGroupsGroupIdNamePut(instanceKey, groupId, data, callback) {
       let postBody = data;
@@ -534,7 +534,7 @@ export default class GroupManagementApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/groups/{group_id}/name', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -546,7 +546,7 @@ export default class GroupManagementApi {
      * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdParticipantsAddPost operation.
      * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdParticipantsAddPostCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -555,9 +555,9 @@ export default class GroupManagementApi {
      * Handles adding participants to a group. You must be admin in the group or the query will fail.
      * @param {String} instanceKey Instance key
      * @param {String} groupId Group id of the group
-     * @param {module:WhatsAPI/models/StructsGroupUpdateParticipantsPayload} data Group update payload
+     * @param {module:WhatsAPI/models/GroupUpdateParticipantsPayload} data Group update payload
      * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdParticipantsAddPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyGroupsGroupIdParticipantsAddPost(instanceKey, groupId, data, callback) {
       let postBody = data;
@@ -588,7 +588,7 @@ export default class GroupManagementApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/groups/{group_id}/participants/add', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -600,7 +600,7 @@ export default class GroupManagementApi {
      * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdParticipantsDemotePut operation.
      * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdParticipantsDemotePutCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -609,9 +609,9 @@ export default class GroupManagementApi {
      * Demotes admins in groups. You must be admin in the group or the query will fail.
      * @param {String} instanceKey Instance key
      * @param {String} groupId Group id of the group
-     * @param {module:WhatsAPI/models/StructsGroupUpdateParticipantsPayload} data Group update payload
+     * @param {module:WhatsAPI/models/GroupUpdateParticipantsPayload} data Group update payload
      * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdParticipantsDemotePutCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyGroupsGroupIdParticipantsDemotePut(instanceKey, groupId, data, callback) {
       let postBody = data;
@@ -642,7 +642,7 @@ export default class GroupManagementApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/groups/{group_id}/participants/demote', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -654,7 +654,7 @@ export default class GroupManagementApi {
      * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdParticipantsPromotePut operation.
      * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdParticipantsPromotePutCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -663,9 +663,9 @@ export default class GroupManagementApi {
      * Promotes participants to admin. You must be admin in the group or the query will fail.
      * @param {String} instanceKey Instance key
      * @param {String} groupId Group id of the group
-     * @param {module:WhatsAPI/models/StructsGroupUpdateParticipantsPayload} data Group update payload
+     * @param {module:WhatsAPI/models/GroupUpdateParticipantsPayload} data Group update payload
      * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdParticipantsPromotePutCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyGroupsGroupIdParticipantsPromotePut(instanceKey, groupId, data, callback) {
       let postBody = data;
@@ -696,7 +696,7 @@ export default class GroupManagementApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/groups/{group_id}/participants/promote', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -708,7 +708,7 @@ export default class GroupManagementApi {
      * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete operation.
      * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdParticipantsRemoveDeleteCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -717,9 +717,9 @@ export default class GroupManagementApi {
      * Handles removing participants from a group. You must be admin in the group or the query will fail.
      * @param {String} instanceKey Instance key
      * @param {String} groupId Group id of the group
-     * @param {module:WhatsAPI/models/StructsGroupUpdateParticipantsPayload} data Group update payload
+     * @param {module:WhatsAPI/models/GroupUpdateParticipantsPayload} data Group update payload
      * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdParticipantsRemoveDeleteCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete(instanceKey, groupId, data, callback) {
       let postBody = data;
@@ -750,7 +750,7 @@ export default class GroupManagementApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/groups/{group_id}/participants/remove', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -762,7 +762,7 @@ export default class GroupManagementApi {
      * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdProfilePicPut operation.
      * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdProfilePicPutCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -773,7 +773,7 @@ export default class GroupManagementApi {
      * @param {String} groupId Group id of the group
      * @param {module:WhatsAPI/models/InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest} instancesInstanceKeyGroupsGroupIdProfilePicPutRequest 
      * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdProfilePicPutCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyGroupsGroupIdProfilePicPut(instanceKey, groupId, instancesInstanceKeyGroupsGroupIdProfilePicPutRequest, callback) {
       let postBody = instancesInstanceKeyGroupsGroupIdProfilePicPutRequest;
@@ -804,7 +804,7 @@ export default class GroupManagementApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/groups/{group_id}/profile-pic', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -816,7 +816,7 @@ export default class GroupManagementApi {
      * Callback function to receive the result of the instancesInstanceKeyGroupsInviteInfoGet operation.
      * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsInviteInfoGetCallback
      * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/MainAPIResponse} data The data returned by the service call.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -826,7 +826,7 @@ export default class GroupManagementApi {
      * @param {String} instanceKey Instance key
      * @param {String} inviteLink The invite link to check
      * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsInviteInfoGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/MainAPIResponse}
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
     instancesInstanceKeyGroupsInviteInfoGet(instanceKey, inviteLink, callback) {
       let postBody = null;
@@ -853,7 +853,7 @@ export default class GroupManagementApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['*/*'];
-      let returnType = MainAPIResponse;
+      let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/groups/invite-info', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,

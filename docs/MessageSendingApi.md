@@ -4,7 +4,6 @@ All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**instancesInstanceKeyBusinessCatalogGet**](MessageSendingApi.md#instancesInstanceKeyBusinessCatalogGet) | **GET** /instances/{instance_key}/business/catalog | Fetches the catlog.
 [**instancesInstanceKeySendAudioPost**](MessageSendingApi.md#instancesInstanceKeySendAudioPost) | **POST** /instances/{instance_key}/send/audio | Send raw audio.
 [**instancesInstanceKeySendButtonMediaPost**](MessageSendingApi.md#instancesInstanceKeySendButtonMediaPost) | **POST** /instances/{instance_key}/send/button-media | Send a button message with a media header.
 [**instancesInstanceKeySendButtonsPost**](MessageSendingApi.md#instancesInstanceKeySendButtonsPost) | **POST** /instances/{instance_key}/send/buttons | Send a button message.
@@ -14,7 +13,7 @@ Method | HTTP request | Description
 [**instancesInstanceKeySendListPost**](MessageSendingApi.md#instancesInstanceKeySendListPost) | **POST** /instances/{instance_key}/send/list | Send a List message.
 [**instancesInstanceKeySendLocationPost**](MessageSendingApi.md#instancesInstanceKeySendLocationPost) | **POST** /instances/{instance_key}/send/location | Send a location message.
 [**instancesInstanceKeySendMediaPost**](MessageSendingApi.md#instancesInstanceKeySendMediaPost) | **POST** /instances/{instance_key}/send/media | Send a media message.
-[**instancesInstanceKeySendPollPost**](MessageSendingApi.md#instancesInstanceKeySendPollPost) | **POST** /instances/{instance_key}/send/poll | Send a Poll message with media.
+[**instancesInstanceKeySendPollPost**](MessageSendingApi.md#instancesInstanceKeySendPollPost) | **POST** /instances/{instance_key}/send/poll | Send a Poll message.
 [**instancesInstanceKeySendTemplateMediaPost**](MessageSendingApi.md#instancesInstanceKeySendTemplateMediaPost) | **POST** /instances/{instance_key}/send/template-media | Send a template message with media.
 [**instancesInstanceKeySendTemplatePost**](MessageSendingApi.md#instancesInstanceKeySendTemplatePost) | **POST** /instances/{instance_key}/send/template | Send a template message.
 [**instancesInstanceKeySendTextPost**](MessageSendingApi.md#instancesInstanceKeySendTextPost) | **POST** /instances/{instance_key}/send/text | Send a text message.
@@ -23,60 +22,9 @@ Method | HTTP request | Description
 
 
 
-## instancesInstanceKeyBusinessCatalogGet
-
-> MainAPIResponse instancesInstanceKeyBusinessCatalogGet(instanceKey)
-
-Fetches the catlog.
-
-Gets list of all products registered by you.
-
-### Example
-
-```javascript
-import WhatsApi from 'WhatsAPI';
-let defaultClient = WhatsApi.ApiClient.instance;
-// Configure API key authorization: ApiKeyAuth
-let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
-ApiKeyAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//ApiKeyAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new WhatsApi.MessageSendingApi();
-let instanceKey = "instanceKey_example"; // String | Instance key
-apiInstance.instancesInstanceKeyBusinessCatalogGet(instanceKey, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **instanceKey** | **String**| Instance key | 
-
-### Return type
-
-[**MainAPIResponse**](MainAPIResponse.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: */*
-
-
 ## instancesInstanceKeySendAudioPost
 
-> MainAPIResponse instancesInstanceKeySendAudioPost(instanceKey, to, instancesInstanceKeySendAudioPostRequest, opts)
+> APIResponse instancesInstanceKeySendAudioPost(instanceKey, to, instancesInstanceKeySendAudioPostRequest, opts)
 
 Send raw audio.
 
@@ -121,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -135,7 +83,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeySendButtonMediaPost
 
-> MainAPIResponse instancesInstanceKeySendButtonMediaPost(instanceKey, data)
+> APIResponse instancesInstanceKeySendButtonMediaPost(instanceKey, data)
 
 Send a button message with a media header.
 
@@ -154,7 +102,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApi.StructsButtonMessageWithMediaPayload(); // StructsButtonMessageWithMediaPayload | Message data
+let data = new WhatsApi.ButtonMessageWithMediaPayload(); // ButtonMessageWithMediaPayload | Message data
 apiInstance.instancesInstanceKeySendButtonMediaPost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -170,11 +118,11 @@ apiInstance.instancesInstanceKeySendButtonMediaPost(instanceKey, data, (error, d
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instanceKey** | **String**| Instance key | 
- **data** | [**StructsButtonMessageWithMediaPayload**](StructsButtonMessageWithMediaPayload.md)| Message data | 
+ **data** | [**ButtonMessageWithMediaPayload**](ButtonMessageWithMediaPayload.md)| Message data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -188,7 +136,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeySendButtonsPost
 
-> MainAPIResponse instancesInstanceKeySendButtonsPost(instanceKey, data)
+> APIResponse instancesInstanceKeySendButtonsPost(instanceKey, data)
 
 Send a button message.
 
@@ -207,7 +155,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApi.StructsButtonMessagePayload(); // StructsButtonMessagePayload | Message data
+let data = new WhatsApi.ButtonMessagePayload(); // ButtonMessagePayload | Message data
 apiInstance.instancesInstanceKeySendButtonsPost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -223,11 +171,11 @@ apiInstance.instancesInstanceKeySendButtonsPost(instanceKey, data, (error, data,
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instanceKey** | **String**| Instance key | 
- **data** | [**StructsButtonMessagePayload**](StructsButtonMessagePayload.md)| Message data | 
+ **data** | [**ButtonMessagePayload**](ButtonMessagePayload.md)| Message data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -241,7 +189,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeySendContactPost
 
-> MainAPIResponse instancesInstanceKeySendContactPost(instanceKey, data)
+> APIResponse instancesInstanceKeySendContactPost(instanceKey, data)
 
 Send a contact message.
 
@@ -260,7 +208,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApi.StructsContactMessagePayload(); // StructsContactMessagePayload | Message data
+let data = new WhatsApi.ContactMessagePayload(); // ContactMessagePayload | Message data
 apiInstance.instancesInstanceKeySendContactPost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -276,11 +224,11 @@ apiInstance.instancesInstanceKeySendContactPost(instanceKey, data, (error, data,
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instanceKey** | **String**| Instance key | 
- **data** | [**StructsContactMessagePayload**](StructsContactMessagePayload.md)| Message data | 
+ **data** | [**ContactMessagePayload**](ContactMessagePayload.md)| Message data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -294,7 +242,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeySendDocumentPost
 
-> MainAPIResponse instancesInstanceKeySendDocumentPost(instanceKey, to, instancesInstanceKeySendDocumentPostRequest, opts)
+> APIResponse instancesInstanceKeySendDocumentPost(instanceKey, to, instancesInstanceKeySendDocumentPostRequest, opts)
 
 Send raw document.
 
@@ -339,7 +287,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -353,7 +301,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeySendImagePost
 
-> MainAPIResponse instancesInstanceKeySendImagePost(instanceKey, to, instancesInstanceKeySendImagePostRequest, opts)
+> APIResponse instancesInstanceKeySendImagePost(instanceKey, to, instancesInstanceKeySendImagePostRequest, opts)
 
 Send raw image.
 
@@ -398,7 +346,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -412,7 +360,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeySendListPost
 
-> MainAPIResponse instancesInstanceKeySendListPost(instanceKey, data)
+> APIResponse instancesInstanceKeySendListPost(instanceKey, data)
 
 Send a List message.
 
@@ -431,7 +379,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApi.StructsListMessagePayload(); // StructsListMessagePayload | Message data
+let data = new WhatsApi.ListMessagePayload(); // ListMessagePayload | Message data
 apiInstance.instancesInstanceKeySendListPost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -447,11 +395,11 @@ apiInstance.instancesInstanceKeySendListPost(instanceKey, data, (error, data, re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instanceKey** | **String**| Instance key | 
- **data** | [**StructsListMessagePayload**](StructsListMessagePayload.md)| Message data | 
+ **data** | [**ListMessagePayload**](ListMessagePayload.md)| Message data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -465,7 +413,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeySendLocationPost
 
-> MainAPIResponse instancesInstanceKeySendLocationPost(instanceKey, data)
+> APIResponse instancesInstanceKeySendLocationPost(instanceKey, data)
 
 Send a location message.
 
@@ -484,7 +432,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApi.StructsLocationMessagePayload(); // StructsLocationMessagePayload | Message data
+let data = new WhatsApi.LocationMessagePayload(); // LocationMessagePayload | Message data
 apiInstance.instancesInstanceKeySendLocationPost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -500,11 +448,11 @@ apiInstance.instancesInstanceKeySendLocationPost(instanceKey, data, (error, data
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instanceKey** | **String**| Instance key | 
- **data** | [**StructsLocationMessagePayload**](StructsLocationMessagePayload.md)| Message data | 
+ **data** | [**LocationMessagePayload**](LocationMessagePayload.md)| Message data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -518,7 +466,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeySendMediaPost
 
-> MainAPIResponse instancesInstanceKeySendMediaPost(instanceKey, data)
+> APIResponse instancesInstanceKeySendMediaPost(instanceKey, data)
 
 Send a media message.
 
@@ -537,7 +485,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApi.StructsSendMediaPayload(); // StructsSendMediaPayload | Message data
+let data = new WhatsApi.SendMediaPayload(); // SendMediaPayload | Message data
 apiInstance.instancesInstanceKeySendMediaPost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -553,11 +501,11 @@ apiInstance.instancesInstanceKeySendMediaPost(instanceKey, data, (error, data, r
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instanceKey** | **String**| Instance key | 
- **data** | [**StructsSendMediaPayload**](StructsSendMediaPayload.md)| Message data | 
+ **data** | [**SendMediaPayload**](SendMediaPayload.md)| Message data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -571,11 +519,11 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeySendPollPost
 
-> MainAPIResponse instancesInstanceKeySendPollPost(instanceKey, data)
+> APIResponse instancesInstanceKeySendPollPost(instanceKey, data)
 
-Send a Poll message with media.
+Send a Poll message.
 
-Sends an interactive poll message with a media header to the given user. The poll message is a new feature that is currently in beta.
+Sends an interactive poll message to the given user. The poll message is a new feature that is currently in beta.
 
 ### Example
 
@@ -590,7 +538,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApi.StructsPollMessagePayload(); // StructsPollMessagePayload | Message data
+let data = new WhatsApi.PollMessagePayload(); // PollMessagePayload | Message data
 apiInstance.instancesInstanceKeySendPollPost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -606,11 +554,11 @@ apiInstance.instancesInstanceKeySendPollPost(instanceKey, data, (error, data, re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instanceKey** | **String**| Instance key | 
- **data** | [**StructsPollMessagePayload**](StructsPollMessagePayload.md)| Message data | 
+ **data** | [**PollMessagePayload**](PollMessagePayload.md)| Message data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -624,7 +572,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeySendTemplateMediaPost
 
-> MainAPIResponse instancesInstanceKeySendTemplateMediaPost(instanceKey, data)
+> APIResponse instancesInstanceKeySendTemplateMediaPost(instanceKey, data)
 
 Send a template message with media.
 
@@ -643,7 +591,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApi.StructsTemplateButtonWithMediaPayload(); // StructsTemplateButtonWithMediaPayload | Message data
+let data = new WhatsApi.TemplateButtonWithMediaPayload(); // TemplateButtonWithMediaPayload | Message data
 apiInstance.instancesInstanceKeySendTemplateMediaPost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -659,11 +607,11 @@ apiInstance.instancesInstanceKeySendTemplateMediaPost(instanceKey, data, (error,
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instanceKey** | **String**| Instance key | 
- **data** | [**StructsTemplateButtonWithMediaPayload**](StructsTemplateButtonWithMediaPayload.md)| Message data | 
+ **data** | [**TemplateButtonWithMediaPayload**](TemplateButtonWithMediaPayload.md)| Message data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -677,7 +625,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeySendTemplatePost
 
-> MainAPIResponse instancesInstanceKeySendTemplatePost(instanceKey, data)
+> APIResponse instancesInstanceKeySendTemplatePost(instanceKey, data)
 
 Send a template message.
 
@@ -696,7 +644,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApi.StructsTemplateButtonPayload(); // StructsTemplateButtonPayload | Message data
+let data = new WhatsApi.TemplateButtonPayload(); // TemplateButtonPayload | Message data
 apiInstance.instancesInstanceKeySendTemplatePost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -712,11 +660,11 @@ apiInstance.instancesInstanceKeySendTemplatePost(instanceKey, data, (error, data
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instanceKey** | **String**| Instance key | 
- **data** | [**StructsTemplateButtonPayload**](StructsTemplateButtonPayload.md)| Message data | 
+ **data** | [**TemplateButtonPayload**](TemplateButtonPayload.md)| Message data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -730,7 +678,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeySendTextPost
 
-> MainAPIResponse instancesInstanceKeySendTextPost(instanceKey, data)
+> APIResponse instancesInstanceKeySendTextPost(instanceKey, data)
 
 Send a text message.
 
@@ -749,7 +697,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApi.StructsTextMessage(); // StructsTextMessage | Message data
+let data = new WhatsApi.TextMessage(); // TextMessage | Message data
 apiInstance.instancesInstanceKeySendTextPost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -765,11 +713,11 @@ apiInstance.instancesInstanceKeySendTextPost(instanceKey, data, (error, data, re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instanceKey** | **String**| Instance key | 
- **data** | [**StructsTextMessage**](StructsTextMessage.md)| Message data | 
+ **data** | [**TextMessage**](TextMessage.md)| Message data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -783,7 +731,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeySendUploadPost
 
-> MainAPIResponse instancesInstanceKeySendUploadPost(instanceKey, type, instancesInstanceKeySendUploadPostRequest)
+> APIResponse instancesInstanceKeySendUploadPost(instanceKey, type, instancesInstanceKeySendUploadPostRequest)
 
 Upload media.
 
@@ -824,7 +772,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -838,7 +786,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeySendVideoPost
 
-> MainAPIResponse instancesInstanceKeySendVideoPost(instanceKey, to, instancesInstanceKeySendVideoPostRequest, opts)
+> APIResponse instancesInstanceKeySendVideoPost(instanceKey, to, instancesInstanceKeySendVideoPostRequest, opts)
 
 Send raw video.
 
@@ -883,7 +831,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 

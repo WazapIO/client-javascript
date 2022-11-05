@@ -107,7 +107,7 @@ ApiKeyAuth.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix['Authorization'] = "Token"
 
-var api = new WhatsApi.GroupManagementApi()
+var api = new WhatsApi.BusinessManagementApi()
 var instanceKey = "instanceKey_example"; // {String} Instance key
 var callback = function(error, data, response) {
   if (error) {
@@ -116,7 +116,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.instancesInstanceKeyGroupsAdminGet(instanceKey, callback);
+api.instancesInstanceKeyBusinessCatalogGet(instanceKey, callback);
 
 ```
 
@@ -126,6 +126,7 @@ All URIs are relative to */api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*WhatsApi.BusinessManagementApi* | [**instancesInstanceKeyBusinessCatalogGet**](docs/BusinessManagementApi.md#instancesInstanceKeyBusinessCatalogGet) | **GET** /instances/{instance_key}/business/catalog | Fetches the catlog.
 *WhatsApi.GroupManagementApi* | [**instancesInstanceKeyGroupsAdminGet**](docs/GroupManagementApi.md#instancesInstanceKeyGroupsAdminGet) | **GET** /instances/{instance_key}/groups/admin | Get admin groupss.
 *WhatsApi.GroupManagementApi* | [**instancesInstanceKeyGroupsCreatePost**](docs/GroupManagementApi.md#instancesInstanceKeyGroupsCreatePost) | **POST** /instances/{instance_key}/groups/create | Create group.
 *WhatsApi.GroupManagementApi* | [**instancesInstanceKeyGroupsGet**](docs/GroupManagementApi.md#instancesInstanceKeyGroupsGet) | **GET** /instances/{instance_key}/groups/ | Get all groups.
@@ -150,7 +151,6 @@ Class | Method | HTTP request | Description
 *WhatsApi.InstanceApi* | [**instancesInstanceKeyQrcodeGet**](docs/InstanceApi.md#instancesInstanceKeyQrcodeGet) | **GET** /instances/{instance_key}/qrcode | Get QrCode.
 *WhatsApi.InstanceApi* | [**instancesInstanceKeyWebhookPut**](docs/InstanceApi.md#instancesInstanceKeyWebhookPut) | **PUT** /instances/{instance_key}/webhook | Change Webhook url.
 *WhatsApi.InstanceApi* | [**instancesListGet**](docs/InstanceApi.md#instancesListGet) | **GET** /instances/list | Get all instances.
-*WhatsApi.MessageSendingApi* | [**instancesInstanceKeyBusinessCatalogGet**](docs/MessageSendingApi.md#instancesInstanceKeyBusinessCatalogGet) | **GET** /instances/{instance_key}/business/catalog | Fetches the catlog.
 *WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendAudioPost**](docs/MessageSendingApi.md#instancesInstanceKeySendAudioPost) | **POST** /instances/{instance_key}/send/audio | Send raw audio.
 *WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendButtonMediaPost**](docs/MessageSendingApi.md#instancesInstanceKeySendButtonMediaPost) | **POST** /instances/{instance_key}/send/button-media | Send a button message with a media header.
 *WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendButtonsPost**](docs/MessageSendingApi.md#instancesInstanceKeySendButtonsPost) | **POST** /instances/{instance_key}/send/buttons | Send a button message.
@@ -160,7 +160,7 @@ Class | Method | HTTP request | Description
 *WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendListPost**](docs/MessageSendingApi.md#instancesInstanceKeySendListPost) | **POST** /instances/{instance_key}/send/list | Send a List message.
 *WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendLocationPost**](docs/MessageSendingApi.md#instancesInstanceKeySendLocationPost) | **POST** /instances/{instance_key}/send/location | Send a location message.
 *WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendMediaPost**](docs/MessageSendingApi.md#instancesInstanceKeySendMediaPost) | **POST** /instances/{instance_key}/send/media | Send a media message.
-*WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendPollPost**](docs/MessageSendingApi.md#instancesInstanceKeySendPollPost) | **POST** /instances/{instance_key}/send/poll | Send a Poll message with media.
+*WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendPollPost**](docs/MessageSendingApi.md#instancesInstanceKeySendPollPost) | **POST** /instances/{instance_key}/send/poll | Send a Poll message.
 *WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendTemplateMediaPost**](docs/MessageSendingApi.md#instancesInstanceKeySendTemplateMediaPost) | **POST** /instances/{instance_key}/send/template-media | Send a template message with media.
 *WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendTemplatePost**](docs/MessageSendingApi.md#instancesInstanceKeySendTemplatePost) | **POST** /instances/{instance_key}/send/template | Send a template message.
 *WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendTextPost**](docs/MessageSendingApi.md#instancesInstanceKeySendTextPost) | **POST** /instances/{instance_key}/send/text | Send a text message.
@@ -172,36 +172,36 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [WhatsApi.APIResponse](docs/APIResponse.md)
+ - [WhatsApi.ButtonMessagePayload](docs/ButtonMessagePayload.md)
+ - [WhatsApi.ButtonMessageWithMediaPayload](docs/ButtonMessageWithMediaPayload.md)
+ - [WhatsApi.ContactMessagePayload](docs/ContactMessagePayload.md)
+ - [WhatsApi.ContactMessagePayloadVcard](docs/ContactMessagePayloadVcard.md)
+ - [WhatsApi.FileUpload](docs/FileUpload.md)
+ - [WhatsApi.GroupCreatePayload](docs/GroupCreatePayload.md)
+ - [WhatsApi.GroupUpdateDescriptionPayload](docs/GroupUpdateDescriptionPayload.md)
+ - [WhatsApi.GroupUpdateNamePayload](docs/GroupUpdateNamePayload.md)
+ - [WhatsApi.GroupUpdateParticipantsPayload](docs/GroupUpdateParticipantsPayload.md)
  - [WhatsApi.InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest](docs/InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest.md)
  - [WhatsApi.InstancesInstanceKeySendAudioPostRequest](docs/InstancesInstanceKeySendAudioPostRequest.md)
  - [WhatsApi.InstancesInstanceKeySendDocumentPostRequest](docs/InstancesInstanceKeySendDocumentPostRequest.md)
  - [WhatsApi.InstancesInstanceKeySendImagePostRequest](docs/InstancesInstanceKeySendImagePostRequest.md)
  - [WhatsApi.InstancesInstanceKeySendUploadPostRequest](docs/InstancesInstanceKeySendUploadPostRequest.md)
  - [WhatsApi.InstancesInstanceKeySendVideoPostRequest](docs/InstancesInstanceKeySendVideoPostRequest.md)
- - [WhatsApi.MainAPIResponse](docs/MainAPIResponse.md)
- - [WhatsApi.StructsButtonMessagePayload](docs/StructsButtonMessagePayload.md)
- - [WhatsApi.StructsButtonMessageWithMediaPayload](docs/StructsButtonMessageWithMediaPayload.md)
- - [WhatsApi.StructsContactMessagePayload](docs/StructsContactMessagePayload.md)
- - [WhatsApi.StructsContactMessagePayloadVcard](docs/StructsContactMessagePayloadVcard.md)
- - [WhatsApi.StructsFileUpload](docs/StructsFileUpload.md)
- - [WhatsApi.StructsGroupCreatePayload](docs/StructsGroupCreatePayload.md)
- - [WhatsApi.StructsGroupUpdateDescriptionPayload](docs/StructsGroupUpdateDescriptionPayload.md)
- - [WhatsApi.StructsGroupUpdateNamePayload](docs/StructsGroupUpdateNamePayload.md)
- - [WhatsApi.StructsGroupUpdateParticipantsPayload](docs/StructsGroupUpdateParticipantsPayload.md)
- - [WhatsApi.StructsListItem](docs/StructsListItem.md)
- - [WhatsApi.StructsListMessagePayload](docs/StructsListMessagePayload.md)
- - [WhatsApi.StructsListSection](docs/StructsListSection.md)
- - [WhatsApi.StructsLocationMessagePayload](docs/StructsLocationMessagePayload.md)
- - [WhatsApi.StructsLocationMessagePayloadLocation](docs/StructsLocationMessagePayloadLocation.md)
- - [WhatsApi.StructsPollMessagePayload](docs/StructsPollMessagePayload.md)
- - [WhatsApi.StructsReplyButton](docs/StructsReplyButton.md)
- - [WhatsApi.StructsSendMediaPayload](docs/StructsSendMediaPayload.md)
- - [WhatsApi.StructsTemplateButton](docs/StructsTemplateButton.md)
- - [WhatsApi.StructsTemplateButtonPayload](docs/StructsTemplateButtonPayload.md)
- - [WhatsApi.StructsTemplateButtonWithMediaPayload](docs/StructsTemplateButtonWithMediaPayload.md)
- - [WhatsApi.StructsTextMessage](docs/StructsTextMessage.md)
- - [WhatsApi.StructsUserInfoPayload](docs/StructsUserInfoPayload.md)
- - [WhatsApi.StructsWebhookPayload](docs/StructsWebhookPayload.md)
+ - [WhatsApi.ListItem](docs/ListItem.md)
+ - [WhatsApi.ListMessagePayload](docs/ListMessagePayload.md)
+ - [WhatsApi.ListSection](docs/ListSection.md)
+ - [WhatsApi.LocationMessagePayload](docs/LocationMessagePayload.md)
+ - [WhatsApi.LocationMessagePayloadLocation](docs/LocationMessagePayloadLocation.md)
+ - [WhatsApi.PollMessagePayload](docs/PollMessagePayload.md)
+ - [WhatsApi.ReplyButton](docs/ReplyButton.md)
+ - [WhatsApi.SendMediaPayload](docs/SendMediaPayload.md)
+ - [WhatsApi.TemplateButton](docs/TemplateButton.md)
+ - [WhatsApi.TemplateButtonPayload](docs/TemplateButtonPayload.md)
+ - [WhatsApi.TemplateButtonWithMediaPayload](docs/TemplateButtonWithMediaPayload.md)
+ - [WhatsApi.TextMessage](docs/TextMessage.md)
+ - [WhatsApi.UserInfoPayload](docs/UserInfoPayload.md)
+ - [WhatsApi.WebhookPayload](docs/WebhookPayload.md)
 
 
 ## Documentation for Authorization

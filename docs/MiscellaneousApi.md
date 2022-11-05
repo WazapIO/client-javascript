@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## instancesInstanceKeyMiscProfilePicGet
 
-> MainAPIResponse instancesInstanceKeyMiscProfilePicGet(instanceKey, jid)
+> APIResponse instancesInstanceKeyMiscProfilePicGet(instanceKey, jid)
 
 Get profile pic.
 
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeyMiscUserInfoPost
 
-> MainAPIResponse instancesInstanceKeyMiscUserInfoPost(instanceKey, data)
+> APIResponse instancesInstanceKeyMiscUserInfoPost(instanceKey, data)
 
 Fetches the users info.
 
@@ -83,7 +83,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WhatsApi.MiscellaneousApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApi.StructsUserInfoPayload(); // StructsUserInfoPayload | Data
+let data = new WhatsApi.UserInfoPayload(); // UserInfoPayload | Data
 apiInstance.instancesInstanceKeyMiscUserInfoPost(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -99,11 +99,11 @@ apiInstance.instancesInstanceKeyMiscUserInfoPost(instanceKey, data, (error, data
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instanceKey** | **String**| Instance key | 
- **data** | [**StructsUserInfoPayload**](StructsUserInfoPayload.md)| Data | 
+ **data** | [**UserInfoPayload**](UserInfoPayload.md)| Data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 

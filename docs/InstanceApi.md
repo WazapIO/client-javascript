@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## instancesCreateGet
 
-> MainAPIResponse instancesCreateGet(opts)
+> APIResponse instancesCreateGet(opts)
 
 Creates a new instance key.
 
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeyContactsGet
 
-> MainAPIResponse instancesInstanceKeyContactsGet(instanceKey)
+> APIResponse instancesInstanceKeyContactsGet(instanceKey)
 
 Get contacts.
 
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeyDeleteDelete
 
-> MainAPIResponse instancesInstanceKeyDeleteDelete(instanceKey)
+> APIResponse instancesInstanceKeyDeleteDelete(instanceKey)
 
 Delete Instance.
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeyGet
 
-> MainAPIResponse instancesInstanceKeyGet(instanceKey)
+> APIResponse instancesInstanceKeyGet(instanceKey)
 
 Get Instance.
 
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeyLogoutDelete
 
-> MainAPIResponse instancesInstanceKeyLogoutDelete(instanceKey)
+> APIResponse instancesInstanceKeyLogoutDelete(instanceKey)
 
 Logout Instance.
 
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeyQrcodeGet
 
-> MainAPIResponse instancesInstanceKeyQrcodeGet(instanceKey)
+> APIResponse instancesInstanceKeyQrcodeGet(instanceKey)
 
 Get QrCode.
 
@@ -311,7 +311,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -325,7 +325,7 @@ Name | Type | Description  | Notes
 
 ## instancesInstanceKeyWebhookPut
 
-> MainAPIResponse instancesInstanceKeyWebhookPut(instanceKey, data)
+> APIResponse instancesInstanceKeyWebhookPut(instanceKey, data)
 
 Change Webhook url.
 
@@ -344,7 +344,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WhatsApi.InstanceApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-let data = new WhatsApi.StructsWebhookPayload(); // StructsWebhookPayload | Message data
+let data = new WhatsApi.WebhookPayload(); // WebhookPayload | Message data
 apiInstance.instancesInstanceKeyWebhookPut(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -360,11 +360,11 @@ apiInstance.instancesInstanceKeyWebhookPut(instanceKey, data, (error, data, resp
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instanceKey** | **String**| Instance key | 
- **data** | [**StructsWebhookPayload**](StructsWebhookPayload.md)| Message data | 
+ **data** | [**WebhookPayload**](WebhookPayload.md)| Message data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -378,7 +378,7 @@ Name | Type | Description  | Notes
 
 ## instancesListGet
 
-> MainAPIResponse instancesListGet()
+> APIResponse instancesListGet()
 
 Get all instances.
 
@@ -411,7 +411,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 

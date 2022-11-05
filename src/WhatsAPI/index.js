@@ -13,36 +13,37 @@
 
 
 import ApiClient from './ApiClient';
+import APIResponse from './models/APIResponse';
+import ButtonMessagePayload from './models/ButtonMessagePayload';
+import ButtonMessageWithMediaPayload from './models/ButtonMessageWithMediaPayload';
+import ContactMessagePayload from './models/ContactMessagePayload';
+import ContactMessagePayloadVcard from './models/ContactMessagePayloadVcard';
+import FileUpload from './models/FileUpload';
+import GroupCreatePayload from './models/GroupCreatePayload';
+import GroupUpdateDescriptionPayload from './models/GroupUpdateDescriptionPayload';
+import GroupUpdateNamePayload from './models/GroupUpdateNamePayload';
+import GroupUpdateParticipantsPayload from './models/GroupUpdateParticipantsPayload';
 import InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest from './models/InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest';
 import InstancesInstanceKeySendAudioPostRequest from './models/InstancesInstanceKeySendAudioPostRequest';
 import InstancesInstanceKeySendDocumentPostRequest from './models/InstancesInstanceKeySendDocumentPostRequest';
 import InstancesInstanceKeySendImagePostRequest from './models/InstancesInstanceKeySendImagePostRequest';
 import InstancesInstanceKeySendUploadPostRequest from './models/InstancesInstanceKeySendUploadPostRequest';
 import InstancesInstanceKeySendVideoPostRequest from './models/InstancesInstanceKeySendVideoPostRequest';
-import MainAPIResponse from './models/MainAPIResponse';
-import StructsButtonMessagePayload from './models/StructsButtonMessagePayload';
-import StructsButtonMessageWithMediaPayload from './models/StructsButtonMessageWithMediaPayload';
-import StructsContactMessagePayload from './models/StructsContactMessagePayload';
-import StructsContactMessagePayloadVcard from './models/StructsContactMessagePayloadVcard';
-import StructsFileUpload from './models/StructsFileUpload';
-import StructsGroupCreatePayload from './models/StructsGroupCreatePayload';
-import StructsGroupUpdateDescriptionPayload from './models/StructsGroupUpdateDescriptionPayload';
-import StructsGroupUpdateNamePayload from './models/StructsGroupUpdateNamePayload';
-import StructsGroupUpdateParticipantsPayload from './models/StructsGroupUpdateParticipantsPayload';
-import StructsListItem from './models/StructsListItem';
-import StructsListMessagePayload from './models/StructsListMessagePayload';
-import StructsListSection from './models/StructsListSection';
-import StructsLocationMessagePayload from './models/StructsLocationMessagePayload';
-import StructsLocationMessagePayloadLocation from './models/StructsLocationMessagePayloadLocation';
-import StructsPollMessagePayload from './models/StructsPollMessagePayload';
-import StructsReplyButton from './models/StructsReplyButton';
-import StructsSendMediaPayload from './models/StructsSendMediaPayload';
-import StructsTemplateButton from './models/StructsTemplateButton';
-import StructsTemplateButtonPayload from './models/StructsTemplateButtonPayload';
-import StructsTemplateButtonWithMediaPayload from './models/StructsTemplateButtonWithMediaPayload';
-import StructsTextMessage from './models/StructsTextMessage';
-import StructsUserInfoPayload from './models/StructsUserInfoPayload';
-import StructsWebhookPayload from './models/StructsWebhookPayload';
+import ListItem from './models/ListItem';
+import ListMessagePayload from './models/ListMessagePayload';
+import ListSection from './models/ListSection';
+import LocationMessagePayload from './models/LocationMessagePayload';
+import LocationMessagePayloadLocation from './models/LocationMessagePayloadLocation';
+import PollMessagePayload from './models/PollMessagePayload';
+import ReplyButton from './models/ReplyButton';
+import SendMediaPayload from './models/SendMediaPayload';
+import TemplateButton from './models/TemplateButton';
+import TemplateButtonPayload from './models/TemplateButtonPayload';
+import TemplateButtonWithMediaPayload from './models/TemplateButtonWithMediaPayload';
+import TextMessage from './models/TextMessage';
+import UserInfoPayload from './models/UserInfoPayload';
+import WebhookPayload from './models/WebhookPayload';
+import BusinessManagementApi from './whatsapi/BusinessManagementApi';
 import GroupManagementApi from './whatsapi/GroupManagementApi';
 import InstanceApi from './whatsapi/InstanceApi';
 import MessageSendingApi from './whatsapi/MessageSendingApi';
@@ -88,6 +89,66 @@ export {
     ApiClient,
 
     /**
+     * The APIResponse model constructor.
+     * @property {module:WhatsAPI/models/APIResponse}
+     */
+    APIResponse,
+
+    /**
+     * The ButtonMessagePayload model constructor.
+     * @property {module:WhatsAPI/models/ButtonMessagePayload}
+     */
+    ButtonMessagePayload,
+
+    /**
+     * The ButtonMessageWithMediaPayload model constructor.
+     * @property {module:WhatsAPI/models/ButtonMessageWithMediaPayload}
+     */
+    ButtonMessageWithMediaPayload,
+
+    /**
+     * The ContactMessagePayload model constructor.
+     * @property {module:WhatsAPI/models/ContactMessagePayload}
+     */
+    ContactMessagePayload,
+
+    /**
+     * The ContactMessagePayloadVcard model constructor.
+     * @property {module:WhatsAPI/models/ContactMessagePayloadVcard}
+     */
+    ContactMessagePayloadVcard,
+
+    /**
+     * The FileUpload model constructor.
+     * @property {module:WhatsAPI/models/FileUpload}
+     */
+    FileUpload,
+
+    /**
+     * The GroupCreatePayload model constructor.
+     * @property {module:WhatsAPI/models/GroupCreatePayload}
+     */
+    GroupCreatePayload,
+
+    /**
+     * The GroupUpdateDescriptionPayload model constructor.
+     * @property {module:WhatsAPI/models/GroupUpdateDescriptionPayload}
+     */
+    GroupUpdateDescriptionPayload,
+
+    /**
+     * The GroupUpdateNamePayload model constructor.
+     * @property {module:WhatsAPI/models/GroupUpdateNamePayload}
+     */
+    GroupUpdateNamePayload,
+
+    /**
+     * The GroupUpdateParticipantsPayload model constructor.
+     * @property {module:WhatsAPI/models/GroupUpdateParticipantsPayload}
+     */
+    GroupUpdateParticipantsPayload,
+
+    /**
      * The InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest model constructor.
      * @property {module:WhatsAPI/models/InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest}
      */
@@ -124,148 +185,94 @@ export {
     InstancesInstanceKeySendVideoPostRequest,
 
     /**
-     * The MainAPIResponse model constructor.
-     * @property {module:WhatsAPI/models/MainAPIResponse}
+     * The ListItem model constructor.
+     * @property {module:WhatsAPI/models/ListItem}
      */
-    MainAPIResponse,
+    ListItem,
 
     /**
-     * The StructsButtonMessagePayload model constructor.
-     * @property {module:WhatsAPI/models/StructsButtonMessagePayload}
+     * The ListMessagePayload model constructor.
+     * @property {module:WhatsAPI/models/ListMessagePayload}
      */
-    StructsButtonMessagePayload,
+    ListMessagePayload,
 
     /**
-     * The StructsButtonMessageWithMediaPayload model constructor.
-     * @property {module:WhatsAPI/models/StructsButtonMessageWithMediaPayload}
+     * The ListSection model constructor.
+     * @property {module:WhatsAPI/models/ListSection}
      */
-    StructsButtonMessageWithMediaPayload,
+    ListSection,
 
     /**
-     * The StructsContactMessagePayload model constructor.
-     * @property {module:WhatsAPI/models/StructsContactMessagePayload}
+     * The LocationMessagePayload model constructor.
+     * @property {module:WhatsAPI/models/LocationMessagePayload}
      */
-    StructsContactMessagePayload,
+    LocationMessagePayload,
 
     /**
-     * The StructsContactMessagePayloadVcard model constructor.
-     * @property {module:WhatsAPI/models/StructsContactMessagePayloadVcard}
+     * The LocationMessagePayloadLocation model constructor.
+     * @property {module:WhatsAPI/models/LocationMessagePayloadLocation}
      */
-    StructsContactMessagePayloadVcard,
+    LocationMessagePayloadLocation,
 
     /**
-     * The StructsFileUpload model constructor.
-     * @property {module:WhatsAPI/models/StructsFileUpload}
+     * The PollMessagePayload model constructor.
+     * @property {module:WhatsAPI/models/PollMessagePayload}
      */
-    StructsFileUpload,
+    PollMessagePayload,
 
     /**
-     * The StructsGroupCreatePayload model constructor.
-     * @property {module:WhatsAPI/models/StructsGroupCreatePayload}
+     * The ReplyButton model constructor.
+     * @property {module:WhatsAPI/models/ReplyButton}
      */
-    StructsGroupCreatePayload,
+    ReplyButton,
 
     /**
-     * The StructsGroupUpdateDescriptionPayload model constructor.
-     * @property {module:WhatsAPI/models/StructsGroupUpdateDescriptionPayload}
+     * The SendMediaPayload model constructor.
+     * @property {module:WhatsAPI/models/SendMediaPayload}
      */
-    StructsGroupUpdateDescriptionPayload,
+    SendMediaPayload,
 
     /**
-     * The StructsGroupUpdateNamePayload model constructor.
-     * @property {module:WhatsAPI/models/StructsGroupUpdateNamePayload}
+     * The TemplateButton model constructor.
+     * @property {module:WhatsAPI/models/TemplateButton}
      */
-    StructsGroupUpdateNamePayload,
+    TemplateButton,
 
     /**
-     * The StructsGroupUpdateParticipantsPayload model constructor.
-     * @property {module:WhatsAPI/models/StructsGroupUpdateParticipantsPayload}
+     * The TemplateButtonPayload model constructor.
+     * @property {module:WhatsAPI/models/TemplateButtonPayload}
      */
-    StructsGroupUpdateParticipantsPayload,
+    TemplateButtonPayload,
 
     /**
-     * The StructsListItem model constructor.
-     * @property {module:WhatsAPI/models/StructsListItem}
+     * The TemplateButtonWithMediaPayload model constructor.
+     * @property {module:WhatsAPI/models/TemplateButtonWithMediaPayload}
      */
-    StructsListItem,
+    TemplateButtonWithMediaPayload,
 
     /**
-     * The StructsListMessagePayload model constructor.
-     * @property {module:WhatsAPI/models/StructsListMessagePayload}
+     * The TextMessage model constructor.
+     * @property {module:WhatsAPI/models/TextMessage}
      */
-    StructsListMessagePayload,
+    TextMessage,
 
     /**
-     * The StructsListSection model constructor.
-     * @property {module:WhatsAPI/models/StructsListSection}
+     * The UserInfoPayload model constructor.
+     * @property {module:WhatsAPI/models/UserInfoPayload}
      */
-    StructsListSection,
+    UserInfoPayload,
 
     /**
-     * The StructsLocationMessagePayload model constructor.
-     * @property {module:WhatsAPI/models/StructsLocationMessagePayload}
+     * The WebhookPayload model constructor.
+     * @property {module:WhatsAPI/models/WebhookPayload}
      */
-    StructsLocationMessagePayload,
+    WebhookPayload,
 
     /**
-     * The StructsLocationMessagePayloadLocation model constructor.
-     * @property {module:WhatsAPI/models/StructsLocationMessagePayloadLocation}
-     */
-    StructsLocationMessagePayloadLocation,
-
-    /**
-     * The StructsPollMessagePayload model constructor.
-     * @property {module:WhatsAPI/models/StructsPollMessagePayload}
-     */
-    StructsPollMessagePayload,
-
-    /**
-     * The StructsReplyButton model constructor.
-     * @property {module:WhatsAPI/models/StructsReplyButton}
-     */
-    StructsReplyButton,
-
-    /**
-     * The StructsSendMediaPayload model constructor.
-     * @property {module:WhatsAPI/models/StructsSendMediaPayload}
-     */
-    StructsSendMediaPayload,
-
-    /**
-     * The StructsTemplateButton model constructor.
-     * @property {module:WhatsAPI/models/StructsTemplateButton}
-     */
-    StructsTemplateButton,
-
-    /**
-     * The StructsTemplateButtonPayload model constructor.
-     * @property {module:WhatsAPI/models/StructsTemplateButtonPayload}
-     */
-    StructsTemplateButtonPayload,
-
-    /**
-     * The StructsTemplateButtonWithMediaPayload model constructor.
-     * @property {module:WhatsAPI/models/StructsTemplateButtonWithMediaPayload}
-     */
-    StructsTemplateButtonWithMediaPayload,
-
-    /**
-     * The StructsTextMessage model constructor.
-     * @property {module:WhatsAPI/models/StructsTextMessage}
-     */
-    StructsTextMessage,
-
-    /**
-     * The StructsUserInfoPayload model constructor.
-     * @property {module:WhatsAPI/models/StructsUserInfoPayload}
-     */
-    StructsUserInfoPayload,
-
-    /**
-     * The StructsWebhookPayload model constructor.
-     * @property {module:WhatsAPI/models/StructsWebhookPayload}
-     */
-    StructsWebhookPayload,
+    * The BusinessManagementApi service constructor.
+    * @property {module:WhatsAPI/whatsapi/BusinessManagementApi}
+    */
+    BusinessManagementApi,
 
     /**
     * The GroupManagementApi service constructor.
