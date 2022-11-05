@@ -23,12 +23,6 @@ import GroupCreatePayload from './models/GroupCreatePayload';
 import GroupUpdateDescriptionPayload from './models/GroupUpdateDescriptionPayload';
 import GroupUpdateNamePayload from './models/GroupUpdateNamePayload';
 import GroupUpdateParticipantsPayload from './models/GroupUpdateParticipantsPayload';
-import InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest from './models/InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest';
-import InstancesInstanceKeySendAudioPostRequest from './models/InstancesInstanceKeySendAudioPostRequest';
-import InstancesInstanceKeySendDocumentPostRequest from './models/InstancesInstanceKeySendDocumentPostRequest';
-import InstancesInstanceKeySendImagePostRequest from './models/InstancesInstanceKeySendImagePostRequest';
-import InstancesInstanceKeySendUploadPostRequest from './models/InstancesInstanceKeySendUploadPostRequest';
-import InstancesInstanceKeySendVideoPostRequest from './models/InstancesInstanceKeySendVideoPostRequest';
 import ListItem from './models/ListItem';
 import ListMessagePayload from './models/ListMessagePayload';
 import ListSection from './models/ListSection';
@@ -36,11 +30,17 @@ import LocationMessagePayload from './models/LocationMessagePayload';
 import LocationMessagePayloadLocation from './models/LocationMessagePayloadLocation';
 import PollMessagePayload from './models/PollMessagePayload';
 import ReplyButton from './models/ReplyButton';
+import SendAudioRequest from './models/SendAudioRequest';
+import SendDocumentRequest from './models/SendDocumentRequest';
+import SendImageRequest from './models/SendImageRequest';
 import SendMediaPayload from './models/SendMediaPayload';
+import SendVideoRequest from './models/SendVideoRequest';
+import SetGroupPictureRequest from './models/SetGroupPictureRequest';
 import TemplateButton from './models/TemplateButton';
 import TemplateButtonPayload from './models/TemplateButtonPayload';
 import TemplateButtonWithMediaPayload from './models/TemplateButtonWithMediaPayload';
 import TextMessage from './models/TextMessage';
+import UploadMediaRequest from './models/UploadMediaRequest';
 import UserInfoPayload from './models/UserInfoPayload';
 import WebhookPayload from './models/WebhookPayload';
 import BusinessManagementApi from './whatsapi/BusinessManagementApi';
@@ -149,42 +149,6 @@ export {
     GroupUpdateParticipantsPayload,
 
     /**
-     * The InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest model constructor.
-     * @property {module:WhatsAPI/models/InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest}
-     */
-    InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest,
-
-    /**
-     * The InstancesInstanceKeySendAudioPostRequest model constructor.
-     * @property {module:WhatsAPI/models/InstancesInstanceKeySendAudioPostRequest}
-     */
-    InstancesInstanceKeySendAudioPostRequest,
-
-    /**
-     * The InstancesInstanceKeySendDocumentPostRequest model constructor.
-     * @property {module:WhatsAPI/models/InstancesInstanceKeySendDocumentPostRequest}
-     */
-    InstancesInstanceKeySendDocumentPostRequest,
-
-    /**
-     * The InstancesInstanceKeySendImagePostRequest model constructor.
-     * @property {module:WhatsAPI/models/InstancesInstanceKeySendImagePostRequest}
-     */
-    InstancesInstanceKeySendImagePostRequest,
-
-    /**
-     * The InstancesInstanceKeySendUploadPostRequest model constructor.
-     * @property {module:WhatsAPI/models/InstancesInstanceKeySendUploadPostRequest}
-     */
-    InstancesInstanceKeySendUploadPostRequest,
-
-    /**
-     * The InstancesInstanceKeySendVideoPostRequest model constructor.
-     * @property {module:WhatsAPI/models/InstancesInstanceKeySendVideoPostRequest}
-     */
-    InstancesInstanceKeySendVideoPostRequest,
-
-    /**
      * The ListItem model constructor.
      * @property {module:WhatsAPI/models/ListItem}
      */
@@ -227,10 +191,40 @@ export {
     ReplyButton,
 
     /**
+     * The SendAudioRequest model constructor.
+     * @property {module:WhatsAPI/models/SendAudioRequest}
+     */
+    SendAudioRequest,
+
+    /**
+     * The SendDocumentRequest model constructor.
+     * @property {module:WhatsAPI/models/SendDocumentRequest}
+     */
+    SendDocumentRequest,
+
+    /**
+     * The SendImageRequest model constructor.
+     * @property {module:WhatsAPI/models/SendImageRequest}
+     */
+    SendImageRequest,
+
+    /**
      * The SendMediaPayload model constructor.
      * @property {module:WhatsAPI/models/SendMediaPayload}
      */
     SendMediaPayload,
+
+    /**
+     * The SendVideoRequest model constructor.
+     * @property {module:WhatsAPI/models/SendVideoRequest}
+     */
+    SendVideoRequest,
+
+    /**
+     * The SetGroupPictureRequest model constructor.
+     * @property {module:WhatsAPI/models/SetGroupPictureRequest}
+     */
+    SetGroupPictureRequest,
 
     /**
      * The TemplateButton model constructor.
@@ -255,6 +249,12 @@ export {
      * @property {module:WhatsAPI/models/TextMessage}
      */
     TextMessage,
+
+    /**
+     * The UploadMediaRequest model constructor.
+     * @property {module:WhatsAPI/models/UploadMediaRequest}
+     */
+    UploadMediaRequest,
 
     /**
      * The UserInfoPayload model constructor.

@@ -18,7 +18,7 @@ import GroupCreatePayload from '../models/GroupCreatePayload';
 import GroupUpdateDescriptionPayload from '../models/GroupUpdateDescriptionPayload';
 import GroupUpdateNamePayload from '../models/GroupUpdateNamePayload';
 import GroupUpdateParticipantsPayload from '../models/GroupUpdateParticipantsPayload';
-import InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest from '../models/InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest';
+import SetGroupPictureRequest from '../models/SetGroupPictureRequest';
 
 /**
 * GroupManagement service.
@@ -40,29 +40,40 @@ export default class GroupManagementApi {
 
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeyGroupsAdminGet operation.
-     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsAdminGetCallback
+     * Callback function to receive the result of the addParticipant operation.
+     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~addParticipantCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Get admin groupss.
-     * Returns list of all groups in which you are admin.
+     * Add participant.
+     * Handles adding participants to a group. You must be admin in the group or the query will fail.
      * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsAdminGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {String} groupId Group id of the group
+     * @param {module:WhatsAPI/models/GroupUpdateParticipantsPayload} data Group update payload
+     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~addParticipantCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeyGroupsAdminGet(instanceKey, callback) {
-      let postBody = null;
+    addParticipant(instanceKey, groupId, data, callback) {
+      let postBody = data;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyGroupsAdminGet");
+        throw new Error("Missing the required parameter 'instanceKey' when calling addParticipant");
+      }
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling addParticipant");
+      }
+      // verify the required parameter 'data' is set
+      if (data === undefined || data === null) {
+        throw new Error("Missing the required parameter 'data' when calling addParticipant");
       }
 
       let pathParams = {
-        'instance_key': instanceKey
+        'instance_key': instanceKey,
+        'group_id': groupId
       };
       let queryParams = {
       };
@@ -72,19 +83,19 @@ export default class GroupManagementApi {
       };
 
       let authNames = ['ApiKeyAuth'];
-      let contentTypes = [];
+      let contentTypes = ['application/json'];
       let accepts = ['*/*'];
       let returnType = APIResponse;
       return this.apiClient.callApi(
-        '/instances/{instance_key}/groups/admin', 'GET',
+        '/instances/{instance_key}/groups/{group_id}/participants/add', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeyGroupsCreatePost operation.
-     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsCreatePostCallback
+     * Callback function to receive the result of the createGroup operation.
+     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~createGroupCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -95,18 +106,18 @@ export default class GroupManagementApi {
      * Creates a group with the participant data. The creator is automatically added to the group.
      * @param {String} instanceKey Instance key
      * @param {module:WhatsAPI/models/GroupCreatePayload} data Group create payload
-     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsCreatePostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~createGroupCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeyGroupsCreatePost(instanceKey, data, callback) {
+    createGroup(instanceKey, data, callback) {
       let postBody = data;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyGroupsCreatePost");
+        throw new Error("Missing the required parameter 'instanceKey' when calling createGroup");
       }
       // verify the required parameter 'data' is set
       if (data === undefined || data === null) {
-        throw new Error("Missing the required parameter 'data' when calling instancesInstanceKeyGroupsCreatePost");
+        throw new Error("Missing the required parameter 'data' when calling createGroup");
       }
 
       let pathParams = {
@@ -131,8 +142,105 @@ export default class GroupManagementApi {
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeyGroupsGet operation.
-     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGetCallback
+     * Callback function to receive the result of the demoteParticipant operation.
+     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~demoteParticipantCallback
+     * @param {String} error Error message, if any.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Demote participant.
+     * Demotes admins in groups. You must be admin in the group or the query will fail.
+     * @param {String} instanceKey Instance key
+     * @param {String} groupId Group id of the group
+     * @param {module:WhatsAPI/models/GroupUpdateParticipantsPayload} data Group update payload
+     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~demoteParticipantCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
+     */
+    demoteParticipant(instanceKey, groupId, data, callback) {
+      let postBody = data;
+      // verify the required parameter 'instanceKey' is set
+      if (instanceKey === undefined || instanceKey === null) {
+        throw new Error("Missing the required parameter 'instanceKey' when calling demoteParticipant");
+      }
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling demoteParticipant");
+      }
+      // verify the required parameter 'data' is set
+      if (data === undefined || data === null) {
+        throw new Error("Missing the required parameter 'data' when calling demoteParticipant");
+      }
+
+      let pathParams = {
+        'instance_key': instanceKey,
+        'group_id': groupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['*/*'];
+      let returnType = APIResponse;
+      return this.apiClient.callApi(
+        '/instances/{instance_key}/groups/{group_id}/participants/demote', 'PUT',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getAdminGroups operation.
+     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~getAdminGroupsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get admin groups.
+     * Returns list of all groups in which you are admin.
+     * @param {String} instanceKey Instance key
+     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~getAdminGroupsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
+     */
+    getAdminGroups(instanceKey, callback) {
+      let postBody = null;
+      // verify the required parameter 'instanceKey' is set
+      if (instanceKey === undefined || instanceKey === null) {
+        throw new Error("Missing the required parameter 'instanceKey' when calling getAdminGroups");
+      }
+
+      let pathParams = {
+        'instance_key': instanceKey
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = [];
+      let accepts = ['*/*'];
+      let returnType = APIResponse;
+      return this.apiClient.callApi(
+        '/instances/{instance_key}/groups/admin', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getAllGroups operation.
+     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~getAllGroupsCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -144,15 +252,15 @@ export default class GroupManagementApi {
      * @param {String} instanceKey Instance key
      * @param {Object} opts Optional parameters
      * @param {module:WhatsAPI/models/String} opts.includeParticipants Include participants data (default to 'true')
-     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~getAllGroupsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeyGroupsGet(instanceKey, opts, callback) {
+    getAllGroups(instanceKey, opts, callback) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyGroupsGet");
+        throw new Error("Missing the required parameter 'instanceKey' when calling getAllGroups");
       }
 
       let pathParams = {
@@ -178,8 +286,312 @@ export default class GroupManagementApi {
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdAnnouncePut operation.
-     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdAnnouncePutCallback
+     * Callback function to receive the result of the getGroup operation.
+     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~getGroupCallback
+     * @param {String} error Error message, if any.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get group.
+     * Fetches the group data.
+     * @param {String} instanceKey Instance key
+     * @param {String} groupId Group id of the group
+     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~getGroupCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
+     */
+    getGroup(instanceKey, groupId, callback) {
+      let postBody = null;
+      // verify the required parameter 'instanceKey' is set
+      if (instanceKey === undefined || instanceKey === null) {
+        throw new Error("Missing the required parameter 'instanceKey' when calling getGroup");
+      }
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling getGroup");
+      }
+
+      let pathParams = {
+        'instance_key': instanceKey,
+        'group_id': groupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = [];
+      let accepts = ['*/*'];
+      let returnType = APIResponse;
+      return this.apiClient.callApi(
+        '/instances/{instance_key}/groups/{group_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getGroupFromInviteLink operation.
+     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~getGroupFromInviteLinkCallback
+     * @param {String} error Error message, if any.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get group from invite link.
+     * Gets a group info from an invite link. An invite link is a link that can be used to join a group. It is usually in the format https://chat.whatsapp.com/{invitecode}
+     * @param {String} instanceKey Instance key
+     * @param {String} inviteLink The invite link to check
+     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~getGroupFromInviteLinkCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
+     */
+    getGroupFromInviteLink(instanceKey, inviteLink, callback) {
+      let postBody = null;
+      // verify the required parameter 'instanceKey' is set
+      if (instanceKey === undefined || instanceKey === null) {
+        throw new Error("Missing the required parameter 'instanceKey' when calling getGroupFromInviteLink");
+      }
+      // verify the required parameter 'inviteLink' is set
+      if (inviteLink === undefined || inviteLink === null) {
+        throw new Error("Missing the required parameter 'inviteLink' when calling getGroupFromInviteLink");
+      }
+
+      let pathParams = {
+        'instance_key': instanceKey
+      };
+      let queryParams = {
+        'invite_link': inviteLink
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = [];
+      let accepts = ['*/*'];
+      let returnType = APIResponse;
+      return this.apiClient.callApi(
+        '/instances/{instance_key}/groups/invite-info', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getGroupInviteCode operation.
+     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~getGroupInviteCodeCallback
+     * @param {String} error Error message, if any.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get group invite code.
+     * Gets the invite code of the group.
+     * @param {String} instanceKey Instance key
+     * @param {String} groupId Group id of the group
+     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~getGroupInviteCodeCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
+     */
+    getGroupInviteCode(instanceKey, groupId, callback) {
+      let postBody = null;
+      // verify the required parameter 'instanceKey' is set
+      if (instanceKey === undefined || instanceKey === null) {
+        throw new Error("Missing the required parameter 'instanceKey' when calling getGroupInviteCode");
+      }
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling getGroupInviteCode");
+      }
+
+      let pathParams = {
+        'instance_key': instanceKey,
+        'group_id': groupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = [];
+      let accepts = ['*/*'];
+      let returnType = APIResponse;
+      return this.apiClient.callApi(
+        '/instances/{instance_key}/groups/{group_id}/invite-code', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the leaveGroup operation.
+     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~leaveGroupCallback
+     * @param {String} error Error message, if any.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Leaves the group.
+     * Leaves the specified group.
+     * @param {String} instanceKey Instance key
+     * @param {String} groupId Group id of the group
+     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~leaveGroupCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
+     */
+    leaveGroup(instanceKey, groupId, callback) {
+      let postBody = null;
+      // verify the required parameter 'instanceKey' is set
+      if (instanceKey === undefined || instanceKey === null) {
+        throw new Error("Missing the required parameter 'instanceKey' when calling leaveGroup");
+      }
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling leaveGroup");
+      }
+
+      let pathParams = {
+        'instance_key': instanceKey,
+        'group_id': groupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = [];
+      let accepts = ['*/*'];
+      let returnType = APIResponse;
+      return this.apiClient.callApi(
+        '/instances/{instance_key}/groups/{group_id}/', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the promoteParticipant operation.
+     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~promoteParticipantCallback
+     * @param {String} error Error message, if any.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Promote participant.
+     * Promotes participants to admin. You must be admin in the group or the query will fail.
+     * @param {String} instanceKey Instance key
+     * @param {String} groupId Group id of the group
+     * @param {module:WhatsAPI/models/GroupUpdateParticipantsPayload} data Group update payload
+     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~promoteParticipantCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
+     */
+    promoteParticipant(instanceKey, groupId, data, callback) {
+      let postBody = data;
+      // verify the required parameter 'instanceKey' is set
+      if (instanceKey === undefined || instanceKey === null) {
+        throw new Error("Missing the required parameter 'instanceKey' when calling promoteParticipant");
+      }
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling promoteParticipant");
+      }
+      // verify the required parameter 'data' is set
+      if (data === undefined || data === null) {
+        throw new Error("Missing the required parameter 'data' when calling promoteParticipant");
+      }
+
+      let pathParams = {
+        'instance_key': instanceKey,
+        'group_id': groupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['*/*'];
+      let returnType = APIResponse;
+      return this.apiClient.callApi(
+        '/instances/{instance_key}/groups/{group_id}/participants/promote', 'PUT',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the removeParticipant operation.
+     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~removeParticipantCallback
+     * @param {String} error Error message, if any.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Remove participant.
+     * Handles removing participants from a group. You must be admin in the group or the query will fail.
+     * @param {String} instanceKey Instance key
+     * @param {String} groupId Group id of the group
+     * @param {module:WhatsAPI/models/GroupUpdateParticipantsPayload} data Group update payload
+     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~removeParticipantCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
+     */
+    removeParticipant(instanceKey, groupId, data, callback) {
+      let postBody = data;
+      // verify the required parameter 'instanceKey' is set
+      if (instanceKey === undefined || instanceKey === null) {
+        throw new Error("Missing the required parameter 'instanceKey' when calling removeParticipant");
+      }
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling removeParticipant");
+      }
+      // verify the required parameter 'data' is set
+      if (data === undefined || data === null) {
+        throw new Error("Missing the required parameter 'data' when calling removeParticipant");
+      }
+
+      let pathParams = {
+        'instance_key': instanceKey,
+        'group_id': groupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['*/*'];
+      let returnType = APIResponse;
+      return this.apiClient.callApi(
+        '/instances/{instance_key}/groups/{group_id}/participants/remove', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the setGroupAnnounce operation.
+     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~setGroupAnnounceCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -191,22 +603,22 @@ export default class GroupManagementApi {
      * @param {String} instanceKey Instance key
      * @param {module:WhatsAPI/models/Boolean} announce Announce status
      * @param {String} groupId Group id of the group
-     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdAnnouncePutCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~setGroupAnnounceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeyGroupsGroupIdAnnouncePut(instanceKey, announce, groupId, callback) {
+    setGroupAnnounce(instanceKey, announce, groupId, callback) {
       let postBody = null;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyGroupsGroupIdAnnouncePut");
+        throw new Error("Missing the required parameter 'instanceKey' when calling setGroupAnnounce");
       }
       // verify the required parameter 'announce' is set
       if (announce === undefined || announce === null) {
-        throw new Error("Missing the required parameter 'announce' when calling instancesInstanceKeyGroupsGroupIdAnnouncePut");
+        throw new Error("Missing the required parameter 'announce' when calling setGroupAnnounce");
       }
       // verify the required parameter 'groupId' is set
       if (groupId === undefined || groupId === null) {
-        throw new Error("Missing the required parameter 'groupId' when calling instancesInstanceKeyGroupsGroupIdAnnouncePut");
+        throw new Error("Missing the required parameter 'groupId' when calling setGroupAnnounce");
       }
 
       let pathParams = {
@@ -233,57 +645,8 @@ export default class GroupManagementApi {
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdDelete operation.
-     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdDeleteCallback
-     * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Leaves the group.
-     * Leaves the specified group.
-     * @param {String} instanceKey Instance key
-     * @param {String} groupId Group id of the group
-     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdDeleteCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/APIResponse}
-     */
-    instancesInstanceKeyGroupsGroupIdDelete(instanceKey, groupId, callback) {
-      let postBody = null;
-      // verify the required parameter 'instanceKey' is set
-      if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyGroupsGroupIdDelete");
-      }
-      // verify the required parameter 'groupId' is set
-      if (groupId === undefined || groupId === null) {
-        throw new Error("Missing the required parameter 'groupId' when calling instancesInstanceKeyGroupsGroupIdDelete");
-      }
-
-      let pathParams = {
-        'instance_key': instanceKey,
-        'group_id': groupId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['ApiKeyAuth'];
-      let contentTypes = [];
-      let accepts = ['*/*'];
-      let returnType = APIResponse;
-      return this.apiClient.callApi(
-        '/instances/{instance_key}/groups/{group_id}/', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdDescriptionPut operation.
-     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdDescriptionPutCallback
+     * Callback function to receive the result of the setGroupDescription operation.
+     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~setGroupDescriptionCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -295,22 +658,22 @@ export default class GroupManagementApi {
      * @param {String} instanceKey Instance key
      * @param {String} groupId Group id of the group
      * @param {module:WhatsAPI/models/GroupUpdateDescriptionPayload} data Group description data
-     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdDescriptionPutCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~setGroupDescriptionCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeyGroupsGroupIdDescriptionPut(instanceKey, groupId, data, callback) {
+    setGroupDescription(instanceKey, groupId, data, callback) {
       let postBody = data;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyGroupsGroupIdDescriptionPut");
+        throw new Error("Missing the required parameter 'instanceKey' when calling setGroupDescription");
       }
       // verify the required parameter 'groupId' is set
       if (groupId === undefined || groupId === null) {
-        throw new Error("Missing the required parameter 'groupId' when calling instancesInstanceKeyGroupsGroupIdDescriptionPut");
+        throw new Error("Missing the required parameter 'groupId' when calling setGroupDescription");
       }
       // verify the required parameter 'data' is set
       if (data === undefined || data === null) {
-        throw new Error("Missing the required parameter 'data' when calling instancesInstanceKeyGroupsGroupIdDescriptionPut");
+        throw new Error("Missing the required parameter 'data' when calling setGroupDescription");
       }
 
       let pathParams = {
@@ -336,106 +699,8 @@ export default class GroupManagementApi {
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdGet operation.
-     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdGetCallback
-     * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get group.
-     * Fetches the group data.
-     * @param {String} instanceKey Instance key
-     * @param {String} groupId Group id of the group
-     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/APIResponse}
-     */
-    instancesInstanceKeyGroupsGroupIdGet(instanceKey, groupId, callback) {
-      let postBody = null;
-      // verify the required parameter 'instanceKey' is set
-      if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyGroupsGroupIdGet");
-      }
-      // verify the required parameter 'groupId' is set
-      if (groupId === undefined || groupId === null) {
-        throw new Error("Missing the required parameter 'groupId' when calling instancesInstanceKeyGroupsGroupIdGet");
-      }
-
-      let pathParams = {
-        'instance_key': instanceKey,
-        'group_id': groupId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['ApiKeyAuth'];
-      let contentTypes = [];
-      let accepts = ['*/*'];
-      let returnType = APIResponse;
-      return this.apiClient.callApi(
-        '/instances/{instance_key}/groups/{group_id}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdInviteCodeGet operation.
-     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdInviteCodeGetCallback
-     * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get group invite code.
-     * Gets the invite code of the group.
-     * @param {String} instanceKey Instance key
-     * @param {String} groupId Group id of the group
-     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdInviteCodeGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/APIResponse}
-     */
-    instancesInstanceKeyGroupsGroupIdInviteCodeGet(instanceKey, groupId, callback) {
-      let postBody = null;
-      // verify the required parameter 'instanceKey' is set
-      if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyGroupsGroupIdInviteCodeGet");
-      }
-      // verify the required parameter 'groupId' is set
-      if (groupId === undefined || groupId === null) {
-        throw new Error("Missing the required parameter 'groupId' when calling instancesInstanceKeyGroupsGroupIdInviteCodeGet");
-      }
-
-      let pathParams = {
-        'instance_key': instanceKey,
-        'group_id': groupId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['ApiKeyAuth'];
-      let contentTypes = [];
-      let accepts = ['*/*'];
-      let returnType = APIResponse;
-      return this.apiClient.callApi(
-        '/instances/{instance_key}/groups/{group_id}/invite-code', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdLockPut operation.
-     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdLockPutCallback
+     * Callback function to receive the result of the setGroupLocked operation.
+     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~setGroupLockedCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -447,22 +712,22 @@ export default class GroupManagementApi {
      * @param {String} instanceKey Instance key
      * @param {module:WhatsAPI/models/Boolean} locked Locked status
      * @param {String} groupId Group id of the group
-     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdLockPutCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~setGroupLockedCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeyGroupsGroupIdLockPut(instanceKey, locked, groupId, callback) {
+    setGroupLocked(instanceKey, locked, groupId, callback) {
       let postBody = null;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyGroupsGroupIdLockPut");
+        throw new Error("Missing the required parameter 'instanceKey' when calling setGroupLocked");
       }
       // verify the required parameter 'locked' is set
       if (locked === undefined || locked === null) {
-        throw new Error("Missing the required parameter 'locked' when calling instancesInstanceKeyGroupsGroupIdLockPut");
+        throw new Error("Missing the required parameter 'locked' when calling setGroupLocked");
       }
       // verify the required parameter 'groupId' is set
       if (groupId === undefined || groupId === null) {
-        throw new Error("Missing the required parameter 'groupId' when calling instancesInstanceKeyGroupsGroupIdLockPut");
+        throw new Error("Missing the required parameter 'groupId' when calling setGroupLocked");
       }
 
       let pathParams = {
@@ -489,8 +754,8 @@ export default class GroupManagementApi {
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdNamePut operation.
-     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdNamePutCallback
+     * Callback function to receive the result of the setGroupName operation.
+     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~setGroupNameCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -502,22 +767,22 @@ export default class GroupManagementApi {
      * @param {String} instanceKey Instance key
      * @param {String} groupId Group id of the group
      * @param {module:WhatsAPI/models/GroupUpdateNamePayload} data Group name data
-     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdNamePutCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~setGroupNameCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeyGroupsGroupIdNamePut(instanceKey, groupId, data, callback) {
+    setGroupName(instanceKey, groupId, data, callback) {
       let postBody = data;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyGroupsGroupIdNamePut");
+        throw new Error("Missing the required parameter 'instanceKey' when calling setGroupName");
       }
       // verify the required parameter 'groupId' is set
       if (groupId === undefined || groupId === null) {
-        throw new Error("Missing the required parameter 'groupId' when calling instancesInstanceKeyGroupsGroupIdNamePut");
+        throw new Error("Missing the required parameter 'groupId' when calling setGroupName");
       }
       // verify the required parameter 'data' is set
       if (data === undefined || data === null) {
-        throw new Error("Missing the required parameter 'data' when calling instancesInstanceKeyGroupsGroupIdNamePut");
+        throw new Error("Missing the required parameter 'data' when calling setGroupName");
       }
 
       let pathParams = {
@@ -543,224 +808,8 @@ export default class GroupManagementApi {
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdParticipantsAddPost operation.
-     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdParticipantsAddPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Add participant.
-     * Handles adding participants to a group. You must be admin in the group or the query will fail.
-     * @param {String} instanceKey Instance key
-     * @param {String} groupId Group id of the group
-     * @param {module:WhatsAPI/models/GroupUpdateParticipantsPayload} data Group update payload
-     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdParticipantsAddPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/APIResponse}
-     */
-    instancesInstanceKeyGroupsGroupIdParticipantsAddPost(instanceKey, groupId, data, callback) {
-      let postBody = data;
-      // verify the required parameter 'instanceKey' is set
-      if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyGroupsGroupIdParticipantsAddPost");
-      }
-      // verify the required parameter 'groupId' is set
-      if (groupId === undefined || groupId === null) {
-        throw new Error("Missing the required parameter 'groupId' when calling instancesInstanceKeyGroupsGroupIdParticipantsAddPost");
-      }
-      // verify the required parameter 'data' is set
-      if (data === undefined || data === null) {
-        throw new Error("Missing the required parameter 'data' when calling instancesInstanceKeyGroupsGroupIdParticipantsAddPost");
-      }
-
-      let pathParams = {
-        'instance_key': instanceKey,
-        'group_id': groupId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['ApiKeyAuth'];
-      let contentTypes = ['application/json'];
-      let accepts = ['*/*'];
-      let returnType = APIResponse;
-      return this.apiClient.callApi(
-        '/instances/{instance_key}/groups/{group_id}/participants/add', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdParticipantsDemotePut operation.
-     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdParticipantsDemotePutCallback
-     * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Demote participant.
-     * Demotes admins in groups. You must be admin in the group or the query will fail.
-     * @param {String} instanceKey Instance key
-     * @param {String} groupId Group id of the group
-     * @param {module:WhatsAPI/models/GroupUpdateParticipantsPayload} data Group update payload
-     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdParticipantsDemotePutCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/APIResponse}
-     */
-    instancesInstanceKeyGroupsGroupIdParticipantsDemotePut(instanceKey, groupId, data, callback) {
-      let postBody = data;
-      // verify the required parameter 'instanceKey' is set
-      if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyGroupsGroupIdParticipantsDemotePut");
-      }
-      // verify the required parameter 'groupId' is set
-      if (groupId === undefined || groupId === null) {
-        throw new Error("Missing the required parameter 'groupId' when calling instancesInstanceKeyGroupsGroupIdParticipantsDemotePut");
-      }
-      // verify the required parameter 'data' is set
-      if (data === undefined || data === null) {
-        throw new Error("Missing the required parameter 'data' when calling instancesInstanceKeyGroupsGroupIdParticipantsDemotePut");
-      }
-
-      let pathParams = {
-        'instance_key': instanceKey,
-        'group_id': groupId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['ApiKeyAuth'];
-      let contentTypes = ['application/json'];
-      let accepts = ['*/*'];
-      let returnType = APIResponse;
-      return this.apiClient.callApi(
-        '/instances/{instance_key}/groups/{group_id}/participants/demote', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdParticipantsPromotePut operation.
-     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdParticipantsPromotePutCallback
-     * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Promote participant.
-     * Promotes participants to admin. You must be admin in the group or the query will fail.
-     * @param {String} instanceKey Instance key
-     * @param {String} groupId Group id of the group
-     * @param {module:WhatsAPI/models/GroupUpdateParticipantsPayload} data Group update payload
-     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdParticipantsPromotePutCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/APIResponse}
-     */
-    instancesInstanceKeyGroupsGroupIdParticipantsPromotePut(instanceKey, groupId, data, callback) {
-      let postBody = data;
-      // verify the required parameter 'instanceKey' is set
-      if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyGroupsGroupIdParticipantsPromotePut");
-      }
-      // verify the required parameter 'groupId' is set
-      if (groupId === undefined || groupId === null) {
-        throw new Error("Missing the required parameter 'groupId' when calling instancesInstanceKeyGroupsGroupIdParticipantsPromotePut");
-      }
-      // verify the required parameter 'data' is set
-      if (data === undefined || data === null) {
-        throw new Error("Missing the required parameter 'data' when calling instancesInstanceKeyGroupsGroupIdParticipantsPromotePut");
-      }
-
-      let pathParams = {
-        'instance_key': instanceKey,
-        'group_id': groupId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['ApiKeyAuth'];
-      let contentTypes = ['application/json'];
-      let accepts = ['*/*'];
-      let returnType = APIResponse;
-      return this.apiClient.callApi(
-        '/instances/{instance_key}/groups/{group_id}/participants/promote', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete operation.
-     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdParticipantsRemoveDeleteCallback
-     * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Remove participant.
-     * Handles removing participants from a group. You must be admin in the group or the query will fail.
-     * @param {String} instanceKey Instance key
-     * @param {String} groupId Group id of the group
-     * @param {module:WhatsAPI/models/GroupUpdateParticipantsPayload} data Group update payload
-     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdParticipantsRemoveDeleteCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/APIResponse}
-     */
-    instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete(instanceKey, groupId, data, callback) {
-      let postBody = data;
-      // verify the required parameter 'instanceKey' is set
-      if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete");
-      }
-      // verify the required parameter 'groupId' is set
-      if (groupId === undefined || groupId === null) {
-        throw new Error("Missing the required parameter 'groupId' when calling instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete");
-      }
-      // verify the required parameter 'data' is set
-      if (data === undefined || data === null) {
-        throw new Error("Missing the required parameter 'data' when calling instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete");
-      }
-
-      let pathParams = {
-        'instance_key': instanceKey,
-        'group_id': groupId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['ApiKeyAuth'];
-      let contentTypes = ['application/json'];
-      let accepts = ['*/*'];
-      let returnType = APIResponse;
-      return this.apiClient.callApi(
-        '/instances/{instance_key}/groups/{group_id}/participants/remove', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the instancesInstanceKeyGroupsGroupIdProfilePicPut operation.
-     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdProfilePicPutCallback
+     * Callback function to receive the result of the setGroupPicture operation.
+     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~setGroupPictureCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -771,23 +820,23 @@ export default class GroupManagementApi {
      * Changes the group profile picture. Currently it only seems to accept JPEG images only
      * @param {String} instanceKey Instance key
      * @param {String} groupId Group id of the group
-     * @param {module:WhatsAPI/models/InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest} instancesInstanceKeyGroupsGroupIdProfilePicPutRequest 
-     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsGroupIdProfilePicPutCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/models/SetGroupPictureRequest} setGroupPictureRequest 
+     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~setGroupPictureCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeyGroupsGroupIdProfilePicPut(instanceKey, groupId, instancesInstanceKeyGroupsGroupIdProfilePicPutRequest, callback) {
-      let postBody = instancesInstanceKeyGroupsGroupIdProfilePicPutRequest;
+    setGroupPicture(instanceKey, groupId, setGroupPictureRequest, callback) {
+      let postBody = setGroupPictureRequest;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyGroupsGroupIdProfilePicPut");
+        throw new Error("Missing the required parameter 'instanceKey' when calling setGroupPicture");
       }
       // verify the required parameter 'groupId' is set
       if (groupId === undefined || groupId === null) {
-        throw new Error("Missing the required parameter 'groupId' when calling instancesInstanceKeyGroupsGroupIdProfilePicPut");
+        throw new Error("Missing the required parameter 'groupId' when calling setGroupPicture");
       }
-      // verify the required parameter 'instancesInstanceKeyGroupsGroupIdProfilePicPutRequest' is set
-      if (instancesInstanceKeyGroupsGroupIdProfilePicPutRequest === undefined || instancesInstanceKeyGroupsGroupIdProfilePicPutRequest === null) {
-        throw new Error("Missing the required parameter 'instancesInstanceKeyGroupsGroupIdProfilePicPutRequest' when calling instancesInstanceKeyGroupsGroupIdProfilePicPut");
+      // verify the required parameter 'setGroupPictureRequest' is set
+      if (setGroupPictureRequest === undefined || setGroupPictureRequest === null) {
+        throw new Error("Missing the required parameter 'setGroupPictureRequest' when calling setGroupPicture");
       }
 
       let pathParams = {
@@ -807,55 +856,6 @@ export default class GroupManagementApi {
       let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/groups/{group_id}/profile-pic', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the instancesInstanceKeyGroupsInviteInfoGet operation.
-     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsInviteInfoGetCallback
-     * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get group from invite link.
-     * Gets a group info from an invite link. An invite link is a link that can be used to join a group. It is usually in the format https://chat.whatsapp.com/{invitecode}
-     * @param {String} instanceKey Instance key
-     * @param {String} inviteLink The invite link to check
-     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~instancesInstanceKeyGroupsInviteInfoGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/APIResponse}
-     */
-    instancesInstanceKeyGroupsInviteInfoGet(instanceKey, inviteLink, callback) {
-      let postBody = null;
-      // verify the required parameter 'instanceKey' is set
-      if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyGroupsInviteInfoGet");
-      }
-      // verify the required parameter 'inviteLink' is set
-      if (inviteLink === undefined || inviteLink === null) {
-        throw new Error("Missing the required parameter 'inviteLink' when calling instancesInstanceKeyGroupsInviteInfoGet");
-      }
-
-      let pathParams = {
-        'instance_key': instanceKey
-      };
-      let queryParams = {
-        'invite_link': inviteLink
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['ApiKeyAuth'];
-      let contentTypes = [];
-      let accepts = ['*/*'];
-      let returnType = APIResponse;
-      return this.apiClient.callApi(
-        '/instances/{instance_key}/groups/invite-info', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

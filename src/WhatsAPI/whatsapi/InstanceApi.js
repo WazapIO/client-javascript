@@ -36,8 +36,56 @@ export default class InstanceApi {
 
 
     /**
-     * Callback function to receive the result of the instancesCreateGet operation.
-     * @callback module:WhatsAPI/whatsapi/InstanceApi~instancesCreateGetCallback
+     * Callback function to receive the result of the changeWebhookUrl operation.
+     * @callback module:WhatsAPI/whatsapi/InstanceApi~changeWebhookUrlCallback
+     * @param {String} error Error message, if any.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Change Webhook url.
+     * Changes the webhook url of an instance.
+     * @param {String} instanceKey Instance key
+     * @param {module:WhatsAPI/models/WebhookPayload} data Message data
+     * @param {module:WhatsAPI/whatsapi/InstanceApi~changeWebhookUrlCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
+     */
+    changeWebhookUrl(instanceKey, data, callback) {
+      let postBody = data;
+      // verify the required parameter 'instanceKey' is set
+      if (instanceKey === undefined || instanceKey === null) {
+        throw new Error("Missing the required parameter 'instanceKey' when calling changeWebhookUrl");
+      }
+      // verify the required parameter 'data' is set
+      if (data === undefined || data === null) {
+        throw new Error("Missing the required parameter 'data' when calling changeWebhookUrl");
+      }
+
+      let pathParams = {
+        'instance_key': instanceKey
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['*/*'];
+      let returnType = APIResponse;
+      return this.apiClient.callApi(
+        '/instances/{instance_key}/webhook', 'PUT',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the createInstance operation.
+     * @callback module:WhatsAPI/whatsapi/InstanceApi~createInstanceCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -48,10 +96,10 @@ export default class InstanceApi {
      * This endpoint is used to create a new WhatsApp Web instance.
      * @param {Object} opts Optional parameters
      * @param {String} opts.instanceKey Insert instance key if you want to provide custom key
-     * @param {module:WhatsAPI/whatsapi/InstanceApi~instancesCreateGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/InstanceApi~createInstanceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesCreateGet(opts, callback) {
+    createInstance(opts, callback) {
       opts = opts || {};
       let postBody = null;
 
@@ -77,51 +125,8 @@ export default class InstanceApi {
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeyContactsGet operation.
-     * @callback module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyContactsGetCallback
-     * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get contacts.
-     * Fetches the list of contacts in the instance.
-     * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyContactsGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/APIResponse}
-     */
-    instancesInstanceKeyContactsGet(instanceKey, callback) {
-      let postBody = null;
-      // verify the required parameter 'instanceKey' is set
-      if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyContactsGet");
-      }
-
-      let pathParams = {
-        'instance_key': instanceKey
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['ApiKeyAuth'];
-      let contentTypes = [];
-      let accepts = ['*/*'];
-      let returnType = APIResponse;
-      return this.apiClient.callApi(
-        '/instances/{instance_key}/contacts', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the instancesInstanceKeyDeleteDelete operation.
-     * @callback module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyDeleteDeleteCallback
+     * Callback function to receive the result of the deleteInstance operation.
+     * @callback module:WhatsAPI/whatsapi/InstanceApi~deleteInstanceCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -131,14 +136,14 @@ export default class InstanceApi {
      * Delete Instance.
      * Deletes the instance with the provided key.
      * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyDeleteDeleteCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/InstanceApi~deleteInstanceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeyDeleteDelete(instanceKey, callback) {
+    deleteInstance(instanceKey, callback) {
       let postBody = null;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyDeleteDelete");
+        throw new Error("Missing the required parameter 'instanceKey' when calling deleteInstance");
       }
 
       let pathParams = {
@@ -163,8 +168,51 @@ export default class InstanceApi {
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeyGet operation.
-     * @callback module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyGetCallback
+     * Callback function to receive the result of the getContacts operation.
+     * @callback module:WhatsAPI/whatsapi/InstanceApi~getContactsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get contacts.
+     * Fetches the list of contacts in the instance.
+     * @param {String} instanceKey Instance key
+     * @param {module:WhatsAPI/whatsapi/InstanceApi~getContactsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
+     */
+    getContacts(instanceKey, callback) {
+      let postBody = null;
+      // verify the required parameter 'instanceKey' is set
+      if (instanceKey === undefined || instanceKey === null) {
+        throw new Error("Missing the required parameter 'instanceKey' when calling getContacts");
+      }
+
+      let pathParams = {
+        'instance_key': instanceKey
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = [];
+      let accepts = ['*/*'];
+      let returnType = APIResponse;
+      return this.apiClient.callApi(
+        '/instances/{instance_key}/contacts', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getInstance operation.
+     * @callback module:WhatsAPI/whatsapi/InstanceApi~getInstanceCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -174,14 +222,14 @@ export default class InstanceApi {
      * Get Instance.
      * Returns the instance data of single instance with connection status.
      * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/InstanceApi~getInstanceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeyGet(instanceKey, callback) {
+    getInstance(instanceKey, callback) {
       let postBody = null;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyGet");
+        throw new Error("Missing the required parameter 'instanceKey' when calling getInstance");
       }
 
       let pathParams = {
@@ -206,51 +254,8 @@ export default class InstanceApi {
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeyLogoutDelete operation.
-     * @callback module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyLogoutDeleteCallback
-     * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Logout Instance.
-     * Logouts of the instance with the provided key.
-     * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyLogoutDeleteCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/APIResponse}
-     */
-    instancesInstanceKeyLogoutDelete(instanceKey, callback) {
-      let postBody = null;
-      // verify the required parameter 'instanceKey' is set
-      if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyLogoutDelete");
-      }
-
-      let pathParams = {
-        'instance_key': instanceKey
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['ApiKeyAuth'];
-      let contentTypes = [];
-      let accepts = ['*/*'];
-      let returnType = APIResponse;
-      return this.apiClient.callApi(
-        '/instances/{instance_key}/logout', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the instancesInstanceKeyQrcodeGet operation.
-     * @callback module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyQrcodeGetCallback
+     * Callback function to receive the result of the getQrCode operation.
+     * @callback module:WhatsAPI/whatsapi/InstanceApi~getQrCodeCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -260,14 +265,14 @@ export default class InstanceApi {
      * Get QrCode.
      * Returns the qrcode in the base64 format.
      * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyQrcodeGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/InstanceApi~getQrCodeCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeyQrcodeGet(instanceKey, callback) {
+    getQrCode(instanceKey, callback) {
       let postBody = null;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyQrcodeGet");
+        throw new Error("Missing the required parameter 'instanceKey' when calling getQrCode");
       }
 
       let pathParams = {
@@ -292,56 +297,8 @@ export default class InstanceApi {
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeyWebhookPut operation.
-     * @callback module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyWebhookPutCallback
-     * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Change Webhook url.
-     * Changes the webhook url of an instance.
-     * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/models/WebhookPayload} data Message data
-     * @param {module:WhatsAPI/whatsapi/InstanceApi~instancesInstanceKeyWebhookPutCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/APIResponse}
-     */
-    instancesInstanceKeyWebhookPut(instanceKey, data, callback) {
-      let postBody = data;
-      // verify the required parameter 'instanceKey' is set
-      if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyWebhookPut");
-      }
-      // verify the required parameter 'data' is set
-      if (data === undefined || data === null) {
-        throw new Error("Missing the required parameter 'data' when calling instancesInstanceKeyWebhookPut");
-      }
-
-      let pathParams = {
-        'instance_key': instanceKey
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['ApiKeyAuth'];
-      let contentTypes = ['application/json'];
-      let accepts = ['*/*'];
-      let returnType = APIResponse;
-      return this.apiClient.callApi(
-        '/instances/{instance_key}/webhook', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the instancesListGet operation.
-     * @callback module:WhatsAPI/whatsapi/InstanceApi~instancesListGetCallback
+     * Callback function to receive the result of the listInstances operation.
+     * @callback module:WhatsAPI/whatsapi/InstanceApi~listInstancesCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -350,10 +307,10 @@ export default class InstanceApi {
     /**
      * Get all instances.
      * Fetches the list of all Instances with login status.
-     * @param {module:WhatsAPI/whatsapi/InstanceApi~instancesListGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/InstanceApi~listInstancesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesListGet(callback) {
+    listInstances(callback) {
       let postBody = null;
 
       let pathParams = {
@@ -371,6 +328,49 @@ export default class InstanceApi {
       let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/list', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the logoutInstance operation.
+     * @callback module:WhatsAPI/whatsapi/InstanceApi~logoutInstanceCallback
+     * @param {String} error Error message, if any.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Logout Instance.
+     * Logouts of the instance with the provided key.
+     * @param {String} instanceKey Instance key
+     * @param {module:WhatsAPI/whatsapi/InstanceApi~logoutInstanceCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
+     */
+    logoutInstance(instanceKey, callback) {
+      let postBody = null;
+      // verify the required parameter 'instanceKey' is set
+      if (instanceKey === undefined || instanceKey === null) {
+        throw new Error("Missing the required parameter 'instanceKey' when calling logoutInstance");
+      }
+
+      let pathParams = {
+        'instance_key': instanceKey
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = [];
+      let accepts = ['*/*'];
+      let returnType = APIResponse;
+      return this.apiClient.callApi(
+        '/instances/{instance_key}/logout', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

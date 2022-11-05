@@ -35,8 +35,8 @@ export default class BusinessManagementApi {
 
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeyBusinessCatalogGet operation.
-     * @callback module:WhatsAPI/whatsapi/BusinessManagementApi~instancesInstanceKeyBusinessCatalogGetCallback
+     * Callback function to receive the result of the fetchCatlog operation.
+     * @callback module:WhatsAPI/whatsapi/BusinessManagementApi~fetchCatlogCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -46,14 +46,14 @@ export default class BusinessManagementApi {
      * Fetches the catlog.
      * Gets list of all products registered by you.
      * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/whatsapi/BusinessManagementApi~instancesInstanceKeyBusinessCatalogGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/BusinessManagementApi~fetchCatlogCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeyBusinessCatalogGet(instanceKey, callback) {
+    fetchCatlog(instanceKey, callback) {
       let postBody = null;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyBusinessCatalogGet");
+        throw new Error("Missing the required parameter 'instanceKey' when calling fetchCatlog");
       }
 
       let pathParams = {

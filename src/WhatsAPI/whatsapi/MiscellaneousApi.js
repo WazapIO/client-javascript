@@ -36,8 +36,8 @@ export default class MiscellaneousApi {
 
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeyMiscProfilePicGet operation.
-     * @callback module:WhatsAPI/whatsapi/MiscellaneousApi~instancesInstanceKeyMiscProfilePicGetCallback
+     * Callback function to receive the result of the getProfilePic operation.
+     * @callback module:WhatsAPI/whatsapi/MiscellaneousApi~getProfilePicCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -48,18 +48,18 @@ export default class MiscellaneousApi {
      * Returns the profile pic of the given user.
      * @param {String} instanceKey Instance key
      * @param {String} jid JID
-     * @param {module:WhatsAPI/whatsapi/MiscellaneousApi~instancesInstanceKeyMiscProfilePicGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/MiscellaneousApi~getProfilePicCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeyMiscProfilePicGet(instanceKey, jid, callback) {
+    getProfilePic(instanceKey, jid, callback) {
       let postBody = null;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyMiscProfilePicGet");
+        throw new Error("Missing the required parameter 'instanceKey' when calling getProfilePic");
       }
       // verify the required parameter 'jid' is set
       if (jid === undefined || jid === null) {
-        throw new Error("Missing the required parameter 'jid' when calling instancesInstanceKeyMiscProfilePicGet");
+        throw new Error("Missing the required parameter 'jid' when calling getProfilePic");
       }
 
       let pathParams = {
@@ -85,8 +85,8 @@ export default class MiscellaneousApi {
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeyMiscUserInfoPost operation.
-     * @callback module:WhatsAPI/whatsapi/MiscellaneousApi~instancesInstanceKeyMiscUserInfoPostCallback
+     * Callback function to receive the result of the getUsersInfo operation.
+     * @callback module:WhatsAPI/whatsapi/MiscellaneousApi~getUsersInfoCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -97,18 +97,18 @@ export default class MiscellaneousApi {
      * Gets the user info for the given user ids. This does not checks if user is registered or not
      * @param {String} instanceKey Instance key
      * @param {module:WhatsAPI/models/UserInfoPayload} data Data
-     * @param {module:WhatsAPI/whatsapi/MiscellaneousApi~instancesInstanceKeyMiscUserInfoPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/MiscellaneousApi~getUsersInfoCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeyMiscUserInfoPost(instanceKey, data, callback) {
+    getUsersInfo(instanceKey, data, callback) {
       let postBody = data;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeyMiscUserInfoPost");
+        throw new Error("Missing the required parameter 'instanceKey' when calling getUsersInfo");
       }
       // verify the required parameter 'data' is set
       if (data === undefined || data === null) {
-        throw new Error("Missing the required parameter 'data' when calling instancesInstanceKeyMiscUserInfoPost");
+        throw new Error("Missing the required parameter 'data' when calling getUsersInfo");
       }
 
       let pathParams = {

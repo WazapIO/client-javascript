@@ -17,18 +17,18 @@ import APIResponse from '../models/APIResponse';
 import ButtonMessagePayload from '../models/ButtonMessagePayload';
 import ButtonMessageWithMediaPayload from '../models/ButtonMessageWithMediaPayload';
 import ContactMessagePayload from '../models/ContactMessagePayload';
-import InstancesInstanceKeySendAudioPostRequest from '../models/InstancesInstanceKeySendAudioPostRequest';
-import InstancesInstanceKeySendDocumentPostRequest from '../models/InstancesInstanceKeySendDocumentPostRequest';
-import InstancesInstanceKeySendImagePostRequest from '../models/InstancesInstanceKeySendImagePostRequest';
-import InstancesInstanceKeySendUploadPostRequest from '../models/InstancesInstanceKeySendUploadPostRequest';
-import InstancesInstanceKeySendVideoPostRequest from '../models/InstancesInstanceKeySendVideoPostRequest';
 import ListMessagePayload from '../models/ListMessagePayload';
 import LocationMessagePayload from '../models/LocationMessagePayload';
 import PollMessagePayload from '../models/PollMessagePayload';
+import SendAudioRequest from '../models/SendAudioRequest';
+import SendDocumentRequest from '../models/SendDocumentRequest';
+import SendImageRequest from '../models/SendImageRequest';
 import SendMediaPayload from '../models/SendMediaPayload';
+import SendVideoRequest from '../models/SendVideoRequest';
 import TemplateButtonPayload from '../models/TemplateButtonPayload';
 import TemplateButtonWithMediaPayload from '../models/TemplateButtonWithMediaPayload';
 import TextMessage from '../models/TextMessage';
+import UploadMediaRequest from '../models/UploadMediaRequest';
 
 /**
 * MessageSending service.
@@ -50,8 +50,8 @@ export default class MessageSendingApi {
 
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeySendAudioPost operation.
-     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendAudioPostCallback
+     * Callback function to receive the result of the sendAudio operation.
+     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~sendAudioCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -62,26 +62,26 @@ export default class MessageSendingApi {
      * Sends a audio message by uploading to the WhatsApp servers every time. This is not recommended for bulk sending.
      * @param {String} instanceKey Instance key
      * @param {String} to The recipient's number
-     * @param {module:WhatsAPI/models/InstancesInstanceKeySendAudioPostRequest} instancesInstanceKeySendAudioPostRequest 
+     * @param {module:WhatsAPI/models/SendAudioRequest} sendAudioRequest 
      * @param {Object} opts Optional parameters
      * @param {String} opts.caption Attached caption
-     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendAudioPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~sendAudioCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeySendAudioPost(instanceKey, to, instancesInstanceKeySendAudioPostRequest, opts, callback) {
+    sendAudio(instanceKey, to, sendAudioRequest, opts, callback) {
       opts = opts || {};
-      let postBody = instancesInstanceKeySendAudioPostRequest;
+      let postBody = sendAudioRequest;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeySendAudioPost");
+        throw new Error("Missing the required parameter 'instanceKey' when calling sendAudio");
       }
       // verify the required parameter 'to' is set
       if (to === undefined || to === null) {
-        throw new Error("Missing the required parameter 'to' when calling instancesInstanceKeySendAudioPost");
+        throw new Error("Missing the required parameter 'to' when calling sendAudio");
       }
-      // verify the required parameter 'instancesInstanceKeySendAudioPostRequest' is set
-      if (instancesInstanceKeySendAudioPostRequest === undefined || instancesInstanceKeySendAudioPostRequest === null) {
-        throw new Error("Missing the required parameter 'instancesInstanceKeySendAudioPostRequest' when calling instancesInstanceKeySendAudioPost");
+      // verify the required parameter 'sendAudioRequest' is set
+      if (sendAudioRequest === undefined || sendAudioRequest === null) {
+        throw new Error("Missing the required parameter 'sendAudioRequest' when calling sendAudio");
       }
 
       let pathParams = {
@@ -108,56 +108,8 @@ export default class MessageSendingApi {
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeySendButtonMediaPost operation.
-     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendButtonMediaPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Send a button message with a media header.
-     * Sends an interactive button message to the given user. This message also has media header with it. Make sure that all the button ids are unique
-     * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/models/ButtonMessageWithMediaPayload} data Message data
-     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendButtonMediaPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/APIResponse}
-     */
-    instancesInstanceKeySendButtonMediaPost(instanceKey, data, callback) {
-      let postBody = data;
-      // verify the required parameter 'instanceKey' is set
-      if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeySendButtonMediaPost");
-      }
-      // verify the required parameter 'data' is set
-      if (data === undefined || data === null) {
-        throw new Error("Missing the required parameter 'data' when calling instancesInstanceKeySendButtonMediaPost");
-      }
-
-      let pathParams = {
-        'instance_key': instanceKey
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['ApiKeyAuth'];
-      let contentTypes = ['application/json'];
-      let accepts = ['*/*'];
-      let returnType = APIResponse;
-      return this.apiClient.callApi(
-        '/instances/{instance_key}/send/button-media', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the instancesInstanceKeySendButtonsPost operation.
-     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendButtonsPostCallback
+     * Callback function to receive the result of the sendButtonMessage operation.
+     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~sendButtonMessageCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -168,18 +120,18 @@ export default class MessageSendingApi {
      * Sends an interactive button message to the given user. Make sure that all the button ids are unique
      * @param {String} instanceKey Instance key
      * @param {module:WhatsAPI/models/ButtonMessagePayload} data Message data
-     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendButtonsPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~sendButtonMessageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeySendButtonsPost(instanceKey, data, callback) {
+    sendButtonMessage(instanceKey, data, callback) {
       let postBody = data;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeySendButtonsPost");
+        throw new Error("Missing the required parameter 'instanceKey' when calling sendButtonMessage");
       }
       // verify the required parameter 'data' is set
       if (data === undefined || data === null) {
-        throw new Error("Missing the required parameter 'data' when calling instancesInstanceKeySendButtonsPost");
+        throw new Error("Missing the required parameter 'data' when calling sendButtonMessage");
       }
 
       let pathParams = {
@@ -204,8 +156,56 @@ export default class MessageSendingApi {
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeySendContactPost operation.
-     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendContactPostCallback
+     * Callback function to receive the result of the sendButtonWithMedia operation.
+     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~sendButtonWithMediaCallback
+     * @param {String} error Error message, if any.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Send a button message with a media header.
+     * Sends an interactive button message to the given user. This message also has media header with it. Make sure that all the button ids are unique
+     * @param {String} instanceKey Instance key
+     * @param {module:WhatsAPI/models/ButtonMessageWithMediaPayload} data Message data
+     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~sendButtonWithMediaCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
+     */
+    sendButtonWithMedia(instanceKey, data, callback) {
+      let postBody = data;
+      // verify the required parameter 'instanceKey' is set
+      if (instanceKey === undefined || instanceKey === null) {
+        throw new Error("Missing the required parameter 'instanceKey' when calling sendButtonWithMedia");
+      }
+      // verify the required parameter 'data' is set
+      if (data === undefined || data === null) {
+        throw new Error("Missing the required parameter 'data' when calling sendButtonWithMedia");
+      }
+
+      let pathParams = {
+        'instance_key': instanceKey
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['*/*'];
+      let returnType = APIResponse;
+      return this.apiClient.callApi(
+        '/instances/{instance_key}/send/button-media', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the sendContact operation.
+     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~sendContactCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -216,18 +216,18 @@ export default class MessageSendingApi {
      * Sends a contact (vcard) message to the given user.
      * @param {String} instanceKey Instance key
      * @param {module:WhatsAPI/models/ContactMessagePayload} data Message data
-     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendContactPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~sendContactCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeySendContactPost(instanceKey, data, callback) {
+    sendContact(instanceKey, data, callback) {
       let postBody = data;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeySendContactPost");
+        throw new Error("Missing the required parameter 'instanceKey' when calling sendContact");
       }
       // verify the required parameter 'data' is set
       if (data === undefined || data === null) {
-        throw new Error("Missing the required parameter 'data' when calling instancesInstanceKeySendContactPost");
+        throw new Error("Missing the required parameter 'data' when calling sendContact");
       }
 
       let pathParams = {
@@ -252,8 +252,8 @@ export default class MessageSendingApi {
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeySendDocumentPost operation.
-     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendDocumentPostCallback
+     * Callback function to receive the result of the sendDocument operation.
+     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~sendDocumentCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -264,26 +264,26 @@ export default class MessageSendingApi {
      * Sends a document message by uploading to the WhatsApp servers every time. This is not recommended for bulk sending.
      * @param {String} instanceKey Instance key
      * @param {String} to The recipient's number
-     * @param {module:WhatsAPI/models/InstancesInstanceKeySendDocumentPostRequest} instancesInstanceKeySendDocumentPostRequest 
+     * @param {module:WhatsAPI/models/SendDocumentRequest} sendDocumentRequest 
      * @param {Object} opts Optional parameters
      * @param {String} opts.caption Attached caption
-     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendDocumentPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~sendDocumentCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeySendDocumentPost(instanceKey, to, instancesInstanceKeySendDocumentPostRequest, opts, callback) {
+    sendDocument(instanceKey, to, sendDocumentRequest, opts, callback) {
       opts = opts || {};
-      let postBody = instancesInstanceKeySendDocumentPostRequest;
+      let postBody = sendDocumentRequest;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeySendDocumentPost");
+        throw new Error("Missing the required parameter 'instanceKey' when calling sendDocument");
       }
       // verify the required parameter 'to' is set
       if (to === undefined || to === null) {
-        throw new Error("Missing the required parameter 'to' when calling instancesInstanceKeySendDocumentPost");
+        throw new Error("Missing the required parameter 'to' when calling sendDocument");
       }
-      // verify the required parameter 'instancesInstanceKeySendDocumentPostRequest' is set
-      if (instancesInstanceKeySendDocumentPostRequest === undefined || instancesInstanceKeySendDocumentPostRequest === null) {
-        throw new Error("Missing the required parameter 'instancesInstanceKeySendDocumentPostRequest' when calling instancesInstanceKeySendDocumentPost");
+      // verify the required parameter 'sendDocumentRequest' is set
+      if (sendDocumentRequest === undefined || sendDocumentRequest === null) {
+        throw new Error("Missing the required parameter 'sendDocumentRequest' when calling sendDocument");
       }
 
       let pathParams = {
@@ -310,8 +310,8 @@ export default class MessageSendingApi {
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeySendImagePost operation.
-     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendImagePostCallback
+     * Callback function to receive the result of the sendImage operation.
+     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~sendImageCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -322,26 +322,26 @@ export default class MessageSendingApi {
      * Sends a image message by uploading to the WhatsApp servers every time. This is not recommended for bulk sending.
      * @param {String} instanceKey Instance key
      * @param {String} to The recipient's number
-     * @param {module:WhatsAPI/models/InstancesInstanceKeySendImagePostRequest} instancesInstanceKeySendImagePostRequest 
+     * @param {module:WhatsAPI/models/SendImageRequest} sendImageRequest 
      * @param {Object} opts Optional parameters
      * @param {String} opts.caption Attached caption
-     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendImagePostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~sendImageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeySendImagePost(instanceKey, to, instancesInstanceKeySendImagePostRequest, opts, callback) {
+    sendImage(instanceKey, to, sendImageRequest, opts, callback) {
       opts = opts || {};
-      let postBody = instancesInstanceKeySendImagePostRequest;
+      let postBody = sendImageRequest;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeySendImagePost");
+        throw new Error("Missing the required parameter 'instanceKey' when calling sendImage");
       }
       // verify the required parameter 'to' is set
       if (to === undefined || to === null) {
-        throw new Error("Missing the required parameter 'to' when calling instancesInstanceKeySendImagePost");
+        throw new Error("Missing the required parameter 'to' when calling sendImage");
       }
-      // verify the required parameter 'instancesInstanceKeySendImagePostRequest' is set
-      if (instancesInstanceKeySendImagePostRequest === undefined || instancesInstanceKeySendImagePostRequest === null) {
-        throw new Error("Missing the required parameter 'instancesInstanceKeySendImagePostRequest' when calling instancesInstanceKeySendImagePost");
+      // verify the required parameter 'sendImageRequest' is set
+      if (sendImageRequest === undefined || sendImageRequest === null) {
+        throw new Error("Missing the required parameter 'sendImageRequest' when calling sendImage");
       }
 
       let pathParams = {
@@ -368,8 +368,8 @@ export default class MessageSendingApi {
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeySendListPost operation.
-     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendListPostCallback
+     * Callback function to receive the result of the sendListMessage operation.
+     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~sendListMessageCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -380,18 +380,18 @@ export default class MessageSendingApi {
      * Sends an interactive List message to the given user.
      * @param {String} instanceKey Instance key
      * @param {module:WhatsAPI/models/ListMessagePayload} data Message data
-     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendListPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~sendListMessageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeySendListPost(instanceKey, data, callback) {
+    sendListMessage(instanceKey, data, callback) {
       let postBody = data;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeySendListPost");
+        throw new Error("Missing the required parameter 'instanceKey' when calling sendListMessage");
       }
       // verify the required parameter 'data' is set
       if (data === undefined || data === null) {
-        throw new Error("Missing the required parameter 'data' when calling instancesInstanceKeySendListPost");
+        throw new Error("Missing the required parameter 'data' when calling sendListMessage");
       }
 
       let pathParams = {
@@ -416,8 +416,8 @@ export default class MessageSendingApi {
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeySendLocationPost operation.
-     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendLocationPostCallback
+     * Callback function to receive the result of the sendLocation operation.
+     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~sendLocationCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -428,18 +428,18 @@ export default class MessageSendingApi {
      * Sends a location message to the given user. This is static location and does not update Note: The Address and Url fields are optional
      * @param {String} instanceKey Instance key
      * @param {module:WhatsAPI/models/LocationMessagePayload} data Message data
-     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendLocationPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~sendLocationCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeySendLocationPost(instanceKey, data, callback) {
+    sendLocation(instanceKey, data, callback) {
       let postBody = data;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeySendLocationPost");
+        throw new Error("Missing the required parameter 'instanceKey' when calling sendLocation");
       }
       // verify the required parameter 'data' is set
       if (data === undefined || data === null) {
-        throw new Error("Missing the required parameter 'data' when calling instancesInstanceKeySendLocationPost");
+        throw new Error("Missing the required parameter 'data' when calling sendLocation");
       }
 
       let pathParams = {
@@ -464,8 +464,8 @@ export default class MessageSendingApi {
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeySendMediaPost operation.
-     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendMediaPostCallback
+     * Callback function to receive the result of the sendMediaMessage operation.
+     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~sendMediaMessageCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -476,18 +476,18 @@ export default class MessageSendingApi {
      * Sends a media message to the given user.
      * @param {String} instanceKey Instance key
      * @param {module:WhatsAPI/models/SendMediaPayload} data Message data
-     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendMediaPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~sendMediaMessageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeySendMediaPost(instanceKey, data, callback) {
+    sendMediaMessage(instanceKey, data, callback) {
       let postBody = data;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeySendMediaPost");
+        throw new Error("Missing the required parameter 'instanceKey' when calling sendMediaMessage");
       }
       // verify the required parameter 'data' is set
       if (data === undefined || data === null) {
-        throw new Error("Missing the required parameter 'data' when calling instancesInstanceKeySendMediaPost");
+        throw new Error("Missing the required parameter 'data' when calling sendMediaMessage");
       }
 
       let pathParams = {
@@ -512,8 +512,8 @@ export default class MessageSendingApi {
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeySendPollPost operation.
-     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendPollPostCallback
+     * Callback function to receive the result of the sendPollMessage operation.
+     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~sendPollMessageCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -524,18 +524,18 @@ export default class MessageSendingApi {
      * Sends an interactive poll message to the given user. The poll message is a new feature that is currently in beta.
      * @param {String} instanceKey Instance key
      * @param {module:WhatsAPI/models/PollMessagePayload} data Message data
-     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendPollPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~sendPollMessageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeySendPollPost(instanceKey, data, callback) {
+    sendPollMessage(instanceKey, data, callback) {
       let postBody = data;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeySendPollPost");
+        throw new Error("Missing the required parameter 'instanceKey' when calling sendPollMessage");
       }
       // verify the required parameter 'data' is set
       if (data === undefined || data === null) {
-        throw new Error("Missing the required parameter 'data' when calling instancesInstanceKeySendPollPost");
+        throw new Error("Missing the required parameter 'data' when calling sendPollMessage");
       }
 
       let pathParams = {
@@ -560,56 +560,8 @@ export default class MessageSendingApi {
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeySendTemplateMediaPost operation.
-     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendTemplateMediaPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Send a template message with media.
-     * Sends an interactive template message with a media header to the given user. Note: The valid button types are \"replyButton\", \"urlButton\", \"callButton\"
-     * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/models/TemplateButtonWithMediaPayload} data Message data
-     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendTemplateMediaPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/APIResponse}
-     */
-    instancesInstanceKeySendTemplateMediaPost(instanceKey, data, callback) {
-      let postBody = data;
-      // verify the required parameter 'instanceKey' is set
-      if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeySendTemplateMediaPost");
-      }
-      // verify the required parameter 'data' is set
-      if (data === undefined || data === null) {
-        throw new Error("Missing the required parameter 'data' when calling instancesInstanceKeySendTemplateMediaPost");
-      }
-
-      let pathParams = {
-        'instance_key': instanceKey
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['ApiKeyAuth'];
-      let contentTypes = ['application/json'];
-      let accepts = ['*/*'];
-      let returnType = APIResponse;
-      return this.apiClient.callApi(
-        '/instances/{instance_key}/send/template-media', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the instancesInstanceKeySendTemplatePost operation.
-     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendTemplatePostCallback
+     * Callback function to receive the result of the sendTemplate operation.
+     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~sendTemplateCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -620,18 +572,18 @@ export default class MessageSendingApi {
      * Sends an interactive template message to the given user. Note: The valid button types are \"replyButton\", \"urlButton\", \"callButton\"
      * @param {String} instanceKey Instance key
      * @param {module:WhatsAPI/models/TemplateButtonPayload} data Message data
-     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendTemplatePostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~sendTemplateCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeySendTemplatePost(instanceKey, data, callback) {
+    sendTemplate(instanceKey, data, callback) {
       let postBody = data;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeySendTemplatePost");
+        throw new Error("Missing the required parameter 'instanceKey' when calling sendTemplate");
       }
       // verify the required parameter 'data' is set
       if (data === undefined || data === null) {
-        throw new Error("Missing the required parameter 'data' when calling instancesInstanceKeySendTemplatePost");
+        throw new Error("Missing the required parameter 'data' when calling sendTemplate");
       }
 
       let pathParams = {
@@ -656,8 +608,56 @@ export default class MessageSendingApi {
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeySendTextPost operation.
-     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendTextPostCallback
+     * Callback function to receive the result of the sendTemplateWithMedia operation.
+     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~sendTemplateWithMediaCallback
+     * @param {String} error Error message, if any.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Send a template message with media.
+     * Sends an interactive template message with a media header to the given user. Note: The valid button types are \"replyButton\", \"urlButton\", \"callButton\"
+     * @param {String} instanceKey Instance key
+     * @param {module:WhatsAPI/models/TemplateButtonWithMediaPayload} data Message data
+     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~sendTemplateWithMediaCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
+     */
+    sendTemplateWithMedia(instanceKey, data, callback) {
+      let postBody = data;
+      // verify the required parameter 'instanceKey' is set
+      if (instanceKey === undefined || instanceKey === null) {
+        throw new Error("Missing the required parameter 'instanceKey' when calling sendTemplateWithMedia");
+      }
+      // verify the required parameter 'data' is set
+      if (data === undefined || data === null) {
+        throw new Error("Missing the required parameter 'data' when calling sendTemplateWithMedia");
+      }
+
+      let pathParams = {
+        'instance_key': instanceKey
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['*/*'];
+      let returnType = APIResponse;
+      return this.apiClient.callApi(
+        '/instances/{instance_key}/send/template-media', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the sendTextMessage operation.
+     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~sendTextMessageCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -668,18 +668,18 @@ export default class MessageSendingApi {
      * Sends a text message to the given user.
      * @param {String} instanceKey Instance key
      * @param {module:WhatsAPI/models/TextMessage} data Message data
-     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendTextPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~sendTextMessageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeySendTextPost(instanceKey, data, callback) {
+    sendTextMessage(instanceKey, data, callback) {
       let postBody = data;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeySendTextPost");
+        throw new Error("Missing the required parameter 'instanceKey' when calling sendTextMessage");
       }
       // verify the required parameter 'data' is set
       if (data === undefined || data === null) {
-        throw new Error("Missing the required parameter 'data' when calling instancesInstanceKeySendTextPost");
+        throw new Error("Missing the required parameter 'data' when calling sendTextMessage");
       }
 
       let pathParams = {
@@ -704,62 +704,8 @@ export default class MessageSendingApi {
     }
 
     /**
-     * Callback function to receive the result of the instancesInstanceKeySendUploadPost operation.
-     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendUploadPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Upload media.
-     * Uploads media to WhatsApp servers and returns the media keys. Store the returned media keys, as you will need them to send media messages
-     * @param {String} instanceKey Instance key
-     * @param {module:WhatsAPI/models/String} type Media type
-     * @param {module:WhatsAPI/models/InstancesInstanceKeySendUploadPostRequest} instancesInstanceKeySendUploadPostRequest 
-     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendUploadPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:WhatsAPI/models/APIResponse}
-     */
-    instancesInstanceKeySendUploadPost(instanceKey, type, instancesInstanceKeySendUploadPostRequest, callback) {
-      let postBody = instancesInstanceKeySendUploadPostRequest;
-      // verify the required parameter 'instanceKey' is set
-      if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeySendUploadPost");
-      }
-      // verify the required parameter 'type' is set
-      if (type === undefined || type === null) {
-        throw new Error("Missing the required parameter 'type' when calling instancesInstanceKeySendUploadPost");
-      }
-      // verify the required parameter 'instancesInstanceKeySendUploadPostRequest' is set
-      if (instancesInstanceKeySendUploadPostRequest === undefined || instancesInstanceKeySendUploadPostRequest === null) {
-        throw new Error("Missing the required parameter 'instancesInstanceKeySendUploadPostRequest' when calling instancesInstanceKeySendUploadPost");
-      }
-
-      let pathParams = {
-        'instance_key': instanceKey
-      };
-      let queryParams = {
-        'type': type
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['ApiKeyAuth'];
-      let contentTypes = ['application/json'];
-      let accepts = ['*/*'];
-      let returnType = APIResponse;
-      return this.apiClient.callApi(
-        '/instances/{instance_key}/send/upload', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the instancesInstanceKeySendVideoPost operation.
-     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendVideoPostCallback
+     * Callback function to receive the result of the sendVideo operation.
+     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~sendVideoCallback
      * @param {String} error Error message, if any.
      * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -770,26 +716,26 @@ export default class MessageSendingApi {
      * Sends a video message by uploading to the WhatsApp servers every time. This is not recommended for bulk sending.
      * @param {String} instanceKey Instance key
      * @param {String} to The recipient's number
-     * @param {module:WhatsAPI/models/InstancesInstanceKeySendVideoPostRequest} instancesInstanceKeySendVideoPostRequest 
+     * @param {module:WhatsAPI/models/SendVideoRequest} sendVideoRequest 
      * @param {Object} opts Optional parameters
      * @param {String} opts.caption Attached caption
-     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~instancesInstanceKeySendVideoPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~sendVideoCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    instancesInstanceKeySendVideoPost(instanceKey, to, instancesInstanceKeySendVideoPostRequest, opts, callback) {
+    sendVideo(instanceKey, to, sendVideoRequest, opts, callback) {
       opts = opts || {};
-      let postBody = instancesInstanceKeySendVideoPostRequest;
+      let postBody = sendVideoRequest;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
-        throw new Error("Missing the required parameter 'instanceKey' when calling instancesInstanceKeySendVideoPost");
+        throw new Error("Missing the required parameter 'instanceKey' when calling sendVideo");
       }
       // verify the required parameter 'to' is set
       if (to === undefined || to === null) {
-        throw new Error("Missing the required parameter 'to' when calling instancesInstanceKeySendVideoPost");
+        throw new Error("Missing the required parameter 'to' when calling sendVideo");
       }
-      // verify the required parameter 'instancesInstanceKeySendVideoPostRequest' is set
-      if (instancesInstanceKeySendVideoPostRequest === undefined || instancesInstanceKeySendVideoPostRequest === null) {
-        throw new Error("Missing the required parameter 'instancesInstanceKeySendVideoPostRequest' when calling instancesInstanceKeySendVideoPost");
+      // verify the required parameter 'sendVideoRequest' is set
+      if (sendVideoRequest === undefined || sendVideoRequest === null) {
+        throw new Error("Missing the required parameter 'sendVideoRequest' when calling sendVideo");
       }
 
       let pathParams = {
@@ -810,6 +756,60 @@ export default class MessageSendingApi {
       let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/send/video', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the uploadMedia operation.
+     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~uploadMediaCallback
+     * @param {String} error Error message, if any.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Upload media.
+     * Uploads media to WhatsApp servers and returns the media keys. Store the returned media keys, as you will need them to send media messages
+     * @param {String} instanceKey Instance key
+     * @param {module:WhatsAPI/models/String} type Media type
+     * @param {module:WhatsAPI/models/UploadMediaRequest} uploadMediaRequest 
+     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~uploadMediaCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
+     */
+    uploadMedia(instanceKey, type, uploadMediaRequest, callback) {
+      let postBody = uploadMediaRequest;
+      // verify the required parameter 'instanceKey' is set
+      if (instanceKey === undefined || instanceKey === null) {
+        throw new Error("Missing the required parameter 'instanceKey' when calling uploadMedia");
+      }
+      // verify the required parameter 'type' is set
+      if (type === undefined || type === null) {
+        throw new Error("Missing the required parameter 'type' when calling uploadMedia");
+      }
+      // verify the required parameter 'uploadMediaRequest' is set
+      if (uploadMediaRequest === undefined || uploadMediaRequest === null) {
+        throw new Error("Missing the required parameter 'uploadMediaRequest' when calling uploadMedia");
+      }
+
+      let pathParams = {
+        'instance_key': instanceKey
+      };
+      let queryParams = {
+        'type': type
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['*/*'];
+      let returnType = APIResponse;
+      return this.apiClient.callApi(
+        '/instances/{instance_key}/send/upload', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

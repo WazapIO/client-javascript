@@ -116,7 +116,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.instancesInstanceKeyBusinessCatalogGet(instanceKey, callback);
+api.fetchCatlog(instanceKey, callback);
 
 ```
 
@@ -126,48 +126,48 @@ All URIs are relative to */api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*WhatsApi.BusinessManagementApi* | [**instancesInstanceKeyBusinessCatalogGet**](docs/BusinessManagementApi.md#instancesInstanceKeyBusinessCatalogGet) | **GET** /instances/{instance_key}/business/catalog | Fetches the catlog.
-*WhatsApi.GroupManagementApi* | [**instancesInstanceKeyGroupsAdminGet**](docs/GroupManagementApi.md#instancesInstanceKeyGroupsAdminGet) | **GET** /instances/{instance_key}/groups/admin | Get admin groupss.
-*WhatsApi.GroupManagementApi* | [**instancesInstanceKeyGroupsCreatePost**](docs/GroupManagementApi.md#instancesInstanceKeyGroupsCreatePost) | **POST** /instances/{instance_key}/groups/create | Create group.
-*WhatsApi.GroupManagementApi* | [**instancesInstanceKeyGroupsGet**](docs/GroupManagementApi.md#instancesInstanceKeyGroupsGet) | **GET** /instances/{instance_key}/groups/ | Get all groups.
-*WhatsApi.GroupManagementApi* | [**instancesInstanceKeyGroupsGroupIdAnnouncePut**](docs/GroupManagementApi.md#instancesInstanceKeyGroupsGroupIdAnnouncePut) | **PUT** /instances/{instance_key}/groups/{group_id}/announce | Set group announce.
-*WhatsApi.GroupManagementApi* | [**instancesInstanceKeyGroupsGroupIdDelete**](docs/GroupManagementApi.md#instancesInstanceKeyGroupsGroupIdDelete) | **DELETE** /instances/{instance_key}/groups/{group_id}/ | Leaves the group.
-*WhatsApi.GroupManagementApi* | [**instancesInstanceKeyGroupsGroupIdDescriptionPut**](docs/GroupManagementApi.md#instancesInstanceKeyGroupsGroupIdDescriptionPut) | **PUT** /instances/{instance_key}/groups/{group_id}/description | Set group description.
-*WhatsApi.GroupManagementApi* | [**instancesInstanceKeyGroupsGroupIdGet**](docs/GroupManagementApi.md#instancesInstanceKeyGroupsGroupIdGet) | **GET** /instances/{instance_key}/groups/{group_id} | Get group.
-*WhatsApi.GroupManagementApi* | [**instancesInstanceKeyGroupsGroupIdInviteCodeGet**](docs/GroupManagementApi.md#instancesInstanceKeyGroupsGroupIdInviteCodeGet) | **GET** /instances/{instance_key}/groups/{group_id}/invite-code | Get group invite code.
-*WhatsApi.GroupManagementApi* | [**instancesInstanceKeyGroupsGroupIdLockPut**](docs/GroupManagementApi.md#instancesInstanceKeyGroupsGroupIdLockPut) | **PUT** /instances/{instance_key}/groups/{group_id}/lock | Set group locked.
-*WhatsApi.GroupManagementApi* | [**instancesInstanceKeyGroupsGroupIdNamePut**](docs/GroupManagementApi.md#instancesInstanceKeyGroupsGroupIdNamePut) | **PUT** /instances/{instance_key}/groups/{group_id}/name | Set group name.
-*WhatsApi.GroupManagementApi* | [**instancesInstanceKeyGroupsGroupIdParticipantsAddPost**](docs/GroupManagementApi.md#instancesInstanceKeyGroupsGroupIdParticipantsAddPost) | **POST** /instances/{instance_key}/groups/{group_id}/participants/add | Add participant.
-*WhatsApi.GroupManagementApi* | [**instancesInstanceKeyGroupsGroupIdParticipantsDemotePut**](docs/GroupManagementApi.md#instancesInstanceKeyGroupsGroupIdParticipantsDemotePut) | **PUT** /instances/{instance_key}/groups/{group_id}/participants/demote | Demote participant.
-*WhatsApi.GroupManagementApi* | [**instancesInstanceKeyGroupsGroupIdParticipantsPromotePut**](docs/GroupManagementApi.md#instancesInstanceKeyGroupsGroupIdParticipantsPromotePut) | **PUT** /instances/{instance_key}/groups/{group_id}/participants/promote | Promote participant.
-*WhatsApi.GroupManagementApi* | [**instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete**](docs/GroupManagementApi.md#instancesInstanceKeyGroupsGroupIdParticipantsRemoveDelete) | **DELETE** /instances/{instance_key}/groups/{group_id}/participants/remove | Remove participant.
-*WhatsApi.GroupManagementApi* | [**instancesInstanceKeyGroupsGroupIdProfilePicPut**](docs/GroupManagementApi.md#instancesInstanceKeyGroupsGroupIdProfilePicPut) | **PUT** /instances/{instance_key}/groups/{group_id}/profile-pic | Set group picture.
-*WhatsApi.GroupManagementApi* | [**instancesInstanceKeyGroupsInviteInfoGet**](docs/GroupManagementApi.md#instancesInstanceKeyGroupsInviteInfoGet) | **GET** /instances/{instance_key}/groups/invite-info | Get group from invite link.
-*WhatsApi.InstanceApi* | [**instancesCreateGet**](docs/InstanceApi.md#instancesCreateGet) | **GET** /instances/create | Creates a new instance key.
-*WhatsApi.InstanceApi* | [**instancesInstanceKeyContactsGet**](docs/InstanceApi.md#instancesInstanceKeyContactsGet) | **GET** /instances/{instance_key}/contacts | Get contacts.
-*WhatsApi.InstanceApi* | [**instancesInstanceKeyDeleteDelete**](docs/InstanceApi.md#instancesInstanceKeyDeleteDelete) | **DELETE** /instances/{instance_key}/delete | Delete Instance.
-*WhatsApi.InstanceApi* | [**instancesInstanceKeyGet**](docs/InstanceApi.md#instancesInstanceKeyGet) | **GET** /instances/{instance_key}/ | Get Instance.
-*WhatsApi.InstanceApi* | [**instancesInstanceKeyLogoutDelete**](docs/InstanceApi.md#instancesInstanceKeyLogoutDelete) | **DELETE** /instances/{instance_key}/logout | Logout Instance.
-*WhatsApi.InstanceApi* | [**instancesInstanceKeyQrcodeGet**](docs/InstanceApi.md#instancesInstanceKeyQrcodeGet) | **GET** /instances/{instance_key}/qrcode | Get QrCode.
-*WhatsApi.InstanceApi* | [**instancesInstanceKeyWebhookPut**](docs/InstanceApi.md#instancesInstanceKeyWebhookPut) | **PUT** /instances/{instance_key}/webhook | Change Webhook url.
-*WhatsApi.InstanceApi* | [**instancesListGet**](docs/InstanceApi.md#instancesListGet) | **GET** /instances/list | Get all instances.
-*WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendAudioPost**](docs/MessageSendingApi.md#instancesInstanceKeySendAudioPost) | **POST** /instances/{instance_key}/send/audio | Send raw audio.
-*WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendButtonMediaPost**](docs/MessageSendingApi.md#instancesInstanceKeySendButtonMediaPost) | **POST** /instances/{instance_key}/send/button-media | Send a button message with a media header.
-*WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendButtonsPost**](docs/MessageSendingApi.md#instancesInstanceKeySendButtonsPost) | **POST** /instances/{instance_key}/send/buttons | Send a button message.
-*WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendContactPost**](docs/MessageSendingApi.md#instancesInstanceKeySendContactPost) | **POST** /instances/{instance_key}/send/contact | Send a contact message.
-*WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendDocumentPost**](docs/MessageSendingApi.md#instancesInstanceKeySendDocumentPost) | **POST** /instances/{instance_key}/send/document | Send raw document.
-*WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendImagePost**](docs/MessageSendingApi.md#instancesInstanceKeySendImagePost) | **POST** /instances/{instance_key}/send/image | Send raw image.
-*WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendListPost**](docs/MessageSendingApi.md#instancesInstanceKeySendListPost) | **POST** /instances/{instance_key}/send/list | Send a List message.
-*WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendLocationPost**](docs/MessageSendingApi.md#instancesInstanceKeySendLocationPost) | **POST** /instances/{instance_key}/send/location | Send a location message.
-*WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendMediaPost**](docs/MessageSendingApi.md#instancesInstanceKeySendMediaPost) | **POST** /instances/{instance_key}/send/media | Send a media message.
-*WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendPollPost**](docs/MessageSendingApi.md#instancesInstanceKeySendPollPost) | **POST** /instances/{instance_key}/send/poll | Send a Poll message.
-*WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendTemplateMediaPost**](docs/MessageSendingApi.md#instancesInstanceKeySendTemplateMediaPost) | **POST** /instances/{instance_key}/send/template-media | Send a template message with media.
-*WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendTemplatePost**](docs/MessageSendingApi.md#instancesInstanceKeySendTemplatePost) | **POST** /instances/{instance_key}/send/template | Send a template message.
-*WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendTextPost**](docs/MessageSendingApi.md#instancesInstanceKeySendTextPost) | **POST** /instances/{instance_key}/send/text | Send a text message.
-*WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendUploadPost**](docs/MessageSendingApi.md#instancesInstanceKeySendUploadPost) | **POST** /instances/{instance_key}/send/upload | Upload media.
-*WhatsApi.MessageSendingApi* | [**instancesInstanceKeySendVideoPost**](docs/MessageSendingApi.md#instancesInstanceKeySendVideoPost) | **POST** /instances/{instance_key}/send/video | Send raw video.
-*WhatsApi.MiscellaneousApi* | [**instancesInstanceKeyMiscProfilePicGet**](docs/MiscellaneousApi.md#instancesInstanceKeyMiscProfilePicGet) | **GET** /instances/{instance_key}/misc/profile-pic | Get profile pic.
-*WhatsApi.MiscellaneousApi* | [**instancesInstanceKeyMiscUserInfoPost**](docs/MiscellaneousApi.md#instancesInstanceKeyMiscUserInfoPost) | **POST** /instances/{instance_key}/misc/user-info | Fetches the users info.
+*WhatsApi.BusinessManagementApi* | [**fetchCatlog**](docs/BusinessManagementApi.md#fetchCatlog) | **GET** /instances/{instance_key}/business/catalog | Fetches the catlog.
+*WhatsApi.GroupManagementApi* | [**addParticipant**](docs/GroupManagementApi.md#addParticipant) | **POST** /instances/{instance_key}/groups/{group_id}/participants/add | Add participant.
+*WhatsApi.GroupManagementApi* | [**createGroup**](docs/GroupManagementApi.md#createGroup) | **POST** /instances/{instance_key}/groups/create | Create group.
+*WhatsApi.GroupManagementApi* | [**demoteParticipant**](docs/GroupManagementApi.md#demoteParticipant) | **PUT** /instances/{instance_key}/groups/{group_id}/participants/demote | Demote participant.
+*WhatsApi.GroupManagementApi* | [**getAdminGroups**](docs/GroupManagementApi.md#getAdminGroups) | **GET** /instances/{instance_key}/groups/admin | Get admin groups.
+*WhatsApi.GroupManagementApi* | [**getAllGroups**](docs/GroupManagementApi.md#getAllGroups) | **GET** /instances/{instance_key}/groups/ | Get all groups.
+*WhatsApi.GroupManagementApi* | [**getGroup**](docs/GroupManagementApi.md#getGroup) | **GET** /instances/{instance_key}/groups/{group_id} | Get group.
+*WhatsApi.GroupManagementApi* | [**getGroupFromInviteLink**](docs/GroupManagementApi.md#getGroupFromInviteLink) | **GET** /instances/{instance_key}/groups/invite-info | Get group from invite link.
+*WhatsApi.GroupManagementApi* | [**getGroupInviteCode**](docs/GroupManagementApi.md#getGroupInviteCode) | **GET** /instances/{instance_key}/groups/{group_id}/invite-code | Get group invite code.
+*WhatsApi.GroupManagementApi* | [**leaveGroup**](docs/GroupManagementApi.md#leaveGroup) | **DELETE** /instances/{instance_key}/groups/{group_id}/ | Leaves the group.
+*WhatsApi.GroupManagementApi* | [**promoteParticipant**](docs/GroupManagementApi.md#promoteParticipant) | **PUT** /instances/{instance_key}/groups/{group_id}/participants/promote | Promote participant.
+*WhatsApi.GroupManagementApi* | [**removeParticipant**](docs/GroupManagementApi.md#removeParticipant) | **DELETE** /instances/{instance_key}/groups/{group_id}/participants/remove | Remove participant.
+*WhatsApi.GroupManagementApi* | [**setGroupAnnounce**](docs/GroupManagementApi.md#setGroupAnnounce) | **PUT** /instances/{instance_key}/groups/{group_id}/announce | Set group announce.
+*WhatsApi.GroupManagementApi* | [**setGroupDescription**](docs/GroupManagementApi.md#setGroupDescription) | **PUT** /instances/{instance_key}/groups/{group_id}/description | Set group description.
+*WhatsApi.GroupManagementApi* | [**setGroupLocked**](docs/GroupManagementApi.md#setGroupLocked) | **PUT** /instances/{instance_key}/groups/{group_id}/lock | Set group locked.
+*WhatsApi.GroupManagementApi* | [**setGroupName**](docs/GroupManagementApi.md#setGroupName) | **PUT** /instances/{instance_key}/groups/{group_id}/name | Set group name.
+*WhatsApi.GroupManagementApi* | [**setGroupPicture**](docs/GroupManagementApi.md#setGroupPicture) | **PUT** /instances/{instance_key}/groups/{group_id}/profile-pic | Set group picture.
+*WhatsApi.InstanceApi* | [**changeWebhookUrl**](docs/InstanceApi.md#changeWebhookUrl) | **PUT** /instances/{instance_key}/webhook | Change Webhook url.
+*WhatsApi.InstanceApi* | [**createInstance**](docs/InstanceApi.md#createInstance) | **GET** /instances/create | Creates a new instance key.
+*WhatsApi.InstanceApi* | [**deleteInstance**](docs/InstanceApi.md#deleteInstance) | **DELETE** /instances/{instance_key}/delete | Delete Instance.
+*WhatsApi.InstanceApi* | [**getContacts**](docs/InstanceApi.md#getContacts) | **GET** /instances/{instance_key}/contacts | Get contacts.
+*WhatsApi.InstanceApi* | [**getInstance**](docs/InstanceApi.md#getInstance) | **GET** /instances/{instance_key}/ | Get Instance.
+*WhatsApi.InstanceApi* | [**getQrCode**](docs/InstanceApi.md#getQrCode) | **GET** /instances/{instance_key}/qrcode | Get QrCode.
+*WhatsApi.InstanceApi* | [**listInstances**](docs/InstanceApi.md#listInstances) | **GET** /instances/list | Get all instances.
+*WhatsApi.InstanceApi* | [**logoutInstance**](docs/InstanceApi.md#logoutInstance) | **DELETE** /instances/{instance_key}/logout | Logout Instance.
+*WhatsApi.MessageSendingApi* | [**sendAudio**](docs/MessageSendingApi.md#sendAudio) | **POST** /instances/{instance_key}/send/audio | Send raw audio.
+*WhatsApi.MessageSendingApi* | [**sendButtonMessage**](docs/MessageSendingApi.md#sendButtonMessage) | **POST** /instances/{instance_key}/send/buttons | Send a button message.
+*WhatsApi.MessageSendingApi* | [**sendButtonWithMedia**](docs/MessageSendingApi.md#sendButtonWithMedia) | **POST** /instances/{instance_key}/send/button-media | Send a button message with a media header.
+*WhatsApi.MessageSendingApi* | [**sendContact**](docs/MessageSendingApi.md#sendContact) | **POST** /instances/{instance_key}/send/contact | Send a contact message.
+*WhatsApi.MessageSendingApi* | [**sendDocument**](docs/MessageSendingApi.md#sendDocument) | **POST** /instances/{instance_key}/send/document | Send raw document.
+*WhatsApi.MessageSendingApi* | [**sendImage**](docs/MessageSendingApi.md#sendImage) | **POST** /instances/{instance_key}/send/image | Send raw image.
+*WhatsApi.MessageSendingApi* | [**sendListMessage**](docs/MessageSendingApi.md#sendListMessage) | **POST** /instances/{instance_key}/send/list | Send a List message.
+*WhatsApi.MessageSendingApi* | [**sendLocation**](docs/MessageSendingApi.md#sendLocation) | **POST** /instances/{instance_key}/send/location | Send a location message.
+*WhatsApi.MessageSendingApi* | [**sendMediaMessage**](docs/MessageSendingApi.md#sendMediaMessage) | **POST** /instances/{instance_key}/send/media | Send a media message.
+*WhatsApi.MessageSendingApi* | [**sendPollMessage**](docs/MessageSendingApi.md#sendPollMessage) | **POST** /instances/{instance_key}/send/poll | Send a Poll message.
+*WhatsApi.MessageSendingApi* | [**sendTemplate**](docs/MessageSendingApi.md#sendTemplate) | **POST** /instances/{instance_key}/send/template | Send a template message.
+*WhatsApi.MessageSendingApi* | [**sendTemplateWithMedia**](docs/MessageSendingApi.md#sendTemplateWithMedia) | **POST** /instances/{instance_key}/send/template-media | Send a template message with media.
+*WhatsApi.MessageSendingApi* | [**sendTextMessage**](docs/MessageSendingApi.md#sendTextMessage) | **POST** /instances/{instance_key}/send/text | Send a text message.
+*WhatsApi.MessageSendingApi* | [**sendVideo**](docs/MessageSendingApi.md#sendVideo) | **POST** /instances/{instance_key}/send/video | Send raw video.
+*WhatsApi.MessageSendingApi* | [**uploadMedia**](docs/MessageSendingApi.md#uploadMedia) | **POST** /instances/{instance_key}/send/upload | Upload media.
+*WhatsApi.MiscellaneousApi* | [**getProfilePic**](docs/MiscellaneousApi.md#getProfilePic) | **GET** /instances/{instance_key}/misc/profile-pic | Get profile pic.
+*WhatsApi.MiscellaneousApi* | [**getUsersInfo**](docs/MiscellaneousApi.md#getUsersInfo) | **POST** /instances/{instance_key}/misc/user-info | Fetches the users info.
 
 
 ## Documentation for Models
@@ -182,12 +182,6 @@ Class | Method | HTTP request | Description
  - [WhatsApi.GroupUpdateDescriptionPayload](docs/GroupUpdateDescriptionPayload.md)
  - [WhatsApi.GroupUpdateNamePayload](docs/GroupUpdateNamePayload.md)
  - [WhatsApi.GroupUpdateParticipantsPayload](docs/GroupUpdateParticipantsPayload.md)
- - [WhatsApi.InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest](docs/InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest.md)
- - [WhatsApi.InstancesInstanceKeySendAudioPostRequest](docs/InstancesInstanceKeySendAudioPostRequest.md)
- - [WhatsApi.InstancesInstanceKeySendDocumentPostRequest](docs/InstancesInstanceKeySendDocumentPostRequest.md)
- - [WhatsApi.InstancesInstanceKeySendImagePostRequest](docs/InstancesInstanceKeySendImagePostRequest.md)
- - [WhatsApi.InstancesInstanceKeySendUploadPostRequest](docs/InstancesInstanceKeySendUploadPostRequest.md)
- - [WhatsApi.InstancesInstanceKeySendVideoPostRequest](docs/InstancesInstanceKeySendVideoPostRequest.md)
  - [WhatsApi.ListItem](docs/ListItem.md)
  - [WhatsApi.ListMessagePayload](docs/ListMessagePayload.md)
  - [WhatsApi.ListSection](docs/ListSection.md)
@@ -195,11 +189,17 @@ Class | Method | HTTP request | Description
  - [WhatsApi.LocationMessagePayloadLocation](docs/LocationMessagePayloadLocation.md)
  - [WhatsApi.PollMessagePayload](docs/PollMessagePayload.md)
  - [WhatsApi.ReplyButton](docs/ReplyButton.md)
+ - [WhatsApi.SendAudioRequest](docs/SendAudioRequest.md)
+ - [WhatsApi.SendDocumentRequest](docs/SendDocumentRequest.md)
+ - [WhatsApi.SendImageRequest](docs/SendImageRequest.md)
  - [WhatsApi.SendMediaPayload](docs/SendMediaPayload.md)
+ - [WhatsApi.SendVideoRequest](docs/SendVideoRequest.md)
+ - [WhatsApi.SetGroupPictureRequest](docs/SetGroupPictureRequest.md)
  - [WhatsApi.TemplateButton](docs/TemplateButton.md)
  - [WhatsApi.TemplateButtonPayload](docs/TemplateButtonPayload.md)
  - [WhatsApi.TemplateButtonWithMediaPayload](docs/TemplateButtonWithMediaPayload.md)
  - [WhatsApi.TextMessage](docs/TextMessage.md)
+ - [WhatsApi.UploadMediaRequest](docs/UploadMediaRequest.md)
  - [WhatsApi.UserInfoPayload](docs/UserInfoPayload.md)
  - [WhatsApi.WebhookPayload](docs/WebhookPayload.md)
 

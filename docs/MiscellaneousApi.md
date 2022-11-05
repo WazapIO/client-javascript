@@ -4,14 +4,14 @@ All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**instancesInstanceKeyMiscProfilePicGet**](MiscellaneousApi.md#instancesInstanceKeyMiscProfilePicGet) | **GET** /instances/{instance_key}/misc/profile-pic | Get profile pic.
-[**instancesInstanceKeyMiscUserInfoPost**](MiscellaneousApi.md#instancesInstanceKeyMiscUserInfoPost) | **POST** /instances/{instance_key}/misc/user-info | Fetches the users info.
+[**getProfilePic**](MiscellaneousApi.md#getProfilePic) | **GET** /instances/{instance_key}/misc/profile-pic | Get profile pic.
+[**getUsersInfo**](MiscellaneousApi.md#getUsersInfo) | **POST** /instances/{instance_key}/misc/user-info | Fetches the users info.
 
 
 
-## instancesInstanceKeyMiscProfilePicGet
+## getProfilePic
 
-> APIResponse instancesInstanceKeyMiscProfilePicGet(instanceKey, jid)
+> APIResponse getProfilePic(instanceKey, jid)
 
 Get profile pic.
 
@@ -31,7 +31,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 let apiInstance = new WhatsApi.MiscellaneousApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let jid = "jid_example"; // String | JID
-apiInstance.instancesInstanceKeyMiscProfilePicGet(instanceKey, jid, (error, data, response) => {
+apiInstance.getProfilePic(instanceKey, jid, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -62,9 +62,9 @@ Name | Type | Description  | Notes
 - **Accept**: */*
 
 
-## instancesInstanceKeyMiscUserInfoPost
+## getUsersInfo
 
-> APIResponse instancesInstanceKeyMiscUserInfoPost(instanceKey, data)
+> APIResponse getUsersInfo(instanceKey, data)
 
 Fetches the users info.
 
@@ -84,7 +84,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 let apiInstance = new WhatsApi.MiscellaneousApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let data = new WhatsApi.UserInfoPayload(); // UserInfoPayload | Data
-apiInstance.instancesInstanceKeyMiscUserInfoPost(instanceKey, data, (error, data, response) => {
+apiInstance.getUsersInfo(instanceKey, data, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {

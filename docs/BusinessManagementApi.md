@@ -4,13 +4,13 @@ All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**instancesInstanceKeyBusinessCatalogGet**](BusinessManagementApi.md#instancesInstanceKeyBusinessCatalogGet) | **GET** /instances/{instance_key}/business/catalog | Fetches the catlog.
+[**fetchCatlog**](BusinessManagementApi.md#fetchCatlog) | **GET** /instances/{instance_key}/business/catalog | Fetches the catlog.
 
 
 
-## instancesInstanceKeyBusinessCatalogGet
+## fetchCatlog
 
-> APIResponse instancesInstanceKeyBusinessCatalogGet(instanceKey)
+> APIResponse fetchCatlog(instanceKey)
 
 Fetches the catlog.
 
@@ -29,7 +29,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WhatsApi.BusinessManagementApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
-apiInstance.instancesInstanceKeyBusinessCatalogGet(instanceKey, (error, data, response) => {
+apiInstance.fetchCatlog(instanceKey, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
