@@ -17,17 +17,18 @@ import APIResponse from '../models/APIResponse';
 import ButtonMessagePayload from '../models/ButtonMessagePayload';
 import ButtonMessageWithMediaPayload from '../models/ButtonMessageWithMediaPayload';
 import ContactMessagePayload from '../models/ContactMessagePayload';
+import GroupInviteMessagePayload from '../models/GroupInviteMessagePayload';
 import ListMessagePayload from '../models/ListMessagePayload';
 import LocationMessagePayload from '../models/LocationMessagePayload';
 import PollMessagePayload from '../models/PollMessagePayload';
 import SendAudioRequest from '../models/SendAudioRequest';
 import SendDocumentRequest from '../models/SendDocumentRequest';
-import SendImageRequest from '../models/SendImageRequest';
 import SendMediaPayload from '../models/SendMediaPayload';
 import SendVideoRequest from '../models/SendVideoRequest';
 import TemplateButtonPayload from '../models/TemplateButtonPayload';
 import TemplateButtonWithMediaPayload from '../models/TemplateButtonWithMediaPayload';
 import TextMessage from '../models/TextMessage';
+import UpdateProfilePicRequest from '../models/UpdateProfilePicRequest';
 import UploadMediaRequest from '../models/UploadMediaRequest';
 
 /**
@@ -310,6 +311,54 @@ export default class MessageSendingApi {
     }
 
     /**
+     * Callback function to receive the result of the sendGroupInvite operation.
+     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~sendGroupInviteCallback
+     * @param {String} error Error message, if any.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Send a group invite message
+     * Sends a group invite message to the specified number. Don't include \"https://chat.whatsapp.com/\" in the invite code.
+     * @param {String} instanceKey Instance key
+     * @param {module:WhatsAPI/models/GroupInviteMessagePayload} data Message data
+     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~sendGroupInviteCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
+     */
+    sendGroupInvite(instanceKey, data, callback) {
+      let postBody = data;
+      // verify the required parameter 'instanceKey' is set
+      if (instanceKey === undefined || instanceKey === null) {
+        throw new Error("Missing the required parameter 'instanceKey' when calling sendGroupInvite");
+      }
+      // verify the required parameter 'data' is set
+      if (data === undefined || data === null) {
+        throw new Error("Missing the required parameter 'data' when calling sendGroupInvite");
+      }
+
+      let pathParams = {
+        'instance_key': instanceKey
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['*/*'];
+      let returnType = APIResponse;
+      return this.apiClient.callApi(
+        '/instances/{instance_key}/send/group-invite', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the sendImage operation.
      * @callback module:WhatsAPI/whatsapi/MessageSendingApi~sendImageCallback
      * @param {String} error Error message, if any.
@@ -322,15 +371,15 @@ export default class MessageSendingApi {
      * Sends a image message by uploading to the WhatsApp servers every time. This is not recommended for bulk sending.
      * @param {String} instanceKey Instance key
      * @param {String} to The recipient's number
-     * @param {module:WhatsAPI/models/SendImageRequest} sendImageRequest 
+     * @param {module:WhatsAPI/models/UpdateProfilePicRequest} updateProfilePicRequest 
      * @param {Object} opts Optional parameters
      * @param {String} opts.caption Attached caption
      * @param {module:WhatsAPI/whatsapi/MessageSendingApi~sendImageCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    sendImage(instanceKey, to, sendImageRequest, opts, callback) {
+    sendImage(instanceKey, to, updateProfilePicRequest, opts, callback) {
       opts = opts || {};
-      let postBody = sendImageRequest;
+      let postBody = updateProfilePicRequest;
       // verify the required parameter 'instanceKey' is set
       if (instanceKey === undefined || instanceKey === null) {
         throw new Error("Missing the required parameter 'instanceKey' when calling sendImage");
@@ -339,9 +388,9 @@ export default class MessageSendingApi {
       if (to === undefined || to === null) {
         throw new Error("Missing the required parameter 'to' when calling sendImage");
       }
-      // verify the required parameter 'sendImageRequest' is set
-      if (sendImageRequest === undefined || sendImageRequest === null) {
-        throw new Error("Missing the required parameter 'sendImageRequest' when calling sendImage");
+      // verify the required parameter 'updateProfilePicRequest' is set
+      if (updateProfilePicRequest === undefined || updateProfilePicRequest === null) {
+        throw new Error("Missing the required parameter 'updateProfilePicRequest' when calling sendImage");
       }
 
       let pathParams = {

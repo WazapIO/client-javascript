@@ -127,14 +127,17 @@ All URIs are relative to */api*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *WhatsApi.BusinessManagementApi* | [**fetchCatlog**](docs/BusinessManagementApi.md#fetchCatlog) | **GET** /instances/{instance_key}/business/catalog | Fetches the catlog.
+*WhatsApi.BusinessManagementApi* | [**sendPaymentRequest**](docs/BusinessManagementApi.md#sendPaymentRequest) | **POST** /instances/{instance_key}/business/payment-request | Send a payment request.
 *WhatsApi.GroupManagementApi* | [**addParticipant**](docs/GroupManagementApi.md#addParticipant) | **POST** /instances/{instance_key}/groups/{group_id}/participants/add | Add participant.
 *WhatsApi.GroupManagementApi* | [**createGroup**](docs/GroupManagementApi.md#createGroup) | **POST** /instances/{instance_key}/groups/create | Create group.
 *WhatsApi.GroupManagementApi* | [**demoteParticipant**](docs/GroupManagementApi.md#demoteParticipant) | **PUT** /instances/{instance_key}/groups/{group_id}/participants/demote | Demote participant.
 *WhatsApi.GroupManagementApi* | [**getAdminGroups**](docs/GroupManagementApi.md#getAdminGroups) | **GET** /instances/{instance_key}/groups/admin | Get admin groups.
 *WhatsApi.GroupManagementApi* | [**getAllGroups**](docs/GroupManagementApi.md#getAllGroups) | **GET** /instances/{instance_key}/groups/ | Get all groups.
+*WhatsApi.GroupManagementApi* | [**getAllParticipants**](docs/GroupManagementApi.md#getAllParticipants) | **GET** /instances/{instance_key}/groups/{group_id}/participants | Get all participants.
 *WhatsApi.GroupManagementApi* | [**getGroup**](docs/GroupManagementApi.md#getGroup) | **GET** /instances/{instance_key}/groups/{group_id} | Get group.
 *WhatsApi.GroupManagementApi* | [**getGroupFromInviteLink**](docs/GroupManagementApi.md#getGroupFromInviteLink) | **GET** /instances/{instance_key}/groups/invite-info | Get group from invite link.
 *WhatsApi.GroupManagementApi* | [**getGroupInviteCode**](docs/GroupManagementApi.md#getGroupInviteCode) | **GET** /instances/{instance_key}/groups/{group_id}/invite-code | Get group invite code.
+*WhatsApi.GroupManagementApi* | [**joinGroupWithLink**](docs/GroupManagementApi.md#joinGroupWithLink) | **GET** /instances/{instance_key}/groups/join | Join group with invite code.
 *WhatsApi.GroupManagementApi* | [**leaveGroup**](docs/GroupManagementApi.md#leaveGroup) | **DELETE** /instances/{instance_key}/groups/{group_id}/ | Leaves the group.
 *WhatsApi.GroupManagementApi* | [**promoteParticipant**](docs/GroupManagementApi.md#promoteParticipant) | **PUT** /instances/{instance_key}/groups/{group_id}/participants/promote | Promote participant.
 *WhatsApi.GroupManagementApi* | [**removeParticipant**](docs/GroupManagementApi.md#removeParticipant) | **DELETE** /instances/{instance_key}/groups/{group_id}/participants/remove | Remove participant.
@@ -156,6 +159,7 @@ Class | Method | HTTP request | Description
 *WhatsApi.MessageSendingApi* | [**sendButtonWithMedia**](docs/MessageSendingApi.md#sendButtonWithMedia) | **POST** /instances/{instance_key}/send/button-media | Send a button message with a media header.
 *WhatsApi.MessageSendingApi* | [**sendContact**](docs/MessageSendingApi.md#sendContact) | **POST** /instances/{instance_key}/send/contact | Send a contact message.
 *WhatsApi.MessageSendingApi* | [**sendDocument**](docs/MessageSendingApi.md#sendDocument) | **POST** /instances/{instance_key}/send/document | Send raw document.
+*WhatsApi.MessageSendingApi* | [**sendGroupInvite**](docs/MessageSendingApi.md#sendGroupInvite) | **POST** /instances/{instance_key}/send/group-invite | Send a group invite message
 *WhatsApi.MessageSendingApi* | [**sendImage**](docs/MessageSendingApi.md#sendImage) | **POST** /instances/{instance_key}/send/image | Send raw image.
 *WhatsApi.MessageSendingApi* | [**sendListMessage**](docs/MessageSendingApi.md#sendListMessage) | **POST** /instances/{instance_key}/send/list | Send a List message.
 *WhatsApi.MessageSendingApi* | [**sendLocation**](docs/MessageSendingApi.md#sendLocation) | **POST** /instances/{instance_key}/send/location | Send a location message.
@@ -166,8 +170,11 @@ Class | Method | HTTP request | Description
 *WhatsApi.MessageSendingApi* | [**sendTextMessage**](docs/MessageSendingApi.md#sendTextMessage) | **POST** /instances/{instance_key}/send/text | Send a text message.
 *WhatsApi.MessageSendingApi* | [**sendVideo**](docs/MessageSendingApi.md#sendVideo) | **POST** /instances/{instance_key}/send/video | Send raw video.
 *WhatsApi.MessageSendingApi* | [**uploadMedia**](docs/MessageSendingApi.md#uploadMedia) | **POST** /instances/{instance_key}/send/upload | Upload media.
+*WhatsApi.MiscellaneousApi* | [**downloadMedia**](docs/MiscellaneousApi.md#downloadMedia) | **POST** /instances/{instance_key}/misc/download | Download media
 *WhatsApi.MiscellaneousApi* | [**getProfilePic**](docs/MiscellaneousApi.md#getProfilePic) | **GET** /instances/{instance_key}/misc/profile-pic | Get profile pic.
 *WhatsApi.MiscellaneousApi* | [**getUsersInfo**](docs/MiscellaneousApi.md#getUsersInfo) | **POST** /instances/{instance_key}/misc/user-info | Fetches the users info.
+*WhatsApi.MiscellaneousApi* | [**setChatPresence**](docs/MiscellaneousApi.md#setChatPresence) | **POST** /instances/{instance_key}/misc/chat-presence | Set chat presence
+*WhatsApi.MiscellaneousApi* | [**updateProfilePic**](docs/MiscellaneousApi.md#updateProfilePic) | **PUT** /instances/{instance_key}/misc/profile-pic | Update profile picture
 
 
 ## Documentation for Models
@@ -179,6 +186,7 @@ Class | Method | HTTP request | Description
  - [WhatsApi.ContactMessagePayloadVcard](docs/ContactMessagePayloadVcard.md)
  - [WhatsApi.FileUpload](docs/FileUpload.md)
  - [WhatsApi.GroupCreatePayload](docs/GroupCreatePayload.md)
+ - [WhatsApi.GroupInviteMessagePayload](docs/GroupInviteMessagePayload.md)
  - [WhatsApi.GroupUpdateDescriptionPayload](docs/GroupUpdateDescriptionPayload.md)
  - [WhatsApi.GroupUpdateNamePayload](docs/GroupUpdateNamePayload.md)
  - [WhatsApi.GroupUpdateParticipantsPayload](docs/GroupUpdateParticipantsPayload.md)
@@ -187,11 +195,11 @@ Class | Method | HTTP request | Description
  - [WhatsApi.ListSection](docs/ListSection.md)
  - [WhatsApi.LocationMessagePayload](docs/LocationMessagePayload.md)
  - [WhatsApi.LocationMessagePayloadLocation](docs/LocationMessagePayloadLocation.md)
+ - [WhatsApi.PaymentRequestPayload](docs/PaymentRequestPayload.md)
  - [WhatsApi.PollMessagePayload](docs/PollMessagePayload.md)
  - [WhatsApi.ReplyButton](docs/ReplyButton.md)
  - [WhatsApi.SendAudioRequest](docs/SendAudioRequest.md)
  - [WhatsApi.SendDocumentRequest](docs/SendDocumentRequest.md)
- - [WhatsApi.SendImageRequest](docs/SendImageRequest.md)
  - [WhatsApi.SendMediaPayload](docs/SendMediaPayload.md)
  - [WhatsApi.SendVideoRequest](docs/SendVideoRequest.md)
  - [WhatsApi.SetGroupPictureRequest](docs/SetGroupPictureRequest.md)
@@ -199,6 +207,7 @@ Class | Method | HTTP request | Description
  - [WhatsApi.TemplateButtonPayload](docs/TemplateButtonPayload.md)
  - [WhatsApi.TemplateButtonWithMediaPayload](docs/TemplateButtonWithMediaPayload.md)
  - [WhatsApi.TextMessage](docs/TextMessage.md)
+ - [WhatsApi.UpdateProfilePicRequest](docs/UpdateProfilePicRequest.md)
  - [WhatsApi.UploadMediaRequest](docs/UploadMediaRequest.md)
  - [WhatsApi.UserInfoPayload](docs/UserInfoPayload.md)
  - [WhatsApi.WebhookPayload](docs/WebhookPayload.md)

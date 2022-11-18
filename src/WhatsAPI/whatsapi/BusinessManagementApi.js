@@ -14,6 +14,7 @@
 
 import ApiClient from "../ApiClient";
 import APIResponse from '../models/APIResponse';
+import PaymentRequestPayload from '../models/PaymentRequestPayload';
 
 /**
 * BusinessManagement service.
@@ -72,6 +73,54 @@ export default class BusinessManagementApi {
       let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/business/catalog', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the sendPaymentRequest operation.
+     * @callback module:WhatsAPI/whatsapi/BusinessManagementApi~sendPaymentRequestCallback
+     * @param {String} error Error message, if any.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Send a payment request.
+     * Sends an payment request to a user. Feature is still in beta.
+     * @param {String} instanceKey Instance key
+     * @param {module:WhatsAPI/models/PaymentRequestPayload} data Data
+     * @param {module:WhatsAPI/whatsapi/BusinessManagementApi~sendPaymentRequestCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
+     */
+    sendPaymentRequest(instanceKey, data, callback) {
+      let postBody = data;
+      // verify the required parameter 'instanceKey' is set
+      if (instanceKey === undefined || instanceKey === null) {
+        throw new Error("Missing the required parameter 'instanceKey' when calling sendPaymentRequest");
+      }
+      // verify the required parameter 'data' is set
+      if (data === undefined || data === null) {
+        throw new Error("Missing the required parameter 'data' when calling sendPaymentRequest");
+      }
+
+      let pathParams = {
+        'instance_key': instanceKey
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['*/*'];
+      let returnType = APIResponse;
+      return this.apiClient.callApi(
+        '/instances/{instance_key}/business/payment-request', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

@@ -286,6 +286,55 @@ export default class GroupManagementApi {
     }
 
     /**
+     * Callback function to receive the result of the getAllParticipants operation.
+     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~getAllParticipantsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get all participants.
+     * Returns all participants of the group.
+     * @param {String} instanceKey Instance key
+     * @param {String} groupId Group id of the group
+     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~getAllParticipantsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
+     */
+    getAllParticipants(instanceKey, groupId, callback) {
+      let postBody = null;
+      // verify the required parameter 'instanceKey' is set
+      if (instanceKey === undefined || instanceKey === null) {
+        throw new Error("Missing the required parameter 'instanceKey' when calling getAllParticipants");
+      }
+      // verify the required parameter 'groupId' is set
+      if (groupId === undefined || groupId === null) {
+        throw new Error("Missing the required parameter 'groupId' when calling getAllParticipants");
+      }
+
+      let pathParams = {
+        'instance_key': instanceKey,
+        'group_id': groupId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = [];
+      let accepts = ['*/*'];
+      let returnType = APIResponse;
+      return this.apiClient.callApi(
+        '/instances/{instance_key}/groups/{group_id}/participants', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getGroup operation.
      * @callback module:WhatsAPI/whatsapi/GroupManagementApi~getGroupCallback
      * @param {String} error Error message, if any.
@@ -427,6 +476,55 @@ export default class GroupManagementApi {
       let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/groups/{group_id}/invite-code', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the joinGroupWithLink operation.
+     * @callback module:WhatsAPI/whatsapi/GroupManagementApi~joinGroupWithLinkCallback
+     * @param {String} error Error message, if any.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Join group with invite code.
+     * Joins a group with group invite link. An invite link is a link that can be used to join a group. It is usually in the format https://chat.whatsapp.com/{invitecode} You have to put invite_code in the url of the request. The invite code is the part after https://chat.whatsapp.com/ For example, if the invite link is https://chat.whatsapp.com/dsfsf34r3d3dsds, then the invite code is `dsfsf34r3d3dsds“
+     * @param {String} instanceKey Instance key
+     * @param {String} inviteCode The invite code of group you want to join
+     * @param {module:WhatsAPI/whatsapi/GroupManagementApi~joinGroupWithLinkCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
+     */
+    joinGroupWithLink(instanceKey, inviteCode, callback) {
+      let postBody = null;
+      // verify the required parameter 'instanceKey' is set
+      if (instanceKey === undefined || instanceKey === null) {
+        throw new Error("Missing the required parameter 'instanceKey' when calling joinGroupWithLink");
+      }
+      // verify the required parameter 'inviteCode' is set
+      if (inviteCode === undefined || inviteCode === null) {
+        throw new Error("Missing the required parameter 'inviteCode' when calling joinGroupWithLink");
+      }
+
+      let pathParams = {
+        'instance_key': instanceKey
+      };
+      let queryParams = {
+        'invite_code': inviteCode
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = [];
+      let accepts = ['*/*'];
+      let returnType = APIResponse;
+      return this.apiClient.callApi(
+        '/instances/{instance_key}/groups/join', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

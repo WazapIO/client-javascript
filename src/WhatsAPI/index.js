@@ -20,6 +20,7 @@ import ContactMessagePayload from './models/ContactMessagePayload';
 import ContactMessagePayloadVcard from './models/ContactMessagePayloadVcard';
 import FileUpload from './models/FileUpload';
 import GroupCreatePayload from './models/GroupCreatePayload';
+import GroupInviteMessagePayload from './models/GroupInviteMessagePayload';
 import GroupUpdateDescriptionPayload from './models/GroupUpdateDescriptionPayload';
 import GroupUpdateNamePayload from './models/GroupUpdateNamePayload';
 import GroupUpdateParticipantsPayload from './models/GroupUpdateParticipantsPayload';
@@ -28,11 +29,11 @@ import ListMessagePayload from './models/ListMessagePayload';
 import ListSection from './models/ListSection';
 import LocationMessagePayload from './models/LocationMessagePayload';
 import LocationMessagePayloadLocation from './models/LocationMessagePayloadLocation';
+import PaymentRequestPayload from './models/PaymentRequestPayload';
 import PollMessagePayload from './models/PollMessagePayload';
 import ReplyButton from './models/ReplyButton';
 import SendAudioRequest from './models/SendAudioRequest';
 import SendDocumentRequest from './models/SendDocumentRequest';
-import SendImageRequest from './models/SendImageRequest';
 import SendMediaPayload from './models/SendMediaPayload';
 import SendVideoRequest from './models/SendVideoRequest';
 import SetGroupPictureRequest from './models/SetGroupPictureRequest';
@@ -40,6 +41,7 @@ import TemplateButton from './models/TemplateButton';
 import TemplateButtonPayload from './models/TemplateButtonPayload';
 import TemplateButtonWithMediaPayload from './models/TemplateButtonWithMediaPayload';
 import TextMessage from './models/TextMessage';
+import UpdateProfilePicRequest from './models/UpdateProfilePicRequest';
 import UploadMediaRequest from './models/UploadMediaRequest';
 import UserInfoPayload from './models/UserInfoPayload';
 import WebhookPayload from './models/WebhookPayload';
@@ -131,6 +133,12 @@ export {
     GroupCreatePayload,
 
     /**
+     * The GroupInviteMessagePayload model constructor.
+     * @property {module:WhatsAPI/models/GroupInviteMessagePayload}
+     */
+    GroupInviteMessagePayload,
+
+    /**
      * The GroupUpdateDescriptionPayload model constructor.
      * @property {module:WhatsAPI/models/GroupUpdateDescriptionPayload}
      */
@@ -179,6 +187,12 @@ export {
     LocationMessagePayloadLocation,
 
     /**
+     * The PaymentRequestPayload model constructor.
+     * @property {module:WhatsAPI/models/PaymentRequestPayload}
+     */
+    PaymentRequestPayload,
+
+    /**
      * The PollMessagePayload model constructor.
      * @property {module:WhatsAPI/models/PollMessagePayload}
      */
@@ -201,12 +215,6 @@ export {
      * @property {module:WhatsAPI/models/SendDocumentRequest}
      */
     SendDocumentRequest,
-
-    /**
-     * The SendImageRequest model constructor.
-     * @property {module:WhatsAPI/models/SendImageRequest}
-     */
-    SendImageRequest,
 
     /**
      * The SendMediaPayload model constructor.
@@ -249,6 +257,12 @@ export {
      * @property {module:WhatsAPI/models/TextMessage}
      */
     TextMessage,
+
+    /**
+     * The UpdateProfilePicRequest model constructor.
+     * @property {module:WhatsAPI/models/UpdateProfilePicRequest}
+     */
+    UpdateProfilePicRequest,
 
     /**
      * The UploadMediaRequest model constructor.

@@ -9,9 +9,11 @@ Method | HTTP request | Description
 [**demoteParticipant**](GroupManagementApi.md#demoteParticipant) | **PUT** /instances/{instance_key}/groups/{group_id}/participants/demote | Demote participant.
 [**getAdminGroups**](GroupManagementApi.md#getAdminGroups) | **GET** /instances/{instance_key}/groups/admin | Get admin groups.
 [**getAllGroups**](GroupManagementApi.md#getAllGroups) | **GET** /instances/{instance_key}/groups/ | Get all groups.
+[**getAllParticipants**](GroupManagementApi.md#getAllParticipants) | **GET** /instances/{instance_key}/groups/{group_id}/participants | Get all participants.
 [**getGroup**](GroupManagementApi.md#getGroup) | **GET** /instances/{instance_key}/groups/{group_id} | Get group.
 [**getGroupFromInviteLink**](GroupManagementApi.md#getGroupFromInviteLink) | **GET** /instances/{instance_key}/groups/invite-info | Get group from invite link.
 [**getGroupInviteCode**](GroupManagementApi.md#getGroupInviteCode) | **GET** /instances/{instance_key}/groups/{group_id}/invite-code | Get group invite code.
+[**joinGroupWithLink**](GroupManagementApi.md#joinGroupWithLink) | **GET** /instances/{instance_key}/groups/join | Join group with invite code.
 [**leaveGroup**](GroupManagementApi.md#leaveGroup) | **DELETE** /instances/{instance_key}/groups/{group_id}/ | Leaves the group.
 [**promoteParticipant**](GroupManagementApi.md#promoteParticipant) | **PUT** /instances/{instance_key}/groups/{group_id}/participants/promote | Promote participant.
 [**removeParticipant**](GroupManagementApi.md#removeParticipant) | **DELETE** /instances/{instance_key}/groups/{group_id}/participants/remove | Remove participant.
@@ -292,6 +294,59 @@ Name | Type | Description  | Notes
 - **Accept**: */*
 
 
+## getAllParticipants
+
+> APIResponse getAllParticipants(instanceKey, groupId)
+
+Get all participants.
+
+Returns all participants of the group.
+
+### Example
+
+```javascript
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
+// Configure API key authorization: ApiKeyAuth
+let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new WhatsApi.GroupManagementApi();
+let instanceKey = "instanceKey_example"; // String | Instance key
+let groupId = "groupId_example"; // String | Group id of the group
+apiInstance.getAllParticipants(instanceKey, groupId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **instanceKey** | **String**| Instance key | 
+ **groupId** | **String**| Group id of the group | 
+
+### Return type
+
+[**APIResponse**](APIResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: */*
+
+
 ## getGroup
 
 > APIResponse getGroup(instanceKey, groupId)
@@ -436,6 +491,59 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instanceKey** | **String**| Instance key | 
  **groupId** | **String**| Group id of the group | 
+
+### Return type
+
+[**APIResponse**](APIResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: */*
+
+
+## joinGroupWithLink
+
+> APIResponse joinGroupWithLink(instanceKey, inviteCode)
+
+Join group with invite code.
+
+Joins a group with group invite link. An invite link is a link that can be used to join a group. It is usually in the format https://chat.whatsapp.com/{invitecode} You have to put invite_code in the url of the request. The invite code is the part after https://chat.whatsapp.com/ For example, if the invite link is https://chat.whatsapp.com/dsfsf34r3d3dsds, then the invite code is &#x60;dsfsf34r3d3dsds“
+
+### Example
+
+```javascript
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
+// Configure API key authorization: ApiKeyAuth
+let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new WhatsApi.GroupManagementApi();
+let instanceKey = "instanceKey_example"; // String | Instance key
+let inviteCode = "inviteCode_example"; // String | The invite code of group you want to join
+apiInstance.joinGroupWithLink(instanceKey, inviteCode, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **instanceKey** | **String**| Instance key | 
+ **inviteCode** | **String**| The invite code of group you want to join | 
 
 ### Return type
 

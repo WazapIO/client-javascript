@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**sendButtonWithMedia**](MessageSendingApi.md#sendButtonWithMedia) | **POST** /instances/{instance_key}/send/button-media | Send a button message with a media header.
 [**sendContact**](MessageSendingApi.md#sendContact) | **POST** /instances/{instance_key}/send/contact | Send a contact message.
 [**sendDocument**](MessageSendingApi.md#sendDocument) | **POST** /instances/{instance_key}/send/document | Send raw document.
+[**sendGroupInvite**](MessageSendingApi.md#sendGroupInvite) | **POST** /instances/{instance_key}/send/group-invite | Send a group invite message
 [**sendImage**](MessageSendingApi.md#sendImage) | **POST** /instances/{instance_key}/send/image | Send raw image.
 [**sendListMessage**](MessageSendingApi.md#sendListMessage) | **POST** /instances/{instance_key}/send/list | Send a List message.
 [**sendLocation**](MessageSendingApi.md#sendLocation) | **POST** /instances/{instance_key}/send/location | Send a location message.
@@ -299,9 +300,62 @@ Name | Type | Description  | Notes
 - **Accept**: */*
 
 
+## sendGroupInvite
+
+> APIResponse sendGroupInvite(instanceKey, data)
+
+Send a group invite message
+
+Sends a group invite message to the specified number. Don&#39;t include \&quot;https://chat.whatsapp.com/\&quot; in the invite code.
+
+### Example
+
+```javascript
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
+// Configure API key authorization: ApiKeyAuth
+let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new WhatsApi.MessageSendingApi();
+let instanceKey = "instanceKey_example"; // String | Instance key
+let data = new WhatsApi.GroupInviteMessagePayload(); // GroupInviteMessagePayload | Message data
+apiInstance.sendGroupInvite(instanceKey, data, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **instanceKey** | **String**| Instance key | 
+ **data** | [**GroupInviteMessagePayload**](GroupInviteMessagePayload.md)| Message data | 
+
+### Return type
+
+[**APIResponse**](APIResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: */*
+
+
 ## sendImage
 
-> APIResponse sendImage(instanceKey, to, sendImageRequest, opts)
+> APIResponse sendImage(instanceKey, to, updateProfilePicRequest, opts)
 
 Send raw image.
 
@@ -321,11 +375,11 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 let apiInstance = new WhatsApi.MessageSendingApi();
 let instanceKey = "instanceKey_example"; // String | Instance key
 let to = "to_example"; // String | The recipient's number
-let sendImageRequest = new WhatsApi.SendImageRequest(); // SendImageRequest | 
+let updateProfilePicRequest = new WhatsApi.UpdateProfilePicRequest(); // UpdateProfilePicRequest | 
 let opts = {
   'caption': "caption_example" // String | Attached caption
 };
-apiInstance.sendImage(instanceKey, to, sendImageRequest, opts, (error, data, response) => {
+apiInstance.sendImage(instanceKey, to, updateProfilePicRequest, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -341,7 +395,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instanceKey** | **String**| Instance key | 
  **to** | **String**| The recipient&#39;s number | 
- **sendImageRequest** | [**SendImageRequest**](SendImageRequest.md)|  | 
+ **updateProfilePicRequest** | [**UpdateProfilePicRequest**](UpdateProfilePicRequest.md)|  | 
  **caption** | **String**| Attached caption | [optional] 
 
 ### Return type

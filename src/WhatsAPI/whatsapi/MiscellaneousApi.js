@@ -14,6 +14,8 @@
 
 import ApiClient from "../ApiClient";
 import APIResponse from '../models/APIResponse';
+import FileUpload from '../models/FileUpload';
+import UpdateProfilePicRequest from '../models/UpdateProfilePicRequest';
 import UserInfoPayload from '../models/UserInfoPayload';
 
 /**
@@ -34,6 +36,64 @@ export default class MiscellaneousApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
+
+    /**
+     * Callback function to receive the result of the downloadMedia operation.
+     * @callback module:WhatsAPI/whatsapi/MiscellaneousApi~downloadMediaCallback
+     * @param {String} error Error message, if any.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Download media
+     * Downloads the media from the given media keys.
+     * @param {String} instanceKey Instance key
+     * @param {module:WhatsAPI/models/String} fileType File type
+     * @param {module:WhatsAPI/models/FileUpload} data Media data
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.responseType Response type (file, base64)
+     * @param {module:WhatsAPI/whatsapi/MiscellaneousApi~downloadMediaCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
+     */
+    downloadMedia(instanceKey, fileType, data, opts, callback) {
+      opts = opts || {};
+      let postBody = data;
+      // verify the required parameter 'instanceKey' is set
+      if (instanceKey === undefined || instanceKey === null) {
+        throw new Error("Missing the required parameter 'instanceKey' when calling downloadMedia");
+      }
+      // verify the required parameter 'fileType' is set
+      if (fileType === undefined || fileType === null) {
+        throw new Error("Missing the required parameter 'fileType' when calling downloadMedia");
+      }
+      // verify the required parameter 'data' is set
+      if (data === undefined || data === null) {
+        throw new Error("Missing the required parameter 'data' when calling downloadMedia");
+      }
+
+      let pathParams = {
+        'instance_key': instanceKey
+      };
+      let queryParams = {
+        'file_type': fileType,
+        'response_type': opts['responseType']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['*/*'];
+      let returnType = APIResponse;
+      return this.apiClient.callApi(
+        '/instances/{instance_key}/misc/download', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
 
     /**
      * Callback function to receive the result of the getProfilePic operation.
@@ -127,6 +187,109 @@ export default class MiscellaneousApi {
       let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/misc/user-info', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the setChatPresence operation.
+     * @callback module:WhatsAPI/whatsapi/MiscellaneousApi~setChatPresenceCallback
+     * @param {String} error Error message, if any.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Set chat presence
+     * Sets the presence of the given chat. (Typing, Recording, Paused) Options: typing, recording, paused
+     * @param {String} instanceKey Instance key
+     * @param {String} jid JID
+     * @param {String} presence Presence
+     * @param {module:WhatsAPI/whatsapi/MiscellaneousApi~setChatPresenceCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
+     */
+    setChatPresence(instanceKey, jid, presence, callback) {
+      let postBody = null;
+      // verify the required parameter 'instanceKey' is set
+      if (instanceKey === undefined || instanceKey === null) {
+        throw new Error("Missing the required parameter 'instanceKey' when calling setChatPresence");
+      }
+      // verify the required parameter 'jid' is set
+      if (jid === undefined || jid === null) {
+        throw new Error("Missing the required parameter 'jid' when calling setChatPresence");
+      }
+      // verify the required parameter 'presence' is set
+      if (presence === undefined || presence === null) {
+        throw new Error("Missing the required parameter 'presence' when calling setChatPresence");
+      }
+
+      let pathParams = {
+        'instance_key': instanceKey
+      };
+      let queryParams = {
+        'jid': jid,
+        'presence': presence
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = [];
+      let accepts = ['*/*'];
+      let returnType = APIResponse;
+      return this.apiClient.callApi(
+        '/instances/{instance_key}/misc/chat-presence', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the updateProfilePic operation.
+     * @callback module:WhatsAPI/whatsapi/MiscellaneousApi~updateProfilePicCallback
+     * @param {String} error Error message, if any.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Update profile picture
+     * Changes the profile pic of the current logged in user.
+     * @param {String} instanceKey Instance key
+     * @param {module:WhatsAPI/models/UpdateProfilePicRequest} updateProfilePicRequest 
+     * @param {module:WhatsAPI/whatsapi/MiscellaneousApi~updateProfilePicCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
+     */
+    updateProfilePic(instanceKey, updateProfilePicRequest, callback) {
+      let postBody = updateProfilePicRequest;
+      // verify the required parameter 'instanceKey' is set
+      if (instanceKey === undefined || instanceKey === null) {
+        throw new Error("Missing the required parameter 'instanceKey' when calling updateProfilePic");
+      }
+      // verify the required parameter 'updateProfilePicRequest' is set
+      if (updateProfilePicRequest === undefined || updateProfilePicRequest === null) {
+        throw new Error("Missing the required parameter 'updateProfilePicRequest' when calling updateProfilePic");
+      }
+
+      let pathParams = {
+        'instance_key': instanceKey
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['*/*'];
+      let returnType = APIResponse;
+      return this.apiClient.callApi(
+        '/instances/{instance_key}/misc/profile-pic', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
