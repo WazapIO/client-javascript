@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**sendTextMessage**](MessageSendingApi.md#sendTextMessage) | **POST** /instances/{instance_key}/send/text | Send a text message.
 [**sendVideo**](MessageSendingApi.md#sendVideo) | **POST** /instances/{instance_key}/send/video | Send raw video.
 [**uploadMedia**](MessageSendingApi.md#uploadMedia) | **POST** /instances/{instance_key}/send/upload | Upload media.
+[**uploadMediaFromUrl**](MessageSendingApi.md#uploadMediaFromUrl) | **POST** /instances/{instance_key}/send/upload-url | Upload media from url.
 
 
 
@@ -882,6 +883,61 @@ Name | Type | Description  | Notes
  **instanceKey** | **String**| Instance key | 
  **type** | **String**| Media type | 
  **uploadMediaRequest** | [**UploadMediaRequest**](UploadMediaRequest.md)|  | 
+
+### Return type
+
+[**APIResponse**](APIResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: */*
+
+
+## uploadMediaFromUrl
+
+> APIResponse uploadMediaFromUrl(instanceKey, type, data)
+
+Upload media from url.
+
+Uploads media from a url to WhatsApp servers and returns the media keys. Store the returned media keys, as you will need them to send media messages
+
+### Example
+
+```javascript
+import WhatsApi from 'WhatsAPI';
+let defaultClient = WhatsApi.ApiClient.instance;
+// Configure API key authorization: ApiKeyAuth
+let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new WhatsApi.MessageSendingApi();
+let instanceKey = "instanceKey_example"; // String | Instance key
+let type = "type_example"; // String | Media type
+let data = new WhatsApi.UrlMediaUploadPayload(); // UrlMediaUploadPayload | Media data
+apiInstance.uploadMediaFromUrl(instanceKey, type, data, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **instanceKey** | **String**| Instance key | 
+ **type** | **String**| Media type | 
+ **data** | [**UrlMediaUploadPayload**](UrlMediaUploadPayload.md)| Media data | 
 
 ### Return type
 

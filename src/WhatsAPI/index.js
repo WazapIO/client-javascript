@@ -43,6 +43,7 @@ import TemplateButtonWithMediaPayload from './models/TemplateButtonWithMediaPayl
 import TextMessage from './models/TextMessage';
 import UpdateProfilePicRequest from './models/UpdateProfilePicRequest';
 import UploadMediaRequest from './models/UploadMediaRequest';
+import UrlMediaUploadPayload from './models/UrlMediaUploadPayload';
 import UserInfoPayload from './models/UserInfoPayload';
 import WebhookPayload from './models/WebhookPayload';
 import BusinessManagementApi from './whatsapi/BusinessManagementApi';
@@ -269,6 +270,12 @@ export {
      * @property {module:WhatsAPI/models/UploadMediaRequest}
      */
     UploadMediaRequest,
+
+    /**
+     * The UrlMediaUploadPayload model constructor.
+     * @property {module:WhatsAPI/models/UrlMediaUploadPayload}
+     */
+    UrlMediaUploadPayload,
 
     /**
      * The UserInfoPayload model constructor.

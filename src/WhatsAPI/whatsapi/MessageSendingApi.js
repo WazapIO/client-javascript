@@ -30,6 +30,7 @@ import TemplateButtonWithMediaPayload from '../models/TemplateButtonWithMediaPay
 import TextMessage from '../models/TextMessage';
 import UpdateProfilePicRequest from '../models/UpdateProfilePicRequest';
 import UploadMediaRequest from '../models/UploadMediaRequest';
+import UrlMediaUploadPayload from '../models/UrlMediaUploadPayload';
 
 /**
 * MessageSending service.
@@ -859,6 +860,60 @@ export default class MessageSendingApi {
       let returnType = APIResponse;
       return this.apiClient.callApi(
         '/instances/{instance_key}/send/upload', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the uploadMediaFromUrl operation.
+     * @callback module:WhatsAPI/whatsapi/MessageSendingApi~uploadMediaFromUrlCallback
+     * @param {String} error Error message, if any.
+     * @param {module:WhatsAPI/models/APIResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Upload media from url.
+     * Uploads media from a url to WhatsApp servers and returns the media keys. Store the returned media keys, as you will need them to send media messages
+     * @param {String} instanceKey Instance key
+     * @param {module:WhatsAPI/models/String} type Media type
+     * @param {module:WhatsAPI/models/UrlMediaUploadPayload} data Media data
+     * @param {module:WhatsAPI/whatsapi/MessageSendingApi~uploadMediaFromUrlCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:WhatsAPI/models/APIResponse}
+     */
+    uploadMediaFromUrl(instanceKey, type, data, callback) {
+      let postBody = data;
+      // verify the required parameter 'instanceKey' is set
+      if (instanceKey === undefined || instanceKey === null) {
+        throw new Error("Missing the required parameter 'instanceKey' when calling uploadMediaFromUrl");
+      }
+      // verify the required parameter 'type' is set
+      if (type === undefined || type === null) {
+        throw new Error("Missing the required parameter 'type' when calling uploadMediaFromUrl");
+      }
+      // verify the required parameter 'data' is set
+      if (data === undefined || data === null) {
+        throw new Error("Missing the required parameter 'data' when calling uploadMediaFromUrl");
+      }
+
+      let pathParams = {
+        'instance_key': instanceKey
+      };
+      let queryParams = {
+        'type': type
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['*/*'];
+      let returnType = APIResponse;
+      return this.apiClient.callApi(
+        '/instances/{instance_key}/send/upload-url', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

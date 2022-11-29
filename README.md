@@ -170,6 +170,7 @@ Class | Method | HTTP request | Description
 *WhatsApi.MessageSendingApi* | [**sendTextMessage**](docs/MessageSendingApi.md#sendTextMessage) | **POST** /instances/{instance_key}/send/text | Send a text message.
 *WhatsApi.MessageSendingApi* | [**sendVideo**](docs/MessageSendingApi.md#sendVideo) | **POST** /instances/{instance_key}/send/video | Send raw video.
 *WhatsApi.MessageSendingApi* | [**uploadMedia**](docs/MessageSendingApi.md#uploadMedia) | **POST** /instances/{instance_key}/send/upload | Upload media.
+*WhatsApi.MessageSendingApi* | [**uploadMediaFromUrl**](docs/MessageSendingApi.md#uploadMediaFromUrl) | **POST** /instances/{instance_key}/send/upload-url | Upload media from url.
 *WhatsApi.MiscellaneousApi* | [**downloadMedia**](docs/MiscellaneousApi.md#downloadMedia) | **POST** /instances/{instance_key}/misc/download | Download media
 *WhatsApi.MiscellaneousApi* | [**getProfilePic**](docs/MiscellaneousApi.md#getProfilePic) | **GET** /instances/{instance_key}/misc/profile-pic | Get profile pic.
 *WhatsApi.MiscellaneousApi* | [**getUsersInfo**](docs/MiscellaneousApi.md#getUsersInfo) | **POST** /instances/{instance_key}/misc/user-info | Fetches the users info.
@@ -209,6 +210,7 @@ Class | Method | HTTP request | Description
  - [WhatsApi.TextMessage](docs/TextMessage.md)
  - [WhatsApi.UpdateProfilePicRequest](docs/UpdateProfilePicRequest.md)
  - [WhatsApi.UploadMediaRequest](docs/UploadMediaRequest.md)
+ - [WhatsApi.UrlMediaUploadPayload](docs/UrlMediaUploadPayload.md)
  - [WhatsApi.UserInfoPayload](docs/UserInfoPayload.md)
  - [WhatsApi.WebhookPayload](docs/WebhookPayload.md)
 

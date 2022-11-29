@@ -37,6 +37,7 @@ docs/TemplateButtonWithMediaPayload.md
 docs/TextMessage.md
 docs/UpdateProfilePicRequest.md
 docs/UploadMediaRequest.md
+docs/UrlMediaUploadPayload.md
 docs/UserInfoPayload.md
 docs/WebhookPayload.md
 git_push.sh
@@ -74,6 +75,7 @@ src/WhatsAPI/models/TemplateButtonWithMediaPayload.js
 src/WhatsAPI/models/TextMessage.js
 src/WhatsAPI/models/UpdateProfilePicRequest.js
 src/WhatsAPI/models/UploadMediaRequest.js
+src/WhatsAPI/models/UrlMediaUploadPayload.js
 src/WhatsAPI/models/UserInfoPayload.js
 src/WhatsAPI/models/WebhookPayload.js
 src/WhatsAPI/whatsapi/BusinessManagementApi.js
@@ -81,6 +83,4 @@ src/WhatsAPI/whatsapi/GroupManagementApi.js
 src/WhatsAPI/whatsapi/InstanceApi.js
 src/WhatsAPI/whatsapi/MessageSendingApi.js
 src/WhatsAPI/whatsapi/MiscellaneousApi.js
-test/WhatsAPI/model/GroupInviteMessagePayload.spec.js
-test/WhatsAPI/model/PaymentRequestPayload.spec.js
-test/WhatsAPI/model/UpdateProfilePicRequest.spec.js
+test/WhatsAPI/model/UrlMediaUploadPayload.spec.js
