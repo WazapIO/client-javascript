@@ -8,6 +8,7 @@ docs/ButtonMessagePayload.md
 docs/ButtonMessageWithMediaPayload.md
 docs/ContactMessagePayload.md
 docs/ContactMessagePayloadVcard.md
+docs/CreateInstancePayload.md
 docs/FileUpload.md
 docs/GroupCreatePayload.md
 docs/GroupInviteMessagePayload.md
@@ -50,6 +51,7 @@ src/WhatsAPI/models/ButtonMessagePayload.js
 src/WhatsAPI/models/ButtonMessageWithMediaPayload.js
 src/WhatsAPI/models/ContactMessagePayload.js
 src/WhatsAPI/models/ContactMessagePayloadVcard.js
+src/WhatsAPI/models/CreateInstancePayload.js
 src/WhatsAPI/models/FileUpload.js
 src/WhatsAPI/models/GroupCreatePayload.js
 src/WhatsAPI/models/GroupInviteMessagePayload.js
@@ -83,4 +85,4 @@ src/WhatsAPI/whatsapi/GroupManagementApi.js
 src/WhatsAPI/whatsapi/InstanceApi.js
 src/WhatsAPI/whatsapi/MessageSendingApi.js
 src/WhatsAPI/whatsapi/MiscellaneousApi.js
-test/WhatsAPI/model/UrlMediaUploadPayload.spec.js
+test/WhatsAPI/model/CreateInstancePayload.spec.js

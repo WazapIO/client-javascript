@@ -18,6 +18,7 @@ import ButtonMessagePayload from './models/ButtonMessagePayload';
 import ButtonMessageWithMediaPayload from './models/ButtonMessageWithMediaPayload';
 import ContactMessagePayload from './models/ContactMessagePayload';
 import ContactMessagePayloadVcard from './models/ContactMessagePayloadVcard';
+import CreateInstancePayload from './models/CreateInstancePayload';
 import FileUpload from './models/FileUpload';
 import GroupCreatePayload from './models/GroupCreatePayload';
 import GroupInviteMessagePayload from './models/GroupInviteMessagePayload';
@@ -120,6 +121,12 @@ export {
      * @property {module:WhatsAPI/models/ContactMessagePayloadVcard}
      */
     ContactMessagePayloadVcard,
+
+    /**
+     * The CreateInstancePayload model constructor.
+     * @property {module:WhatsAPI/models/CreateInstancePayload}
+     */
+    CreateInstancePayload,
 
     /**
      * The FileUpload model constructor.

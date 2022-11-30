@@ -5,7 +5,7 @@ All URIs are relative to */api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**changeWebhookUrl**](InstanceApi.md#changeWebhookUrl) | **PUT** /instances/{instance_key}/webhook | Change Webhook url.
-[**createInstance**](InstanceApi.md#createInstance) | **GET** /instances/create | Creates a new instance key.
+[**createInstance**](InstanceApi.md#createInstance) | **POST** /instances/create | Creates a new instance key.
 [**deleteInstance**](InstanceApi.md#deleteInstance) | **DELETE** /instances/{instance_key}/delete | Delete Instance.
 [**getContacts**](InstanceApi.md#getContacts) | **GET** /instances/{instance_key}/contacts | Get contacts.
 [**getInstance**](InstanceApi.md#getInstance) | **GET** /instances/{instance_key}/ | Get Instance.
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 ## createInstance
 
-> APIResponse createInstance(opts)
+> APIResponse createInstance(data)
 
 Creates a new instance key.
 
@@ -88,10 +88,8 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WhatsApi.InstanceApi();
-let opts = {
-  'instanceKey': "instanceKey_example" // String | Insert instance key if you want to provide custom key
-};
-apiInstance.createInstance(opts, (error, data, response) => {
+let data = new WhatsApi.CreateInstancePayload(); // CreateInstancePayload | Instance data
+apiInstance.createInstance(data, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -105,7 +103,7 @@ apiInstance.createInstance(opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **instanceKey** | **String**| Insert instance key if you want to provide custom key | [optional] 
+ **data** | [**CreateInstancePayload**](CreateInstancePayload.md)| Instance data | 
 
 ### Return type
 
@@ -117,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: */*
 
 

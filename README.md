@@ -147,7 +147,7 @@ Class | Method | HTTP request | Description
 *WhatsApi.GroupManagementApi* | [**setGroupName**](docs/GroupManagementApi.md#setGroupName) | **PUT** /instances/{instance_key}/groups/{group_id}/name | Set group name.
 *WhatsApi.GroupManagementApi* | [**setGroupPicture**](docs/GroupManagementApi.md#setGroupPicture) | **PUT** /instances/{instance_key}/groups/{group_id}/profile-pic | Set group picture.
 *WhatsApi.InstanceApi* | [**changeWebhookUrl**](docs/InstanceApi.md#changeWebhookUrl) | **PUT** /instances/{instance_key}/webhook | Change Webhook url.
-*WhatsApi.InstanceApi* | [**createInstance**](docs/InstanceApi.md#createInstance) | **GET** /instances/create | Creates a new instance key.
+*WhatsApi.InstanceApi* | [**createInstance**](docs/InstanceApi.md#createInstance) | **POST** /instances/create | Creates a new instance key.
 *WhatsApi.InstanceApi* | [**deleteInstance**](docs/InstanceApi.md#deleteInstance) | **DELETE** /instances/{instance_key}/delete | Delete Instance.
 *WhatsApi.InstanceApi* | [**getContacts**](docs/InstanceApi.md#getContacts) | **GET** /instances/{instance_key}/contacts | Get contacts.
 *WhatsApi.InstanceApi* | [**getInstance**](docs/InstanceApi.md#getInstance) | **GET** /instances/{instance_key}/ | Get Instance.
@@ -185,6 +185,7 @@ Class | Method | HTTP request | Description
  - [WhatsApi.ButtonMessageWithMediaPayload](docs/ButtonMessageWithMediaPayload.md)
  - [WhatsApi.ContactMessagePayload](docs/ContactMessagePayload.md)
  - [WhatsApi.ContactMessagePayloadVcard](docs/ContactMessagePayloadVcard.md)
+ - [WhatsApi.CreateInstancePayload](docs/CreateInstancePayload.md)
  - [WhatsApi.FileUpload](docs/FileUpload.md)
  - [WhatsApi.GroupCreatePayload](docs/GroupCreatePayload.md)
  - [WhatsApi.GroupInviteMessagePayload](docs/GroupInviteMessagePayload.md)

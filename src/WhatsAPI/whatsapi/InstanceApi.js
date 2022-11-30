@@ -14,6 +14,7 @@
 
 import ApiClient from "../ApiClient";
 import APIResponse from '../models/APIResponse';
+import CreateInstancePayload from '../models/CreateInstancePayload';
 import WebhookPayload from '../models/WebhookPayload';
 
 /**
@@ -94,19 +95,20 @@ export default class InstanceApi {
     /**
      * Creates a new instance key.
      * This endpoint is used to create a new WhatsApp Web instance.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.instanceKey Insert instance key if you want to provide custom key
+     * @param {module:WhatsAPI/models/CreateInstancePayload} data Instance data
      * @param {module:WhatsAPI/whatsapi/InstanceApi~createInstanceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:WhatsAPI/models/APIResponse}
      */
-    createInstance(opts, callback) {
-      opts = opts || {};
-      let postBody = null;
+    createInstance(data, callback) {
+      let postBody = data;
+      // verify the required parameter 'data' is set
+      if (data === undefined || data === null) {
+        throw new Error("Missing the required parameter 'data' when calling createInstance");
+      }
 
       let pathParams = {
       };
       let queryParams = {
-        'instance_key': opts['instanceKey']
       };
       let headerParams = {
       };
@@ -114,11 +116,11 @@ export default class InstanceApi {
       };
 
       let authNames = ['ApiKeyAuth'];
-      let contentTypes = [];
+      let contentTypes = ['application/json'];
       let accepts = ['*/*'];
       let returnType = APIResponse;
       return this.apiClient.callApi(
-        '/instances/create', 'GET',
+        '/instances/create', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
